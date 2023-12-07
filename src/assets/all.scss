@@ -1,0 +1,12 @@
+// 必要
+@import "../../node_modules/bootstrap/scss/functions";
+@import "./helpers/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// 字型
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;600&display=swap');
+
+// components
+@import "./components/letterSpacing";
