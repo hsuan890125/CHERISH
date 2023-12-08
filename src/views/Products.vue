@@ -1,6 +1,6 @@
 <template>
     <div class="text-end mt-7">
-        <button class="btn btn-outline-primary" type="button" @click.prevent="$refs.productModal.showModal()">
+        <button class="btn btn-outline-primary" type="button" @click="openModal(true)">
             增加產品
         </button>
     </div>
@@ -31,14 +31,14 @@
                 </td>
                 <td>
                     <div class="btn-group">
-                    <button class="btn btn-outline-secondary btn-sm">編輯</button>
+                    <button class="btn btn-outline-secondary btn-sm" @click="openModal(false, item)">編輯</button>
                     <button class="btn btn-outline-danger btn-sm">刪除</button>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-    <ProductModal ref="productModal"></ProductModal>
+    <ProductModal ref="productModal" :product="tempProduct" @update-product="updateProduct"></ProductModal>
 </template>
 
 <script>
@@ -49,6 +49,8 @@ export default {
         return {
             products: [], // 產品
             pagination: {}, // 分頁資訊
+            tempProduct: {},
+            isNew: false,
         };
     },
     components: {
@@ -64,6 +66,35 @@ export default {
                         this.pagination = res.data.pagination;
                     }
                 })
+        },
+        openModal( isNew, item) { // 打開 modal
+            if(isNew) { // 如果是"新增"狀態
+                this.tempProduct = {};
+            }else { // 如果是"編輯"狀態
+                this.tempProduct = { ...item };
+            }
+            this.isNew = isNew;
+            const productComponent = this.$refs.productModal;
+            productComponent.showModal();
+        },
+        updateProduct(item) {
+            this.tempProduct = item;
+            // "新增"狀態
+            let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`;
+            let httpMethod = 'post';
+            // "編輯"狀態
+            if(!this.isNew) { 
+                api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
+                httpMethod = 'put';
+            }
+
+            const productComponent = this.$refs.productModal;
+            this.$http[httpMethod](api, { data: this.tempProduct })
+            .then(res => {
+                console.log(res);
+                productComponent.hideModal();
+                this.getProducts();
+            });
         }
     },
     created() {
