@@ -28,7 +28,8 @@
                 </div>
             
                 <div class="text-end mt-4">
-                    <button class="btn btn-lg btn-outline-primary btn-block" type="submit">登 入</button>
+                    <button class="btn btn-lg btn-outline-primary btn-block rounded-0 me-3" type="submit"><i class="bi bi-arrow-left"></i> 返 回</button>
+                    <button class="btn btn-lg btn-outline-primary btn-block rounded-0" type="submit">登 入 <i class="bi bi-arrow-right"></i></button>
                 </div>
             </div>
         </form>
