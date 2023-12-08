@@ -1,4 +1,5 @@
 <template>
+    <Loading :active="isLoading"></Loading>
     <div class="text-end mt-7">
         <button class="btn btn-outline-primary" type="button" @click="openModal(true)">
             增加產品
@@ -53,6 +54,7 @@ export default {
             pagination: {}, // 分頁資訊
             tempProduct: {},
             isNew: false,
+            isLoading: false
         };
     },
     components: {
@@ -62,8 +64,10 @@ export default {
     methods: {
         getProducts() { // 取得產品資訊
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`;
+            this.isLoading = true;
             this.$http.get(api)
                 .then( res => {
+                    this.isLoading = false;
                     if(res.data.success) {
                         this.products = res.data.products;
                         this.pagination = res.data.pagination;
@@ -105,6 +109,7 @@ export default {
             const delComponent = this.$refs.delModal;
             delComponent.showModal();
         },
+        // 刪除 product
         delProduct() {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
         this.$http.delete(url)
