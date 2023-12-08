@@ -1,9 +1,15 @@
 <template>
-    DashBoard
+    <Navbar></Navbar>
+    <router-view/>
 </template>
 
 <script>
+import Navbar from '../components/Navbar.vue';
+
 export default {
+    components: {
+        Navbar
+    },
     created() {
         const token = document.cookie.replace(/(?:(?:^|.*;\s*)cherishToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
         this.$http.defaults.headers.common.Authorization = `${token}`;

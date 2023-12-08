@@ -9,5 +9,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;600&display=swap');
 
 // components
-@import "./components/letterSpacing";
-@import "./components/inputAutofill";
+@import "./components/letterSpacing.scss";
+@import "./components/inputAutofill.scss";
+@import "./components/linkHover.scss";
