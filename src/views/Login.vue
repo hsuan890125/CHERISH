@@ -53,7 +53,7 @@ export default {
                     if(res.data.success) {
                         const { token, expired } = res.data;
                         document.cookie = `cherishToken=${token}; expires=${new Date(expired)}`;
-                        this.$router.push('/dashboard'); // 轉至 dashboard 頁面
+                        this.$router.push('/dashboard/products'); // 轉至 products 頁面
                     }
                     
                 })
