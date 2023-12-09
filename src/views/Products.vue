@@ -61,6 +61,7 @@ export default {
         ProductModal,
         DelModal,
     },
+    inject: ['emitter'], // 導入 toast
     methods: {
         getProducts() { // 取得產品資訊
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`;
@@ -98,9 +99,22 @@ export default {
             const productComponent = this.$refs.productModal;
             this.$http[httpMethod](api, { data: this.tempProduct })
             .then(res => {
-                console.log(res);
                 productComponent.hideModal();
-                this.getProducts();
+                if (res.data.success) {
+                    this.getProducts();
+                    // 更新成功 toast
+                    this.emitter.emit('push-message', {
+                        style: 'success',
+                        title: '更新成功'
+                });
+                } else {
+                    // 更新失敗 toast
+                    this.emitter.emit('push-message', {
+                        style: 'danger',
+                        title: '更新失敗',
+                        content: res.data.message.join('、')
+                });
+                }
             });
         },
         // 開啟刪除 Modal

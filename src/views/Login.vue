@@ -1,4 +1,5 @@
 <template>
+    <Loading :active="isLoading"></Loading>
     <nav class="navbar navbar-expand-lg bg-warning">
         <div class="container-fluid">
             <router-link to="/nav/home" class="navbar-brand link-primary fs-3 fw-bold mt-2">CHERISH <span class="fs-6 fw-light">後台管理</span></router-link>
@@ -48,6 +49,7 @@ export default {
                 username: '',
                 password: '',
             },
+            isLoading: false
         }
     },
     methods: {
@@ -56,10 +58,12 @@ export default {
             this.$http.post( api, this.user)
                 .then( res => {
                     if(res.data.success) {
+                        this.isLoading = true;
                         const { token, expired } = res.data;
                         document.cookie = `cherishToken=${token}; expires=${new Date(expired)}`;
                         this.$router.push('/dashboard/products'); // 轉至 products 頁面
                     }
+                    this.isLoading = false;
                 })
         }
     }
