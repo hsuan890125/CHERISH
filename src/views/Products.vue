@@ -131,6 +131,10 @@ export default {
                 const delComponent = this.$refs.delModal;
                 delComponent.hideModal();
                 this.getProducts();
+                this.emitter.emit('push-message', {
+                        style: 'success',
+                        title: '刪除成功'
+                });
             });
             }
     },
