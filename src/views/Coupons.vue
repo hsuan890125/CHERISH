@@ -1,19 +1,19 @@
 <template>
     <div>
       <Loading :active="isLoading"></Loading>
-      <div class="text-end mt-4">
-        <button class="btn btn-primary" @click="openCouponModal(true)">
-          建立新的優惠券
+      <div class="text-end">
+        <button class="btn btn-outline-primary" @click="openCouponModal(true)">
+          建立優惠券
         </button>
       </div>
-      <table class="table mt-4">
+      <table class="table ls">
         <thead>
           <tr>
             <th>名稱</th>
-            <th>折扣百分比</th>
-            <th>到期日</th>
-            <th>是否啟用</th>
-            <th>編輯</th>
+            <th width="200">折扣百分比</th>
+            <th width="200">到期日</th>
+            <th width="100">是否啟用</th>
+            <th width="200">編輯</th>
           </tr>
         </thead>
         <tbody>

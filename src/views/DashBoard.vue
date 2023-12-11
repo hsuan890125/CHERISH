@@ -3,7 +3,7 @@
     <div class="container-fluid mt-3 position-relative">
         <ToastMessages></ToastMessages>
     </div>
-    <div class="container">
+    <div class="container mt-7">
         <router-view/>
     </div>
 </template>

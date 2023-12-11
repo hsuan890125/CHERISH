@@ -1,6 +1,6 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <div class="text-end mt-7">
+    <div class="text-end">
         <button class="btn btn-outline-primary" type="button" @click="openModal(true)">
             增加產品
         </button>
