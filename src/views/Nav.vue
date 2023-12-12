@@ -1,6 +1,6 @@
 <template>
     <UserNav></UserNav>
-    <div class="container mt-7">
+    <div class="container mt-6 mt-lg-7">
         <router-view/>
     </div>
 </template>
