@@ -5,7 +5,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <router-link to="/dashboard/products" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">PRODUCT</router-link>
                     <router-link to="/dashboard/orders" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">ORDER</router-link>

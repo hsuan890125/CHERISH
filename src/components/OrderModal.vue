@@ -2,15 +2,15 @@
     <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
       <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-dark text-white">
+        <div class="modal-content border-0 ls">
+          <div class="modal-header bg-info text-primary">
             <h5 class="modal-title" id="exampleModalLabel">
               <span>訂單細節</span>
             </h5>
             <button type="button" class="btn-close"
                     data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body bg-warning text-primary">
             <div class="row">
               <div class="col-md-4">
                 <h3>用戶資料</h3>
@@ -94,11 +94,11 @@
               </div>
             </div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer bg-info">
             <button type="button" class="btn btn-outline-secondary"
                     data-bs-dismiss="modal">取消
             </button>
-            <button type="button" class="btn btn-primary"
+            <button type="button" class="btn btn-outline-primary"
                     @click="$emit('update-order', tempOrder)">確認</button>
           </div>
         </div>

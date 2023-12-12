@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th width="120">分類</th>
-                <th>產品名稱</th>
+                <th>產品</th>
                 <th width="120">原價</th>
                 <th width="120">售價</th>
                 <th width="100">是否啟用</th>
@@ -27,7 +27,9 @@
                     {{ $filters.currency(item.price) }}
                 </td>
                 <td>
+                    <!-- 啟用 -->
                     <span class="text-primary" v-if="item.is_enabled"><i class="bi bi-check2"></i></span>
+                    <!-- 未啟用 -->
                     <span class="text-muted" v-else><i class="bi bi-x-lg"></i></span>
                 </td>
                 <td>
@@ -104,19 +106,10 @@ export default {
             .then(res => {
                 productComponent.hideModal();
                 if (res.data.success) {
+                    this.$httpMessageState(res, '更新產品'); // 更新成功 toast
                     this.getProducts();
-                    // 更新成功 toast
-                    this.emitter.emit('push-message', {
-                        style: 'success',
-                        title: '更新成功'
-                });
                 } else {
-                    // 更新失敗 toast
-                    this.emitter.emit('push-message', {
-                        style: 'danger',
-                        title: '更新失敗',
-                        content: res.data.message.join('、')
-                });
+                    this.$httpMessageState(res, '更新產品'); // 更新失敗 toast
                 }
             });
         },

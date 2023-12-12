@@ -1,6 +1,6 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <table class="table">
+    <table class="table ls">
       <thead>
         <tr>
           <th>購買時間</th>
