@@ -60,15 +60,15 @@ export default {
   },
   data() {
       return {
-      coupons: {},
-      tempCoupon: {
-          title: '',
-          is_enabled: 0,
-          percent: 100,
-          code: '',
-      },
-      isLoading: false,
-      isNew: false,
+        coupons: {},
+        tempCoupon: {
+            title: '',
+            is_enabled: 0,
+            percent: 100,
+            code: '',
+        },
+        isLoading: false,
+        isNew: false,
       };
   },
   methods: {
@@ -95,7 +95,6 @@ export default {
           .then(res => {
               this.coupons = res.data.coupons;
               this.isLoading = false;
-              console.log(res);
           });
       },
       updateCoupon(tempCoupon) { // 更新優惠券

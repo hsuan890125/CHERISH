@@ -1,9 +1,9 @@
 <template>
-    <Navbar></Navbar>
+    <Navbar  v-show="$route.meta.showfather"></Navbar>
     <div class="container-fluid mt-3 position-relative">
         <ToastMessages></ToastMessages>
     </div>
-    <div class="container mt-7">
+    <div class="container mt-6 mt-lg-7">
         <router-view/>
     </div>
 </template>
@@ -30,7 +30,7 @@ export default {
             this.$http.post( api, this.user)
                 .then( res => {
                     if(!res.data.success) { // 登入失敗
-                        this.$router.push('/login'); // 轉至 login 頁面
+                        this.$router.push('/dashboard/login'); // 轉至 login 頁面
                     }
                 })
     }

@@ -16,14 +16,21 @@ const routes = [
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
-  {
-    path: '/login',
-    component: () => import('../views/Login.vue'),
-  },
+  // {
+  //   path: '/login',
+  //   component: () => import('../views/Login.vue'),
+  // },
   {
     path: '/dashboard',
     component: () => import('../views/DashBoard.vue'),
     children: [
+      {
+        path: 'login',
+        meta: {
+          showfather: false
+        },
+        component: () => import('../views/Login.vue'),
+      },
       {
         path: 'products',
         component: () => import('../views/Products.vue'),
@@ -36,7 +43,10 @@ const routes = [
         path: 'coupons',
         component: () => import('../views/Coupons.vue'),
       }
-    ]
+    ],
+    meta: {
+      showfather: true
+    }
   },
 ]
 

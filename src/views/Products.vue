@@ -66,7 +66,6 @@ export default {
         DelModal,
         Pagination,
     },
-    inject: ['emitter'], // 導入 toast
     methods: {
         getProducts(page = 1) { // 取得產品資訊
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`;
@@ -124,13 +123,10 @@ export default {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
         this.$http.delete(url)
             .then(res => {
+                this.$httpMessageState(res, '刪除產品'); // 刪除成功 toast
                 const delComponent = this.$refs.delModal;
                 delComponent.hideModal();
                 this.getProducts();
-                this.emitter.emit('push-message', {
-                        style: 'success',
-                        title: '刪除成功'
-                });
             });
             }
     },

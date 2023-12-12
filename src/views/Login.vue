@@ -1,14 +1,11 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <nav class="navbar navbar-expand-lg bg-warning">
-        <div class="container-fluid">
-            <router-link to="/nav/home" class="navbar-brand link-primary fs-3 fw-bold mt-2">CHERISH <span class="fs-6 fw-light">後台管理</span></router-link>
-        </div>
-    </nav>
-    <div class="container mt-5 text-primary">
+    <div class="container-fluid text-center">
+        <router-link to="/nav/home" class="navbar-brand link-primary fs-3 fw-bold">CHERISH <span class="fs-6 fw-light">管理員登入</span></router-link>
+    </div>
+    <div class="mt-5 text-primary">
         <form class="row justify-content-center" @submit.prevent="singIn">
             <div class="col-10 col-md-6">
-                <h1 class="h3 pb-3 mb-3 ls text-center">管理員登入</h1>
                 <div class="mb-2">
                     <label for="inputEmail" class="sr-only mb-1">EMAIL *</label>
                     <input
@@ -61,7 +58,10 @@ export default {
                         this.isLoading = true;
                         const { token, expired } = res.data;
                         document.cookie = `cherishToken=${token}; expires=${new Date(expired)}`;
+                        this.$httpMessageState(res, '登入');
                         this.$router.push('/dashboard/products'); // 轉至 products 頁面
+                    } else {
+                        this.$httpMessageState(res, '登入');
                     }
                     this.isLoading = false;
                 })
