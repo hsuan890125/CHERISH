@@ -35,8 +35,9 @@
         <div class="row row-cols-2 row-cols-lg-5">
           <div class="col px-2 mb-3" v-for="item in productsFilter" :key="item.id">
             <div class="card border-0 h-100 cardHover" @click="getProduct(item.id)">
-              <div style="height: 240px; background-size: cover; background-position: center"
-                      :style="{ backgroundImage: `url( ${ item.imageUrl } )` }"></div>
+              <div class="imageHover">
+                <img :src="item.imageUrl" class="card-img-top" :alt="item.title">
+              </div>
               <div class="card-body text-primary bg-warning px-0 d-flex flex-column justify-content-between">
                 <p class="mb-0 ls">{{ item.title }}</p>
                 <div v-if="item.price === item.origin_price">NT$ {{ item.origin_price }}</div>
