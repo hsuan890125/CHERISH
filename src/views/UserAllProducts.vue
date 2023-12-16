@@ -51,27 +51,36 @@
         </div>
       </div>
     </div>
+    <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
 </template>
 
 <script>
+import Pagination from '@/components/Pagination.vue';
+
 export default {
     data() {
       return {
           products: [],
           product: {},
-          categoryItem: '',
+          pagination: {}, // 分頁資訊
+          categoryItem: '', //類型
           status: {
               loadingItem: '',
           },
       };
     },
+    components: {
+        Pagination,
+    },
     methods: {
-      getProducts() { // 取得商品列表
-          const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+      getProducts(page = 1) { // 取得商品列表
+          const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/?page=${page}`;
           this.isLoading = true;
           this.$http.get(url)
               .then(res => {
+                console.log(res.data.pagination);
                 this.products = res.data.products;
+                this.pagination = res.data.pagination;       
                 this.categoryItem = 'ALL';
                 this.isLoading = false;
               });
@@ -88,7 +97,15 @@ export default {
         } else {
           const newArray = this.products.filter(item => item.category.toUpperCase() === this.categoryItem);
           filterResult = newArray;
+          // this.pagination = {
+          //   total_pages: 1,
+          //   current_page: 1,
+          //   has_pre: false,
+          //   has_next: false,
+          //   category: this.categoryItem
+          // }
         }
+        // console.log(this.pagination);
         return filterResult;
       }
     },
