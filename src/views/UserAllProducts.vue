@@ -4,36 +4,35 @@
       <div class="col-lg-2">
         <ul class="mb-5">
           <li class="list-unstyled my-3 position-relative">
-            <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = 'ALL'">
-              <span class="list-hover stretched-link" :class="{ active: categoryItem === 'ALL'}">— </span>ALL
+            <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = ''">
+              <span class="list-hover stretched-link" :class="{ active: categoryItem === ''}">— </span>ALL
             </a>
           </li>
           <li class="list-unstyled my-3 position-relative">
-            <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = 'RING'">
-              <span class="list-hover stretched-link" :class="{ active: categoryItem === 'RING'}">— </span>RING
+            <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = '戒指'">
+              <span class="list-hover stretched-link" :class="{ active: categoryItem === '戒指'}">— </span>RING
             </a>
           </li>
           <li class="list-unstyled my-3 position-relative">
-            <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = 'EARRING'">
-              <span class="list-hover stretched-link" :class="{ active: categoryItem === 'EARRING'}">— </span>EARRING
+            <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = '耳環'">
+              <span class="list-hover stretched-link" :class="{ active: categoryItem === '耳環'}">— </span>EARRING
             </a>
           </li>
           <li class="list-unstyled my-3 position-relative">
-            <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = 'BRACELET'">
-              <span class="list-hover stretched-link" :class="{ active: categoryItem === 'BRACELET'}">— </span>BRACELET
+            <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = '手鍊'">
+              <span class="list-hover stretched-link" :class="{ active: categoryItem === '手鍊'}">— </span>BRACELET
             </a>
           </li>
           <li class="list-unstyled my-3 position-relative">
-            <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = 'NECKLACE'">
-              <span class="list-hover stretched-link" :class="{ active: categoryItem === 'NECKLACE'}">— </span>NECKLACE
+            <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = '項鍊'">
+              <span class="list-hover stretched-link" :class="{ active: categoryItem === '項鍊'}">— </span>NECKLACE
             </a>
           </li>
         </ul>
       </div>
       <div class="col-lg-10">
-        <h2 class="h6 text-secondary text-center mb-5">{{ categoryItem }}</h2>
         <div class="row row-cols-2 row-cols-lg-5">
-          <div class="col px-2 mb-3" v-for="item in productsFilter" :key="item.id">
+          <div class="col px-2 mb-3" v-for="item in productsFilter[pagination.current_page-1]" :key="item.id">
             <div class="card border-0 h-100 cardHover" @click="getProduct(item.id)">
               <div class="imageHover">
                 <img :src="item.imageUrl" class="card-img-top" :alt="item.title">
@@ -51,7 +50,7 @@
         </div>
       </div>
     </div>
-    <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
+    <Pagination :pages="pagination" @emitPages="getProducts"></Pagination>
 </template>
 
 <script>
@@ -61,56 +60,61 @@ export default {
     data() {
       return {
           products: [],
-          product: {},
+          allProducts: [], // 全部商品
+          categoryProducts: [], // 分類後的商品列表
+          categoryItem: '', // 商品類型
           pagination: {}, // 分頁資訊
-          categoryItem: '', //類型
-          status: {
-              loadingItem: '',
-          },
+
       };
     },
     components: {
         Pagination,
     },
     methods: {
-      getProducts(page = 1) { // 取得商品列表
-          const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/?page=${page}`;
+      getProducts(page = 1) { // 取得各頁商品列表
+          const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/?page=${page}`;
           this.isLoading = true;
-          this.$http.get(url)
+          this.$http.get(api)
               .then(res => {
-                console.log(res.data.pagination);
                 this.products = res.data.products;
-                this.pagination = res.data.pagination;       
-                this.categoryItem = 'ALL';
+                this.pagination = res.data.pagination;
                 this.isLoading = false;
               });
+      },
+      getAllProducts() { // 取得所有商品列表
+        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+        this.$http.get(api)
+            .then(res => {
+              if(res.data.success) {
+                this.allProducts = res.data.products;
+              }
+            })
       },
       getProduct(id) { // 進入商品單一頁面
           this.$router.push(`/nav/product/${id}`);
       },
     },
     computed: {
-      productsFilter() { // 商品類型篩選
+      productsFilter() { // 商品類型篩選 & 頁數
+        const tempData = this.allProducts.filter(i => i.category.match(this.categoryItem));
         let filterResult = [];
-        if(this.categoryItem === 'ALL') {
-          filterResult = this.products;
-        } else {
-          const newArray = this.products.filter(item => item.category.toUpperCase() === this.categoryItem);
-          filterResult = newArray;
-          // this.pagination = {
-          //   total_pages: 1,
-          //   current_page: 1,
-          //   has_pre: false,
-          //   has_next: false,
-          //   category: this.categoryItem
-          // }
+        this.pagination.total_pages = tempData.length % 10 === 0? parseInt(tempData.length / 10, 10) : parseInt(tempData.length / 10, 10)+1;
+        if (this.pagination.current_page > this.pagination.total_pages) {
+          this.pagination.current_page = 1;
         }
-        // console.log(this.pagination);
+        tempData.forEach((item, i) => {
+          if (i % 10 === 0) {
+            filterResult.push([]);
+          }
+          const pageNum = parseInt(i / 10, 10);
+          filterResult[pageNum].push(item);
+        });
         return filterResult;
       }
     },
     created() {
       this.getProducts();
+      this.getAllProducts();
     },
 };
 </script>
