@@ -2,7 +2,7 @@
     <Loading :active="isLoading"></Loading>
     <div class="row row-cols-1 row-cols-lg-2">
       <div class="col-lg-2">
-        <ul class="mb-5">
+        <ul class="mb-5 pd-menu">
           <li class="list-unstyled my-3 position-relative">
             <a href="#" class="link-primary text-decoration-none" @click.prevent="categoryItem = ''">
               <span class="list-hover stretched-link" :class="{ active: categoryItem === ''}">— </span>ALL
@@ -61,7 +61,6 @@ export default {
       return {
           products: [],
           allProducts: [], // 全部商品
-          categoryProducts: [], // 分類後的商品列表
           categoryItem: '', // 商品類型
           pagination: {}, // 分頁資訊
 
