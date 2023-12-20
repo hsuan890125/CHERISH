@@ -35,7 +35,7 @@
           <div class="col px-2 mb-3" v-for="item in productsFilter[pagination.current_page-1]" :key="item.id">
             <div class="card border-0 h-100 cardHover" @click="getProduct(item.id)">
               <div class="imageHover">
-                <img :src="item.imageUrl" class="card-img-top" :alt="item.title">
+                <img :src="item.imageUrl" class="card-img-top img-fluid" :alt="item.title">
               </div>
               <div class="card-body text-primary bg-warning px-0 d-flex flex-column justify-content-between">
                 <p class="mb-0 ls">{{ item.title }}</p>
