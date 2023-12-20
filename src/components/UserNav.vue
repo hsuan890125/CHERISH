@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-warning fixed-top">
+    <nav class="navbar navbar-expand-lg bg-warning fixed-top" :class="{'nav-float':isFloat}">
         <div class="container">
             <router-link to="/nav/home" class="navbar-brand link-primary fs-3 fw-bold">CHERISH</router-link>
             <!-- mobile 出現的 icon btn -->
@@ -25,3 +25,25 @@
         </div>
     </nav>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            isFloat: false,
+        } 
+    },
+    methods: {
+        windowScroll () {
+            if (window.scrollY > 10) {
+                this.isFloat = true
+            } else {
+                this.isFloat = false
+            }
+        },
+    },
+    mounted() {
+        window.addEventListener('scroll', this.windowScroll);
+    }
+}
+</script>
