@@ -1,0 +1,21 @@
+/* Chrome, Safari, Edge, Opera */
+#productNum::-webkit-outer-spin-button,
+#productNum::-webkit-inner-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+#productNum {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+/* – & + btn */ 
+.productNumBtn {
+    &:hover,&:focus {
+        color: $primary !important;
+        background-color: transparent !important;
+    }
+}
