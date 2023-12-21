@@ -2,8 +2,10 @@
     box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-// cart
-.nav-cart {
+// cart & favorite
+.nav-cart,
+.nav-favorite
+{
     position: relative;
     span {
         position: absolute;

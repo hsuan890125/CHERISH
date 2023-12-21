@@ -20,7 +20,7 @@
             <!-- desktop 出現的 icon btn -->
             <div class="d-none d-lg-block">
                 <button type="button" class="nav-cart text-primary bg-warning fs-3 border-0 mx-1"><i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span></button>
-                <button type="button" class="text-primary bg-warning  fs-3 border-0 mx-1"><i class="bi bi-suit-heart"></i></button>
+                <button type="button" class="nav-favorite text-primary bg-warning  fs-3 border-0 mx-1"><i class="bi bi-suit-heart"></i><span  v-if=" favoriteNum.length" >{{ favoriteNum.length }}</span></button>
             </div>
         </div>
     </nav>
@@ -28,14 +28,17 @@
 
 <script>
 import emitter from '@/methods/emitter';
+import getFavorites from '@/mixins/getFavorites';
 
 export default {
     data() {
         return {
             isFloat: false,
             carts: [],
+            favoriteNum: this.getLocalStorage() || [],
         } 
     },
+    mixins: [getFavorites],
     methods: {
         windowScroll () { // 滑動後 nav 浮起
             if (window.scrollY > 10) {
@@ -66,6 +69,9 @@ export default {
     created() {
         emitter.on('updateCart', () => {
             this.getCart();
+        })
+        emitter.on('updateFavorite', () => {
+            this.favoriteNum = this.getLocalStorage();
         })
     },
     mounted() {

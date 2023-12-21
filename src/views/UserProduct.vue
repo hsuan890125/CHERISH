@@ -7,9 +7,11 @@
       </ol>
     </nav>
     <div class="row row-cols-1 row-cols-lg-2 g-3 justify-content-center">
+      <!-- 商品照片 -->
       <article class="col">
         <img :src="product.imageUrl" alt="productImage" class="img-fluid mb-3">
       </article>
+      <!-- 商品名稱 & 價格 -->
       <div class="col">
         <div class="d-flex justify-content-between">
           <div class="d-flex">
@@ -25,6 +27,7 @@
         <hr>
         <div class="text-primary ls mb-5">{{ product.description }}</div>
         <div class="d-flex justify-content-between">
+          <!-- 數量 -->
           <form class="d-flex flex-column text-primary border-bottom border-primary">
             <label for="productNum" class="form-label fs-4 ls">數量</label>
             <div class="input-group">
@@ -38,11 +41,13 @@
               </button>
             </div>
           </form>
+          <!-- 喜愛商品 -->
           <div class="d-flex align-items-end">
-            <button type="button" class="text-primary bg-warning fs-3 border-0 mx-1"><i class="bi bi-suit-heart"></i></button>
+            <button type="button" class="text-primary bg-warning fs-3 border-0 mx-1" @click.prevent="addFavorite(product.id)"><i class="bi bi-suit-heart-fill" v-if="favoriteItems.includes(product.id)"></i><i class="bi bi-suit-heart" v-else></i></button>
           </div>
         </div>
         <hr>
+        <!-- 加入購物車 & 立即購買 -->
         <button type="button" class="btn btn-outline-primary w-100"
           :disabled="this.status.loadingItem === product.id"
           @click="addToCart(product.id)">
@@ -58,18 +63,21 @@
 
 <script>
 import emitter from '@/methods/emitter';
+import getFavorites from '@/mixins/getFavorites';
 
 export default {
     data() {
         return {
             product: {},
             id: '',
-            productQty: 1,
+            productQty: 1, // 商品數量
+            favoriteItems: this.getLocalStorage() || [], // 商品收藏
             status: {
               loadingItem: '', // 對應品項 id
             },
           };
     },
+    mixins: [getFavorites],
     methods: {
         getProduct() { // 取得商品資料
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`;
