@@ -14,7 +14,7 @@
         <div class="d-flex justify-content-between">
           <div class="d-flex">
             <h2 class="ls mb-0">{{ product.title }}</h2>
-            <p class="text-danger ms-2" style="font-size: 10px;">SALE</p>
+            <p class="text-danger ms-2" v-if="product.price !== product.origin_price" style="font-size: 10px;">SALE</p>
           </div>
           <div class="d-flex align-items-end">
             <div class="h4 mb-0" v-if="product.price === product.origin_price">NT$ {{ product.origin_price }}</div>
@@ -32,7 +32,7 @@
                 @click.prevent="refreshQty(-1)"
                 :disabled="productQty === 1">–
               </button>
-              <input type="number" id="productNum" class="form-control text-center" aria-label="productNum" v-model="productQty">
+              <input type="number" id="productNum" class="form-control text-center" aria-label="productNum" min="1" v-model="productQty">
               <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
                 @click.prevent="refreshQty(1)">+
               </button>
@@ -44,6 +44,7 @@
         </div>
         <hr>
         <button type="button" class="btn btn-outline-primary w-100"
+          :disabled="this.status.loadingItem === product.id"
           @click="addToCart(product.id)">
           加入購物車
         </button>
@@ -56,41 +57,47 @@
 </template>
 
 <script>
+import emitter from '@/methods/emitter';
+
 export default {
     data() {
         return {
             product: {},
             id: '',
             productQty: 1,
-            };
+            status: {
+              loadingItem: '', // 對應品項 id
+            },
+          };
     },
     methods: {
-        getProduct() {
+        getProduct() { // 取得商品資料
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`;
             this.isLoading = true;
-            this.$http.get(api).then((response) => {
-                console.log(response.data);
+            this.$http.get(api).then(res => {
                 this.isLoading = false;
-                if (response.data.success) {
-                this.product = response.data.product;
+                if (res.data.success) {
+                  this.product = res.data.product;
                 }
             });
         },
-        refreshQty(number) {
+        refreshQty(number) { // 數量數字加減
           this.productQty += (number);
         },
-        addToCart(id, qty = 1) {
-            const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+        addToCart(id, qty = this.productQty) { // 加入購物車
+            const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+            this.status.loadingItem = id;
             const cart = {
                 product_id: id,
                 qty,
             };
-            this.isLoading = true;
-            this.$http.post(url, { data: cart }).then((response) => {
-                this.isLoading = false;
-                this.$httpMessageState(response, '加入購物車');
-                this.$router.push('/nav/allProducts');
-            });
+            this.$http.post(api, { data: cart })
+              .then(res => {
+                  emitter.emit('updateCart'); // 與 navCart 同步更新
+                  this.status.loadingItem = ''; 
+                  this.$httpMessageState(res, '加入購物車'); // toast
+                  this.productQty = 1; // 資料送出，數量回預設
+              });
         },
     },
     created() {

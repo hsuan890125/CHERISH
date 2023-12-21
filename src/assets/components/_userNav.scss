@@ -1,3 +1,21 @@
 .nav-float {
     box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.3);
 }
+
+// cart
+.nav-cart {
+    position: relative;
+    span {
+        position: absolute;
+        right: -5px;
+        top: 0px;
+        display: block;
+        width: 21px;
+        height: 21px;
+        border-radius: 50%;
+        background: $primary;
+        color: $warning;
+        font-size: 14px;
+        text-align: center;
+    }
+}
