@@ -2,7 +2,7 @@
     <Loading :active="isLoading"></Loading>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><router-link to="/nav/allProducts" class="link-secondary text-decoration-none border-bottom border-secondary">所有商品</router-link></li>
+        <li class="breadcrumb-item"><router-link to="/allProducts" class="link-secondary text-decoration-none border-bottom border-secondary">所有商品</router-link></li>
         <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
       </ol>
     </nav>

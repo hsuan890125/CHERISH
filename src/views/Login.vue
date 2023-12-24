@@ -1,7 +1,7 @@
 <template>
     <Loading :active="isLoading"></Loading>
     <div class="container-fluid text-center">
-        <router-link to="/nav/home" class="navbar-brand link-primary fs-3 fw-bold">CHERISH <span class="fs-6 fw-light">管理員登入</span></router-link>
+        <router-link to="/" class="navbar-brand link-primary fs-3 fw-bold">CHERISH <span class="fs-6 fw-light">管理員登入</span></router-link>
     </div>
     <div class="mt-5 text-primary">
         <form class="row justify-content-center" @submit.prevent="singIn">

@@ -90,7 +90,7 @@ export default {
             })
       },
       getProduct(id) { // 進入商品單一頁面
-          this.$router.push(`/nav/product/${id}`);
+          this.$router.push(`/product/${id}`);
       },
     },
     computed: {

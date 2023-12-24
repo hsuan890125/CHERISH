@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-warning fixed-top" :class="{'nav-float':isFloat}">
         <div class="container">
-            <router-link to="/nav/home" class="navbar-brand link-primary fs-3 fw-bold">CHERISH</router-link>
+            <router-link to="/" class="navbar-brand link-primary fs-3 fw-bold">CHERISH</router-link>
             <!-- mobile 出現的 icon btn -->
             <div class="d-flex d-lg-none">
                 <button type="button" class="nav-cart text-primary bg-warning fs-3 border-0 mx-2"><i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span></button>
@@ -12,8 +12,8 @@
             </div> 
             <div class="collapse navbar-collapse" id="navbarText">
                 <div class="navbar-nav ms-auto">
-                    <router-link to="/nav/home" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">首頁</router-link>
-                    <router-link to="/nav/allProducts" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">所有商品</router-link>
+                    <router-link to="/" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">首頁</router-link>
+                    <router-link to="/allProducts" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">所有商品</router-link>
                     <router-link to="" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">門市資訊</router-link>
                 </div>
             </div> 
@@ -35,11 +35,11 @@
                 <!-- 無收藏商品 -->
                 <li v-if="!products.length" class="text-center">
                     <div class="text-primary ls mb-3">目前沒有收藏商品</div>
-                    <router-link to="/nav/allProducts" class="btn btn-outline-primary">來去逛逛</router-link>
+                    <router-link to="/allProducts" class="btn btn-outline-primary">來去逛逛</router-link>
                 </li>
                 <!-- 有收藏商品 -->
                 <li v-for="item in products" :key="item.id" class="mb-3">
-                    <router-link :to="{ path: `/nav/product/${item.id}` }" class="dropdown-item d-flex align-items-center">
+                    <router-link :to="{ path: `/product/${item.id}` }" class="dropdown-item d-flex align-items-center">
                         <img :src="item.imageUrl" :alt="item.title" style="width: 100px;">
                         <div class="d-flex flex-column ps-3 w-100">
                             <div class="fs-5 ls">{{ item.title }}</div>

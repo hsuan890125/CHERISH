@@ -2,11 +2,11 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/nav',
+    path: '/',
     component: () => import('../views/Nav.vue'),
     children: [
       {
-        path: 'home',
+        path: '',
         component: () => import('../views/UserHome.vue')
       },
       {
@@ -18,11 +18,6 @@ const routes = [
         component: () => import('../views/UserProduct.vue'),
       }
     ]
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
     path: '/dashboard',
