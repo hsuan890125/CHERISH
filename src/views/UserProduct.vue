@@ -43,7 +43,7 @@
           </form>
           <!-- 喜愛商品 -->
           <div class="d-flex align-items-end">
-            <button type="button" class="text-primary bg-warning fs-3 border-0 mx-1" @click.prevent="addFavorite(product.id)"><i class="bi bi-suit-heart-fill" v-if="favoriteItems.includes(product.id)"></i><i class="bi bi-suit-heart" v-else></i></button>
+            <button type="button" class="text-primary bg-warning fs-3 border-0 mx-1" @click.prevent="toggleFavorite(product)"><i class="bi bi-suit-heart-fill" v-if="favoriteItems.includes(product.id)"></i><i class="bi bi-suit-heart" v-else></i></button>
           </div>
         </div>
         <hr>
@@ -63,7 +63,7 @@
 
 <script>
 import emitter from '@/methods/emitter';
-import getFavorites from '@/mixins/getFavorites';
+import handleFavorites from '@/methods/handleFavorites';
 
 export default {
     data() {
@@ -71,23 +71,23 @@ export default {
             product: {},
             id: '',
             productQty: 1, // 商品數量
-            favoriteItems: this.getLocalStorage() || [], // 商品收藏
+            favoriteItems: handleFavorites.getLocal() || [], // 商品收藏
             status: {
               loadingItem: '', // 對應品項 id
             },
           };
     },
-    mixins: [getFavorites],
     methods: {
         getProduct() { // 取得商品資料
-            const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`;
             this.isLoading = true;
-            this.$http.get(api).then(res => {
-                this.isLoading = false;
-                if (res.data.success) {
-                  this.product = res.data.product;
-                }
-            });
+            const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`;
+            this.$http.get(api)
+              .then(res => {
+                  this.isLoading = false;
+                  if (res.data.success) {
+                    this.product = res.data.product;
+                  }
+              });
         },
         refreshQty(number) { // 數量數字加減
           this.productQty += (number);
@@ -107,10 +107,35 @@ export default {
                   this.productQty = 1; // 資料送出，數量回預設
               });
         },
+        toggleFavorite (item) { // 收藏切換
+            if (this.favoriteItems.includes(item.id)) { // 移除收藏
+              this.favoriteItems.splice(this.favoriteItems.indexOf(item.id), 1);
+              emitter.emit('push-message', {  // toast
+                style: 'success',
+                title: '已從收藏清單中移除',
+              });
+            } else { // 新增收藏
+              this.favoriteItems.push(item.id);
+              emitter.emit('push-message', {  // toast
+                style: 'success',
+                title: '已新增至收藏清單',
+              });
+            }
+            handleFavorites.saveLocal(this.favoriteItems);
+            emitter.emit('updateFavorite'); // 與 navFavorite 同步更新
+        },
+        updateFavorite() {
+          this.favoriteItems = handleFavorites.getLocal();
+          this.getProduct();
+        },
     },
-    created() {
-        this.id = this.$route.params.productId;
-        this.getProduct();
+    mounted() {
+      this.id = this.$route.params.productId;
+      this.getProduct();
+      emitter.on('updateFavorite', this.updateFavorite);
     },
+    unmounted() {
+      emitter.off('updateFavorite', this.updateFavorite);
+    }
 };
 </script>
