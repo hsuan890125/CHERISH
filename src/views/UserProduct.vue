@@ -94,7 +94,8 @@ export default {
             status: {
               loadingItem: '', // 對應品項 id
             },
-            others: []
+            others: [],
+            isLoading: false,
           };
     },
     methods: {

@@ -63,6 +63,7 @@ export default {
           allProducts: [], // 全部商品
           categoryItem: '', // 商品類型
           pagination: {}, // 分頁資訊
+          isLoading: false,
 
       };
     },
