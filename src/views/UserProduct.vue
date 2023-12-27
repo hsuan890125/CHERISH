@@ -59,6 +59,25 @@
         </button>
       </div>
     </div>
+    <!-- others -->
+    <h6 class="text-center my-5 my-lg-6">OTHERS</h6>
+    <div class="row row-cols-2 row-cols-lg-6">
+      <div class="col px-2 mb-3" v-for="item in others" :key="item.id">
+        <div class="card border-0 h-100 cardHover" @click.prevent="goToProduct(item.id)">
+          <div class="imageHover">
+            <img :src="item.imageUrl" class="card-img-top img-fluid" :alt="item.title">
+          </div>
+          <div class="card-body text-primary bg-warning px-0 d-flex flex-column justify-content-between">
+            <p class="mb-0 ls">{{ item.title }}</p>
+            <div v-if="item.price === item.origin_price">NT$ {{ item.origin_price }}</div>
+            <div v-if="item.price !== item.origin_price">
+              <del class="small text-muted">NT$ {{ item.origin_price }}</del>
+              <div>NT$ {{ item.price }} <span class="text-danger ms-1" style="font-size: 10px;">SALE</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
@@ -75,6 +94,7 @@ export default {
             status: {
               loadingItem: '', // 對應品項 id
             },
+            others: []
           };
     },
     methods: {
@@ -83,14 +103,25 @@ export default {
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`;
             this.$http.get(api)
               .then(res => {
-                  this.isLoading = false;
                   if (res.data.success) {
                     this.product = res.data.product;
+                    this.isLoading = false;
                   }
               });
         },
-        refreshQty(number) { // 數量數字加減
-          this.productQty += (number);
+        otherProducts() { // others 商品
+          this.isLoading = true;
+          const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+          this.$http.get(api)
+            .then(res => {
+              if(res.data.success) {
+                this.others = res.data.products
+                  .filter(x => x.id !== this.id)
+                  .sort(() => Math.random() - 0.5) // 亂數排序
+                  .splice(1, 6);
+                this.isLoading = false;
+              }
+            })
         },
         addToCart(id, qty = this.productQty) { // 加入購物車
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
@@ -106,6 +137,9 @@ export default {
                   this.$httpMessageState(res, '加入購物車'); // toast
                   this.productQty = 1; // 資料送出，數量回預設
               });
+        },
+        refreshQty(number) { // 數量數字加減
+          this.productQty += (number);
         },
         toggleFavorite (item) { // 收藏切換
             if (this.favoriteItems.includes(item.id)) { // 移除收藏
@@ -128,11 +162,18 @@ export default {
           this.favoriteItems = handleFavorites.getLocal();
           this.getProduct();
         },
+        goToProduct(id) { // 進入商品單一頁面
+          this.$router.push(`/product/${id}`);
+          this.id = id; // 換新商品 id
+          this.getProduct(); // 渲染新商品畫面
+          this.otherProducts(); // others 重整
+      },
     },
     mounted() {
       this.id = this.$route.params.productId;
       this.getProduct();
       emitter.on('updateFavorite', this.updateFavorite);
+      this.otherProducts();
     },
     unmounted() {
       emitter.off('updateFavorite', this.updateFavorite);

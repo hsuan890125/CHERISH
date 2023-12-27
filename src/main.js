@@ -8,6 +8,11 @@ import router from './router';
 import { currency, date } from './methods/filters';
 import $httpMessageState from './methods/pushMessageState';
 
+// 每次更改 router，畫面都回到最上方
+router.afterEach((to, from, failure) => {
+    window.scrollTo(0,0);
+});
+
 const app = createApp(App);
 app.config.globalProperties.$filters = {
     date,
