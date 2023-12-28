@@ -10,15 +10,15 @@
                         <span class="navbar-toggler-icon"></span>
                 </button>
             </div> 
-            <div class="collapse navbar-collapse" id="navbarText">
+            <div class="collapse navbar-collapse" id="navbarText" ref="navbarCollapse">
                 <div class="navbar-nav ms-auto">
-                    <router-link to="/" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">首頁</router-link>
-                    <router-link to="/allProducts" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">所有商品</router-link>
-                    <router-link to="" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">門市資訊</router-link>
+                    <router-link to="/" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click="toggleCollapse">首頁</router-link>
+                    <router-link to="/allProducts" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click="toggleCollapse">所有商品</router-link>
+                    <router-link to="" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click="toggleCollapse">門市資訊</router-link>
                 </div>
             </div> 
             <!-- desktop 出現的 icon btn -->
-            <div class="d-none d-lg-block ">
+            <div class="d-none d-lg-block">
                     <router-link to="/cart" class="nav-cart text-primary bg-warning fs-3 border-0 mx-1"><i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span></router-link>
                     <button type="button" class="nav-favorite text-primary bg-warning fs-3 border-0 mx-1" data-bs-toggle="offcanvas" data-bs-target="#userFavoritesModal" aria-controls="offcanvasWithBackdrop"><i class="bi bi-suit-heart"></i><span  v-if=" favoriteItems.length" >{{ favoriteItems.length }}</span></button>
             </div>
@@ -72,6 +72,9 @@ export default {
         } 
     },
     methods: {
+        toggleCollapse() { // mobile navbar 按下後收起來
+            this.$refs.navbarCollapse.classList.remove('show');
+        },
         windowScroll () { // 滑動後 nav 浮起
             if (window.scrollY > 10) {
                 this.isFloat = true
