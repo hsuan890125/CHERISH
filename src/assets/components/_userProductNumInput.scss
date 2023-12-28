@@ -13,7 +13,8 @@
 }
 
 /* – & + btn */ 
-.productNumBtn {
+.productNumBtn,#productNum {
+    background-color: transparent;
     &:hover,&:focus {
         color: $primary !important;
         background-color: transparent !important;

@@ -35,7 +35,7 @@
                 @click.prevent="refreshQty(-1)"
                 :disabled="productQty === 1">–
               </button>
-              <input type="number" id="productNum" class="form-control text-center" aria-label="productNum" min="1" v-model="productQty">
+              <input type="number" id="productNum" class="form-control text-center" aria-label="productNum" min="1" v-model="productQty" readonly>
               <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
                 @click.prevent="refreshQty(1)">+
               </button>
@@ -54,7 +54,7 @@
           加入購物車
         </button>
         <button type="button" class="btn btn-outline-primary w-100 mt-3"
-              >
+          @click="goToCart(product.id)">
           立即購買
         </button>
       </div>
@@ -142,6 +142,10 @@ export default {
         refreshQty(number) { // 數量數字加減
           this.productQty += (number);
         },
+        goToCart(id, qty = 1) { // 立即購買
+          this.addToCart(id,qty);
+          this.$router.push(`/cart`);
+        },
         toggleFavorite (item) { // 收藏切換
             if (this.favoriteItems.includes(item.id)) { // 移除收藏
               this.favoriteItems.splice(this.favoriteItems.indexOf(item.id), 1);
@@ -178,6 +182,6 @@ export default {
     },
     unmounted() {
       emitter.off('updateFavorite', this.updateFavorite);
-    }
+    },
 };
 </script>
