@@ -25,7 +25,10 @@ const routes = [
         path: 'order',
         component: () => import('../views/UserOrder.vue'),
       },
-
+      {
+        path: 'pay/:orderId',
+        component: () => import('../views/UserPay.vue'),
+      },
     ]
   },
   {

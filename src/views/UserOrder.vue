@@ -61,7 +61,54 @@
             <router-link to="/cart" class="link-primary fs-4 text-decoration-none link-hover"><i class="bi bi-arrow-left"></i> BACK</router-link>
         </div>
         <!-- 訂購人表單 -->
-        <div class="col-lg-7"></div>
+        <div class="col-lg-7">
+            <Form class="mt-5 mt-lg-0" v-slot="{ errors }" @submit="createOrder">
+                <div class="mb-4">
+                    <label for="name" class="form-label">NAME *</label>
+                    <Field id="name" name="姓名" type="text" class="form-control border-bottom border-primary"
+                            :class="{ 'is-invalid': errors['姓名'] }"
+                            placeholder="請輸入收件人姓名" rules="required"
+                            v-model="form.user.name"></Field>
+                    <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="form-label">EMAIL *</label>
+                    <Field id="email" name="email" type="email" class="form-control border-bottom border-primary"
+                            :class="{ 'is-invalid': errors['email'] }"
+                            placeholder="請輸入收件人 Email" rules="email|required"
+                            v-model="form.user.email"></Field>
+                    <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
+                </div>
+
+                <div class="mb-4">
+                    <label for="tel" class="form-label">TEL *</label>
+                    <Field id="tel" name="電話" type="tel" class="form-control border-bottom border-primary"
+                            :class="{ 'is-invalid': errors['電話'] }"
+                            placeholder="請輸入收件人手機" rules="required"
+                            v-model="form.user.tel"></Field>
+                    <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
+                </div>
+
+                <div class="mb-4">
+                    <label for="address" class="form-label">ADDRESS *</label>
+                    <Field id="address" name="地址" type="text" class="form-control border-bottom border-primary"
+                            :class="{ 'is-invalid': errors['地址'] }"
+                            placeholder="請輸入收件地址" rules="required"
+                            v-model="form.user.address"></Field>
+                    <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
+                </div>
+
+                <div class="mb-4">
+                    <label for="message" class="form-label">REMARK</label>
+                    <textarea name="remark" id="message" class="form-control border border-primary"
+                                v-model="form.message" style="height: 150px;"></textarea>
+                </div>
+                <div class="text-end">
+                    <button class="btn btn-outline-primary w-100">送出訂單 <i class="bi bi-arrow-right"></i></button>
+                </div>
+            </Form>
+        </div>
     </div>
 </template>
 
@@ -72,6 +119,15 @@ export default {
     data() {
         return {
             carts: {},
+            form: { // 訂單
+                user: {
+                name: '',
+                email: '',
+                tel: '',
+                address: '',
+                },
+                message: '',
+            },
             isLoading: false,
         }
     },
@@ -84,10 +140,23 @@ export default {
                     if(res.data.success) {
                         this.carts = res.data.data;
                         this.isLoading = false;
-                        console.log(this.carts);
                     }
                 })
-        }
+        },
+        createOrder() { // 訂單
+            this.isLoading = true;
+            const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`;
+            const order = this.form;
+            this.$http.post(api, { data: order })
+                .then(res => {
+                    if(res.data.success) {
+                        const id = res.data.orderId;
+                        this.$router.push(`pay/${ id }`);
+                        this.$httpMessageState(res, '建立訂單'); // toast
+                        this.isLoading = false;
+                    } 
+                });
+        },
     },
     mounted() {
         this.getCarts();
