@@ -14,7 +14,7 @@
                 <div class="navbar-nav ms-auto">
                     <router-link to="/" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click="toggleCollapse">首頁</router-link>
                     <router-link to="/allProducts" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click="toggleCollapse">所有商品</router-link>
-                    <router-link to="" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click="toggleCollapse">門市資訊</router-link>
+                    <router-link to="/store" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click="toggleCollapse">門市資訊</router-link>
                 </div>
             </div> 
             <!-- desktop 出現的 icon btn -->
