@@ -152,6 +152,7 @@ export default {
                     if(res.data.success) {
                         const id = res.data.orderId;
                         this.$router.push(`pay/${ id }`);
+                        emitter.emit('updateCart'); // 與 navCart 同步更新
                         this.$httpMessageState(res, '建立訂單'); // toast
                         this.isLoading = false;
                     } 

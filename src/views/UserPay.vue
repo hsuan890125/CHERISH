@@ -80,9 +80,9 @@
                     <label for="address" class="form-label">ADDRESS</label>
                     <p id="address" name="地址" class="form-control text-secondary">{{ order.user.address }}</p>
                 </div>
-                <div class="mb-4" v-if="order.user.message">
+                <div class="mb-4" v-if="order.message">
                     <label for="message" class="form-label">REMARK</label>
-                    <p id="message" name="remark" class="form-control text-secondary">{{ order.user.message }}</p>
+                    <p id="message" name="remark" class="form-control text-secondary">{{ order.message }}</p>
                 </div>
                 <div class="mb-4">
                     <label for="ispay" class="form-label">PAYMENT STATUS *</label>

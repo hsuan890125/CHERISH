@@ -55,7 +55,7 @@
                                     </button>
                                 </div>
                             </form>
-                            <p class="mt-3 mt-md-0 ms-md-5"><span class="text-muted pb-5" style="font-size: 10px;">TOTAL：</span><br class="d-none d-md-block">NT$ {{ $filters.currency(item.final_total) }}</p>
+                            <p class="mt-3 mt-md-0 ms-md-5"><span class="text-muted pb-5" style="font-size: 10px;">TOTAL：</span><br class="d-none d-md-block">NT$ {{ $filters.currency(item.total) }}</p>
                         </td>
                         <td>
                             <button type="button" class="btn" @click.prevent="removeCartItem(item.id)">
