@@ -103,6 +103,8 @@
 </template>
 
 <script>
+import emitter from '@/methods/emitter';
+
 export default {
     data() {
         return{
@@ -135,6 +137,7 @@ export default {
                     if(res.data.success) {
                         this.getOrder();
                         window.scrollTo(0,0); // 完成後，畫面回最上方
+                        this.$httpMessageState(res, '付款'); // toast
                     }
                     this.isLoading = false;
                 })

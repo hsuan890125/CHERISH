@@ -28,18 +28,18 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="userFavoritesModal" aria-labelledby="offcanvasWithBackdropLabel">
         <div class="offcanvas-header bg-info">
             <h5 class="offcanvas-title ls" id="offcanvasWithBackdropLabel">收藏商品</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button id="offcanvasToggler" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body bg-warning overflow-auto">
             <ul class="list-unstyled">
                 <!-- 無收藏商品 -->
                 <li v-if="!products.length" class="text-center">
                     <div class="text-primary ls mb-3">目前沒有收藏商品</div>
-                    <router-link to="/allProducts" class="btn btn-outline-primary">來去逛逛</router-link>
+                    <router-link to="/allProducts" type="button" class="btn btn-outline-primary" @click.prevent="closeFavorite">來去逛逛</router-link>
                 </li>
                 <!-- 有收藏商品 -->
                 <li v-for="item in products" :key="item.id" class="mb-3">
-                    <router-link :to="{ path: `/product/${item.id}` }" class="dropdown-item d-flex align-items-center">
+                    <router-link :to="{ path: `/product/${item.id}` }" class="dropdown-item d-flex align-items-center" @click.prevent="closeFavorite">
                         <img :src="item.imageUrl" :alt="item.title" style="width: 100px;">
                         <div class="d-flex flex-column ps-3 w-100">
                             <div class="fs-5 ls">{{ item.title }}</div>
@@ -48,7 +48,7 @@
                             <del class="small text-muted mb-0" v-if="item.price !== item.origin_price">NT$ {{ item.origin_price }}</del>
                             <div class="fs-6 mb-0" v-if="item.price !== item.origin_price">NT$ {{ item.price }}</div>
                         </div>
-                        <button type="button" class="btn btn-lg ms-3" @click.stop.prevent="delFavoriteItems(item)">
+                        <button type="button" class="btn btn-lg ms-3" data-bs-dismiss="offcanvas" @click.stop.prevent="delFavoriteItems(item)">
                             <i class="bi bi-x-lg"></i>
                         </button>
                     </router-link>
@@ -74,6 +74,9 @@ export default {
     methods: {
         toggleCollapse() { // mobile navbar 按下後收起來
             this.$refs.navbarCollapse.classList.remove('show');
+        },
+        closeFavorite() { // 關閉 offcanvas
+            document.getElementById('offcanvasToggler').click();
         },
         windowScroll () { // 滑動後 nav 浮起
             if (window.scrollY > 10) {
@@ -107,6 +110,7 @@ export default {
             });
             handleFavorites.saveLocal(this.favoriteItems);
             emitter.emit('updateFavorite'); // 與 toggleFavorite 同步更新
+            // this.closeFavorite();
         },
         getFavorite() {
             this.favoriteItems = handleFavorites.getLocal();
