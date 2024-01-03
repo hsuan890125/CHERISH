@@ -1,6 +1,6 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <div class="row justify-content-center">
+    <div v-if="order.is_paid === false" class="row justify-content-center">
         <div class="col-lg-10">
             <div class="d-flex justify-content-evenly align-items-center my-5">
                 <div class="d-flex flex-column align-items-center border border-primary p-2">
@@ -19,6 +19,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div v-else class="text-center text-primary mb-5">
+        <i class="bi bi-check2-circle display-3"></i>
+        <p class="fs-4 my-4 ls">感謝您的訂購，現貨商品將於1-2天內為您寄出</p>
+        <router-link to="/allProducts" type="button" class="btn btn-outline-primary px-5">繼續購物 <i class="bi bi-arrow-right"></i></router-link>
     </div>
     <div class="row">
          <!-- cart -->
@@ -59,7 +64,7 @@
         </div>
         <!-- 訂購人表單 -->
         <div class="col-lg-7">
-            <form class="mt-5 mt-lg-0" @submit.prevent="">
+            <form class="mt-5 mt-lg-0" @submit.prevent="payOrder">
                 <div class="mb-4">
                     <label for="order_id" class="form-label">ORDER NUMBER</label>
                     <p id="order_id" name="orderId" class="form-control text-secondary">{{ orderId }}</p>
@@ -89,7 +94,7 @@
                     <p v-if="!order.is_paid" id="ispay" name="ispay" class="form-control text-danger">尚未付款</p>
                     <p v-else id="ispay" name="ispay" class="form-control text-success">付款完成</p>
                 </div>
-                <div class="text-end">
+                <div v-if="order.is_paid === false" class="text-end">
                     <button class="btn btn-outline-primary w-100">結帳付款 <i class="bi bi-arrow-right"></i></button>
                 </div>
             </form>
@@ -118,6 +123,18 @@ export default {
                     if(res.data.success) {
                         this.order = res.data.order;
                         console.log(res);
+                    }
+                    this.isLoading = false;
+                })
+        },
+        payOrder() { // 結帳付款
+            this.isLoading = true;
+            const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`;
+            this.$http.post(api)
+                .then(res => {
+                    if(res.data.success) {
+                        this.getOrder();
+                        window.scrollTo(0,0); // 完成後，畫面回最上方
                     }
                     this.isLoading = false;
                 })
