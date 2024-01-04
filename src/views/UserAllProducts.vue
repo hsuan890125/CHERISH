@@ -1,6 +1,6 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <div class="row row-cols-1 row-cols-lg-2">
+    <div class="row row-cols-1 row-cols-lg-2 mt-6 mt-lg-7">
       <div class="col-lg-2">
         <ul class="mb-5 pd-menu">
           <li class="list-unstyled my-3 position-relative">
@@ -31,7 +31,7 @@
         </ul>
       </div>
       <div class="col-lg-10">
-        <div class="row row-cols-2 row-cols-lg-5">
+        <div class="row row-cols-2 row-cols-lg-5 mt-lg-5">
           <div class="col px-2 mb-3" v-for="item in productsFilter[pagination.current_page-1]" :key="item.id">
             <div class="card border-0 h-100 cardHover" @click="getProduct(item.id)">
               <div class="imageHover">

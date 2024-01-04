@@ -1,11 +1,13 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><router-link to="/allProducts" class="link-secondary text-decoration-none border-bottom border-secondary">所有商品</router-link></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
-      </ol>
-    </nav>
+    <div class="mt-6 mt-lg-7">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><router-link to="/allProducts" class="link-secondary text-decoration-none border-bottom border-secondary">所有商品</router-link></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
+        </ol>
+      </nav>
+    </div>
     <div class="row row-cols-1 row-cols-lg-2 g-3 justify-content-center">
       <!-- 商品照片 -->
       <article class="col">
@@ -13,7 +15,7 @@
       </article>
       <!-- 商品名稱 & 價格 -->
       <div class="col">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mt-lg-5">
           <div class="d-flex">
             <h2 class="ls mb-0">{{ product.title }}</h2>
             <p class="text-danger ms-2" v-if="product.price !== product.origin_price" style="font-size: 10px;">SALE</p>

@@ -1,12 +1,12 @@
 <template>
-    <div class="row row-cols-1 row-cols-lg-2">
+    <div class="row row-cols-1 row-cols-lg-2 mt-6 mt-lg-7">
         <!-- image -->
         <div class="col">
-            <div class="store-image"></div>
+            <div class="store-image mt-lg-5"></div>
         </div>
         <!-- store imformation -->
         <div class="col">
-            <form class="mt-5 mt-lg-0">
+            <form class="mt-5">
                 <div class="mb-4">
                     <label class="form-label">ADDRESS</label>
                     <p class="form-control text-secondary ls">404 台中市北區一中街xxx號 / 一中商圈內</p>

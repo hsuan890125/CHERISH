@@ -1,6 +1,6 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <div v-if="order.is_paid === false" class="row justify-content-center">
+    <div v-if="order.is_paid === false" class="row justify-content-center mt-6 mt-lg-7">
         <div class="col-lg-10">
             <div class="d-flex justify-content-evenly align-items-center my-5">
                 <div class="d-flex flex-column align-items-center border border-primary p-2">
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div v-else class="text-center text-primary mb-5">
+    <div v-else class="text-center text-primary mb-5 mt-6 mt-lg-7">
         <i class="bi bi-check2-circle display-3"></i>
         <p class="fs-4 my-4 ls">感謝您的訂購，現貨商品將於1-2天內為您寄出</p>
         <router-link to="/allProducts" type="button" class="btn btn-outline-primary px-5">繼續購物 <i class="bi bi-arrow-right"></i></router-link>
