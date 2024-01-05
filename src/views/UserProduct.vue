@@ -1,80 +1,82 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <div class="mt-6 mt-lg-7">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><router-link to="/allProducts" class="link-secondary text-decoration-none border-bottom border-secondary">所有商品</router-link></li>
-          <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
-        </ol>
-      </nav>
-    </div>
-    <div class="row row-cols-1 row-cols-lg-2 g-3 justify-content-center">
-      <!-- 商品照片 -->
-      <article class="col">
-        <img :src="product.imageUrl" alt="productImage" class="img-fluid mb-3">
-      </article>
-      <!-- 商品名稱 & 價格 -->
-      <div class="col">
-        <div class="d-flex justify-content-between mt-lg-5">
-          <div class="d-flex">
-            <h2 class="ls mb-0">{{ product.title }}</h2>
-            <p class="text-danger ms-2" v-if="product.price !== product.origin_price" style="font-size: 10px;">SALE</p>
-          </div>
-          <div class="d-flex align-items-end">
-            <div class="h4 mb-0" v-if="product.price === product.origin_price">NT$ {{ product.origin_price }}</div>
-            <del class="h5 text-muted me-2 mb-0" v-if="product.price !== product.origin_price">NT$ {{ product.origin_price }}</del>
-            <div class="h4 mb-0" v-if="product.price !== product.origin_price">NT$ {{ product.price }}</div>
-          </div>
-        </div>
-        <hr>
-        <div class="text-primary ls mb-5">{{ product.description }}</div>
-        <div class="d-flex justify-content-between">
-          <!-- 數量 -->
-          <form class="d-flex flex-column text-primary border-bottom border-primary">
-            <label for="productNum" class="form-label fs-4 ls">數量</label>
-            <div class="input-group">
-              <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
-                @click.prevent="refreshQty(-1)"
-                :disabled="productQty === 1">–
-              </button>
-              <input type="number" id="productNum" class="form-control text-center" aria-label="productNum" min="1" v-model="productQty" readonly>
-              <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
-                @click.prevent="refreshQty(1)">+
-              </button>
-            </div>
-          </form>
-          <!-- 喜愛商品 -->
-          <div class="d-flex align-items-end">
-            <button type="button" class="text-primary bg-warning fs-3 border-0 mx-1" @click.prevent="toggleFavorite(product)"><i class="bi bi-suit-heart-fill" v-if="favoriteItems.includes(product.id)"></i><i class="bi bi-suit-heart" v-else></i></button>
-          </div>
-        </div>
-        <hr>
-        <!-- 加入購物車 & 立即購買 -->
-        <button type="button" class="btn btn-outline-primary w-100"
-          :disabled="this.status.loadingItem === product.id"
-          @click="addToCart(product.id)">
-          加入購物車
-        </button>
-        <button type="button" class="btn btn-outline-primary w-100 mt-3"
-          @click="goToCart(product.id)">
-          立即購買
-        </button>
+    <div class="container">
+      <div class="mt-6 mt-lg-7">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><router-link to="/allProducts" class="link-secondary text-decoration-none border-bottom border-secondary">所有商品</router-link></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
+          </ol>
+        </nav>
       </div>
-    </div>
-    <!-- others -->
-    <h6 class="text-center my-5 my-lg-6">OTHERS</h6>
-    <div class="row row-cols-2 row-cols-lg-6">
-      <div class="col px-2 mb-3" v-for="item in others" :key="item.id">
-        <div class="card border-0 h-100 cardHover" @click.prevent="goToProduct(item.id)">
-          <div class="imageHover">
-            <img :src="item.imageUrl" class="card-img-top img-fluid" :alt="item.title">
+      <div class="row row-cols-1 row-cols-lg-2 g-3 justify-content-center">
+        <!-- 商品照片 -->
+        <article class="col">
+          <img :src="product.imageUrl" alt="productImage" class="img-fluid mb-3">
+        </article>
+        <!-- 商品名稱 & 價格 -->
+        <div class="col">
+          <div class="d-flex justify-content-between mt-lg-5">
+            <div class="d-flex">
+              <h2 class="ls mb-0">{{ product.title }}</h2>
+              <p class="text-danger ms-2" v-if="product.price !== product.origin_price" style="font-size: 10px;">SALE</p>
+            </div>
+            <div class="d-flex align-items-end">
+              <div class="h4 mb-0" v-if="product.price === product.origin_price">NT$ {{ product.origin_price }}</div>
+              <del class="h5 text-muted me-2 mb-0" v-if="product.price !== product.origin_price">NT$ {{ product.origin_price }}</del>
+              <div class="h4 mb-0" v-if="product.price !== product.origin_price">NT$ {{ product.price }}</div>
+            </div>
           </div>
-          <div class="card-body text-primary bg-warning px-0 d-flex flex-column justify-content-between">
-            <p class="mb-0 ls">{{ item.title }}</p>
-            <div v-if="item.price === item.origin_price">NT$ {{ item.origin_price }}</div>
-            <div v-if="item.price !== item.origin_price">
-              <del class="small text-muted">NT$ {{ item.origin_price }}</del>
-              <div>NT$ {{ item.price }} <span class="text-danger ms-1" style="font-size: 10px;">SALE</span></div>
+          <hr>
+          <div class="text-primary ls mb-5">{{ product.description }}</div>
+          <div class="d-flex justify-content-between">
+            <!-- 數量 -->
+            <form class="d-flex flex-column text-primary border-bottom border-primary">
+              <label for="productNum" class="form-label fs-4 ls">數量</label>
+              <div class="input-group">
+                <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
+                  @click.prevent="refreshQty(-1)"
+                  :disabled="productQty === 1">–
+                </button>
+                <input type="number" id="productNum" class="form-control text-center" aria-label="productNum" min="1" v-model="productQty" readonly>
+                <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
+                  @click.prevent="refreshQty(1)">+
+                </button>
+              </div>
+            </form>
+            <!-- 喜愛商品 -->
+            <div class="d-flex align-items-end">
+              <button type="button" class="text-primary bg-warning fs-3 border-0 mx-1" @click.prevent="toggleFavorite(product)"><i class="bi bi-suit-heart-fill" v-if="favoriteItems.includes(product.id)"></i><i class="bi bi-suit-heart" v-else></i></button>
+            </div>
+          </div>
+          <hr>
+          <!-- 加入購物車 & 立即購買 -->
+          <button type="button" class="btn btn-outline-primary w-100"
+            :disabled="this.status.loadingItem === product.id"
+            @click="addToCart(product.id)">
+            加入購物車
+          </button>
+          <button type="button" class="btn btn-outline-primary w-100 mt-3"
+            @click="goToCart(product.id)">
+            立即購買
+          </button>
+        </div>
+      </div>
+      <!-- others -->
+      <h6 class="text-center my-5 my-lg-6">OTHERS</h6>
+      <div class="row row-cols-2 row-cols-lg-6">
+        <div class="col px-2 mb-3" v-for="item in others" :key="item.id">
+          <div class="card border-0 h-100 cardHover" @click.prevent="goToProduct(item.id)">
+            <div class="imageHover">
+              <img :src="item.imageUrl" class="card-img-top img-fluid" :alt="item.title">
+            </div>
+            <div class="card-body text-primary bg-warning px-0 d-flex flex-column justify-content-between">
+              <p class="mb-0 ls">{{ item.title }}</p>
+              <div v-if="item.price === item.origin_price">NT$ {{ item.origin_price }}</div>
+              <div v-if="item.price !== item.origin_price">
+                <del class="small text-muted">NT$ {{ item.origin_price }}</del>
+                <div>NT$ {{ item.price }} <span class="text-danger ms-1" style="font-size: 10px;">SALE</span></div>
+              </div>
             </div>
           </div>
         </div>
