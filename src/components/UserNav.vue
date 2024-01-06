@@ -1,45 +1,62 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-warning fixed-top" :class="{'nav-float':isFloat}">
+    <nav class="navbar navbar-expand-lg nav-bg fixed-top" :class="{'nav-float':isFloat}">
         <div class="container">
             <router-link to="/" class="navbar-brand link-primary fs-3 fw-bold">CHERISH</router-link>
             <!-- mobile 出現的 icon btn -->
             <div class="d-flex d-lg-none">
-                <router-link to="/cart" class="nav-cart text-primary bg-warning fs-3 border-0 mx-2"><i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span></router-link>
-                <button type="button" id="dropdownMenuButton1" class="nav-favorite text-primary bg-warning  fs-3 border-0 mx-2" data-bs-toggle="offcanvas" data-bs-target="#userFavoritesModal" aria-controls="offcanvasWithBackdrop"><i class="bi bi-suit-heart"></i><span  v-if=" favoriteItems.length" >{{ favoriteItems.length }}</span></button>
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                <router-link to="/cart" class="nav-cart text-primary nav-bg fs-3 border-0 mx-2"><i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span></router-link>
+                <button type="button" id="dropdownMenuButton1" class="nav-favorite text-primary nav-bg fs-3 border-0 mx-2" data-bs-toggle="offcanvas" data-bs-target="#userFavoritesModal" aria-controls="offcanvasWithBackdrop"><i class="bi bi-suit-heart"></i><span  v-if=" favoriteItems.length" >{{ favoriteItems.length }}</span></button>
+                <button class="text-primary fs-3 border-0 nav-bg" type="button" data-bs-toggle="offcanvas" data-bs-target="#routerOffcanvas" aria-controls="navbarText">
+                    <i class="bi bi-list"></i>
                 </button>
             </div> 
+            <!-- desktop btn router -->
             <div class="collapse navbar-collapse" id="navbarText" ref="navbarCollapse">
-                <div class="navbar-nav ms-auto">
-                    <router-link to="/" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click="toggleCollapse">首頁</router-link>
-                    <router-link to="/allProducts" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click="toggleCollapse">所有商品</router-link>
-                    <router-link to="/store" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click="toggleCollapse">門市資訊</router-link>
+                <div class="navbar-nav mx-auto ls">
+                    <router-link to="/" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">HOME</router-link>
+                    <router-link to="/allProducts" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">PRODUCTS</router-link>
+                    <router-link to="/store" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">STORE</router-link>
                 </div>
             </div> 
             <!-- desktop 出現的 icon btn -->
             <div class="d-none d-lg-block">
-                    <router-link to="/cart" class="nav-cart text-primary bg-warning fs-3 border-0 mx-1"><i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span></router-link>
-                    <button type="button" class="nav-favorite text-primary bg-warning fs-3 border-0 mx-1" data-bs-toggle="offcanvas" data-bs-target="#userFavoritesModal" aria-controls="offcanvasWithBackdrop"><i class="bi bi-suit-heart"></i><span  v-if=" favoriteItems.length" >{{ favoriteItems.length }}</span></button>
+                    <router-link to="/cart" class="nav-cart text-primary nav-bg fs-3 border-0 mx-1"><i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span></router-link>
+                    <button type="button" class="nav-favorite text-primary nav-bg fs-3 border-0 mx-1" data-bs-toggle="offcanvas" data-bs-target="#userFavoritesModal" aria-controls="offcanvasWithBackdrop"><i class="bi bi-suit-heart"></i><span  v-if=" favoriteItems.length" >{{ favoriteItems.length }}</span></button>
             </div>
         </div>
     </nav>
-    <!-- offcanvas -->
+
+    <!-- mobile btn router offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="routerOffcanvas" aria-labelledby="routerOffcanvasLabel">
+        <div class="offcanvas-header bg-info">
+            <h5 class="offcanvas-title" id="routerOffcanvasLabel">Offcanvas</h5>
+            <button id="routerOffcanvasToggler" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body bg-warning">
+            <div class="navbar-nav mx-auto ls">
+                <router-link to="/" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click.prevent="closeOffcanvas">HOME</router-link>
+                <router-link to="/allProducts" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click.prevent="closeOffcanvas">PRODUCTS</router-link>
+                <router-link to="/store" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover" @click.prevent="closeOffcanvas">STORE</router-link>
+            </div>
+        </div>
+    </div>
+
+    <!-- favorites offcanvas -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="userFavoritesModal" aria-labelledby="offcanvasWithBackdropLabel">
         <div class="offcanvas-header bg-info">
             <h5 class="offcanvas-title ls" id="offcanvasWithBackdropLabel">收藏商品</h5>
-            <button id="offcanvasToggler" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button id="favoritesOffcanvasToggler" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body bg-warning overflow-auto">
             <ul class="list-unstyled">
                 <!-- 無收藏商品 -->
                 <li v-if="!products.length" class="text-center">
                     <div class="text-primary ls mb-3">目前沒有收藏商品</div>
-                    <router-link to="/allProducts" type="button" class="btn btn-outline-primary" @click.prevent="closeFavorite">來去逛逛</router-link>
+                    <router-link to="/allProducts" type="button" class="btn btn-outline-primary" @click.prevent="closeOffcanvas">來去逛逛</router-link>
                 </li>
                 <!-- 有收藏商品 -->
                 <li v-for="item in products" :key="item.id" class="mb-3">
-                    <router-link :to="{ path: `/product/${item.id}` }" class="dropdown-item d-flex align-items-center" @click.prevent="closeFavorite">
+                    <router-link :to="{ path: `/product/${item.id}` }" class="dropdown-item d-flex align-items-center" @click.prevent="closeOffcanvas">
                         <img :src="item.imageUrl" :alt="item.title" style="width: 100px;">
                         <div class="d-flex flex-column ps-3 w-100">
                             <div class="fs-5 ls">{{ item.title }}</div>
@@ -72,11 +89,9 @@ export default {
         } 
     },
     methods: {
-        toggleCollapse() { // mobile navbar 按下後收起來
-            this.$refs.navbarCollapse.classList.remove('show');
-        },
-        closeFavorite() { // 關閉 offcanvas
-            document.getElementById('offcanvasToggler').click();
+        closeOffcanvas() { // 關閉 offcanvas
+            document.getElementById('routerOffcanvasToggler').click();
+            document.getElementById('favoritesOffcanvasToggler').click();
         },
         windowScroll () { // 滑動後 nav 浮起
             if (window.scrollY > 10) {
