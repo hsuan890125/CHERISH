@@ -1,4 +1,5 @@
 <template>
+    <!-- banner 輪播 -->
     <div id="carouselExampleIndicators" class="carousel carousel-dark slide carousel-fade mb-7" data-bs-ride="carousel" data-bs-pause="false">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
