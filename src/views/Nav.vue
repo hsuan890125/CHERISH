@@ -1,11 +1,7 @@
 <template>
     <UserNav></UserNav>
-    <div class="container-fluid mt-3 position-relative">
-        <ToastMessages></ToastMessages>
-    </div>
-    <div class="container">
-        <router-view/>
-    </div>
+    <ToastMessages></ToastMessages>
+    <router-view/>
 </template>
 
 <script>

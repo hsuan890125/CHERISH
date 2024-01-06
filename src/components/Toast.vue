@@ -1,7 +1,7 @@
 <template>
-    <div class="toast bg-warning" role="alert" aria-live="assertive" aria-atomic="true" ref="toast">
-      <div class="toast-header bg-warning">
-        <span :class="`bg-${msg.style}`" class="p-2 rounded-circle me-2 d-inline-block"></span>
+    <div class="toast bg-info rounded-0" role="alert" aria-live="assertive" aria-atomic="true" ref="toast">
+      <div class="toast-header bg-info">
+        <span :class="`bg-${msg.style}`" class="p-2 me-2 d-inline-block"></span>
         <strong class="me-auto ls">{{ msg.title }}</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
