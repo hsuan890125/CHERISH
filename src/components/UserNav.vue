@@ -1,7 +1,9 @@
 <template>
     <nav class="navbar navbar-expand-lg nav-bg fixed-top" :class="{'nav-float':isFloat}">
         <div class="container">
-            <router-link to="/" class="navbar-brand link-primary fs-3 fw-bold">CHERISH</router-link>
+            <router-link to="/" class="navbar-brand logo">
+                <img src="../assets/img/logo.png" alt="cherishLogo">
+            </router-link>
             <!-- mobile 出現的 icon btn -->
             <div class="d-flex d-lg-none">
                 <router-link to="/cart" class="nav-cart text-primary nav-bg fs-3 border-0 mx-2"><i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span></router-link>
@@ -29,7 +31,9 @@
     <!-- mobile btn router offcanvas -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="routerOffcanvas" aria-labelledby="routerOffcanvasLabel">
         <div class="offcanvas-header bg-info">
-            <h5 class="offcanvas-title" id="routerOffcanvasLabel">Offcanvas</h5>
+            <div class="offcanvas-title logo" id="routerOffcanvasLabel">
+                <img src="../assets/img/logo.png" alt="cherishLogo">
+            </div>
             <button id="routerOffcanvasToggler" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body bg-warning">

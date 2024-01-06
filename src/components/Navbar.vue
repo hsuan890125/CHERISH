@@ -1,7 +1,10 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-warning fixed-top">
         <div class="container-fluid">
-            <router-link to="/" class="navbar-brand link-primary fs-3 fw-bold">CHERISH <span class="fs-6 fw-light">後台管理</span></router-link>
+            <router-link to="/" class="navbar-brand link-primary logo">
+                <img src="../assets/img/logo.png" alt="cherishLogo">
+                <span class="fs-6 fw-light">後台管理</span>
+            </router-link>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

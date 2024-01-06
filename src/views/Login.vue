@@ -1,7 +1,10 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <div class="container-fluid text-center">
-        <router-link to="/" class="navbar-brand link-primary fs-3 fw-bold">CHERISH <span class="fs-6 fw-light">管理員登入</span></router-link>
+    <div class="container-fluid d-flex justify-content-center">
+        <router-link to="/" class="navbar-brand link-primary logo">
+            <img src="../assets/img/logo.png" alt="cherishLogo">
+            <span class="fs-6 fw-light ms-2">管理員登入</span>
+        </router-link>
     </div>
     <div class="mt-5 text-primary">
         <form class="row justify-content-center" @submit.prevent="singIn">
