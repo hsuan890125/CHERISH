@@ -1,8 +1,6 @@
 <template>
     <Navbar  v-show="$route.meta.showfather"></Navbar>
-    <div class="container-fluid mt-3 position-relative">
-        <ToastMessages></ToastMessages>
-    </div>
+    <ToastMessages></ToastMessages>
     <div class="container mt-6 mt-lg-7">
         <router-view/>
     </div>
