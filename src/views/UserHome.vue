@@ -61,6 +61,41 @@
         <p>- 單筆滿 2000 元再送精美小物 -</p>
         <p class="mb-0">- 全館不限金額，通通免運費 -</p>
     </div>
+    <!-- products -->
+    <h2 class="container display-2 text-center text-lg-end mb-4">Products</h2>
+    <div class="row row-cols-1 row-cols-lg-4 g-0">
+        <div class="col home-image-hover">
+           <div class="home-image-1 image-content d-flex justify-content-center align-items-center"></div>
+        </div>
+        <div class="col home-image-hover">
+           <div class="home-image-2 image-content d-flex justify-content-center align-items-center"></div>
+        </div>
+        <div class="col home-image-hover">
+           <div class="home-image-3 image-content d-flex justify-content-center align-items-center"></div>
+        </div>
+        <div class="col home-image-hover">
+           <div class="home-image-4 image-content d-flex justify-content-center align-items-center"></div>
+        </div>
+    </div>
+    <div class="d-none d-lg-block">
+        <div class="row row-cols-4 g-0">
+            <div class="col home-image-hover">
+                <div class="home-image-5 image-content d-flex justify-content-center align-items-center"></div>
+            </div>
+            <div class="col home-image-hover">
+                <div class="home-image-6 image-content d-flex justify-content-center align-items-center"></div>
+            </div>
+            <div class="col home-image-hover">
+                <div class="home-image-7 image-content d-flex justify-content-center align-items-center"></div>
+            </div>
+            <div class="col home-image-hover">
+                <div class="home-image-8 image-content d-flex justify-content-center align-items-center"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-end mt-4 mb-5 mb-lg-6">
+        <router-link to="/allProducts" class="link-primary fs-2 text-decoration-none link-hover ls">MORE <i class="bi bi-arrow-right"></i></router-link>
+    </div>
 </template>
   
 <script>
@@ -77,7 +112,7 @@ export default {
                         title: '複製優惠券成功',
                     });
                 })
-        }
+        },
     }
 }
 </script>
