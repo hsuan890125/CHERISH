@@ -1,6 +1,6 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <div class="container">
+    <div class="container mb-5 mb-lg-6">
       <div class="row row-cols-1 row-cols-lg-2 mt-6 mt-lg-7">
         <div class="col-lg-2">
           <ul class="mb-5 pd-menu">

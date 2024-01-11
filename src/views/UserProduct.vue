@@ -64,7 +64,7 @@
       </div>
       <!-- others -->
       <h6 class="text-center my-5 my-lg-6">OTHERS</h6>
-      <div class="row row-cols-2 row-cols-lg-6">
+      <div class="row row-cols-2 row-cols-lg-6 mb-5 mb-lg-6">
         <div class="col px-2 mb-3" v-for="item in others" :key="item.id">
           <div class="card border-0 h-100 cardHover" @click.prevent="goToProduct(item.id)">
             <div class="imageHover">

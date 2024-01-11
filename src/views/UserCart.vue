@@ -1,6 +1,6 @@
 <template>
     <Loading :active="isLoading"></Loading>
-    <div class="container">
+    <div class="container mb-5 mb-lg-6">
         <div class="row justify-content-center mt-6 mt-lg-7">
             <div class="col-lg-10">
                 <div class="d-flex justify-content-evenly align-items-center my-5">
