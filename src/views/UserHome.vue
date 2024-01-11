@@ -63,7 +63,7 @@
     </div>
     <!-- products -->
     <h2 class="container display-2 text-center text-lg-end mb-4">Products</h2>
-    <div class="row row-cols-1 row-cols-lg-4 g-0">
+    <div class="row row-cols-1 row-cols-md-4 g-0">
         <div class="col home-image-hover">
            <div class="home-image-1 image-content d-flex justify-content-center align-items-center"></div>
         </div>
@@ -77,7 +77,7 @@
            <div class="home-image-4 image-content d-flex justify-content-center align-items-center"></div>
         </div>
     </div>
-    <div class="d-none d-lg-block">
+    <div class="d-none d-md-block">
         <div class="row row-cols-4 g-0">
             <div class="col home-image-hover">
                 <div class="home-image-5 image-content d-flex justify-content-center align-items-center"></div>
