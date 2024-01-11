@@ -59,7 +59,7 @@
 import Pagination from '@/components/Pagination.vue';
 
 export default {
-    data() {
+data() {
       return {
           products: [],
           allProducts: [], // 全部商品
@@ -84,12 +84,14 @@ export default {
               });
       },
       getAllProducts() { // 取得所有商品列表
+        this.isLoading = true;
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
         this.$http.get(api)
             .then(res => {
               if(res.data.success) {
                 this.allProducts = res.data.products;
               }
+              this.isLoading = false;
             })
       },
       getProduct(id) { // 進入商品單一頁面
