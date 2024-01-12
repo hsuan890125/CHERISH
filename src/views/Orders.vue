@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th>購買時間</th>
-          <th>Email</th>
+          <th>姓名</th>
           <th>購買款項</th>
           <th>應付金額</th>
           <th>是否付款</th>
@@ -16,7 +16,7 @@
           <tr v-if="orders.length"
               :class="{'text-secondary': !item.is_paid}">
             <td>{{ $filters.date(item.create_at) }}</td>
-            <td><span v-text="item.user.email" v-if="item.user"></span></td>
+            <td><span v-text="item.user.name" v-if="item.user"></span></td>
             <td>
               <ul class="list-unstyled">
                 <li v-for="(product, i) in item.products" :key="i">
@@ -39,11 +39,10 @@
             </td>
             <td>
               <div class="btn-group">
-                <button class="btn btn-outline-primary btn-sm"
-                        @click="openModal(false, item)">檢視</button>
-                <button class="btn btn-outline-danger btn-sm"
-                        @click="openDelOrderModal(item)"
-                >刪除</button>
+                <button class="btn btn-outline-primary btn-sm rounded-0"
+                        @click="openModal(false, item)">檢視 <i class="bi bi-eye"></i></button>
+                <button class="btn btn-outline-danger btn-sm rounded-0"
+                        @click="openDelOrderModal(item)">刪除 <i class="bi bi-x-square"></i></button>
               </div>
             </td>
           </tr>
@@ -60,6 +59,7 @@
 import DelModal from '@/components/DelModal.vue';
 import OrderModal from '@/components/OrderModal.vue';
 import Pagination from '@/components/Pagination.vue';
+
 export default {
   data() {
       return {
@@ -77,7 +77,7 @@ export default {
       OrderModal,
   },
   methods: {
-      getOrders(currentPage = 1) {
+      getOrders(currentPage = 1) { // 取得 order 資料
         this.currentPage = currentPage;
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`;
         this.isLoading = true;
@@ -85,21 +85,22 @@ export default {
           .then(res => {
               this.orders = res.data.orders;
               this.pagination = res.data.pagination;
+              console.log(this.orders);
               this.isLoading = false;
           });
       },
-      openModal(isNew, item) {
+      openModal(isNew, item) { // 開啟檢視 modal
         this.tempOrder = { ...item };
         this.isNew = false;
         const orderComponent = this.$refs.orderModal;
         orderComponent.showModal();
       },
-      openDelOrderModal(item) {
+      openDelOrderModal(item) { // 開啟刪除 modal
         this.tempOrder = { ...item };
         const delComponent = this.$refs.delModal;
         delComponent.showModal();
       },
-      updatePaid(item) {
+      updatePaid(item) { // 更新付款狀態
         this.isLoading = true;
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
         const paid = {
@@ -112,11 +113,12 @@ export default {
               this.$httpMessageState(res, '更新付款狀態');
           });
       },
-      delOrder() {
+      delOrder() { // 刪除 order
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrder.id}`;
         this.isLoading = true;
         this.$http.delete(url)
           .then(res => {
+              this.$httpMessageState(res, '刪除訂單'); // 刪除成功 toast
               const delComponent = this.$refs.delModal;
               delComponent.hideModal();
               this.getOrders(this.currentPage);

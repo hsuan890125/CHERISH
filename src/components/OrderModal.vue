@@ -95,11 +95,9 @@
             </div>
           </div>
           <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-outline-secondary"
-                    data-bs-dismiss="modal">取消
-            </button>
             <button type="button" class="btn btn-outline-primary"
-                    @click="$emit('update-order', tempOrder)">確認</button>
+                    data-bs-dismiss="modal">確認
+            </button>
           </div>
         </div>
       </div>
