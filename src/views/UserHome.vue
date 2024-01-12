@@ -41,7 +41,7 @@
                 <h2 class="display-2">About</h2>
             </div>
             <div class="col">
-                <p class="ls lh-lg">
+                <p class="ls lh-lg animated" :class="{ 'fadeIn': showFadeIn }" ref="fadeInref">
                     歡迎光臨 CHERISH <i class="bi bi-balloon-heart"></i>！<br>
                     我們的店舖匯聚了獨特而時尚的飾品，為您帶來令人驚嘆的風采。無論您是在尋找日常佩戴，還是想為特殊場合增添色彩，我們都擁有令人眼花繚亂的選擇。從精緻的項鏈到華麗的耳環，每一件飾品都是闆娘精心挑選，展現高品質和獨特設計。我們致力於提供優雅而多樣的飾品，讓您在每個時刻都閃耀奪目。快來體驗獨一無二的飾品之美，讓我們一同為您的風格點亮生活！
                 </p>
@@ -102,6 +102,11 @@
 import emitter from '@/methods/emitter';
 
 export default {
+    data() {
+        return {
+            showFadeIn: false,
+        }
+    },
     methods: {
         couponCopy() { // 複製 coupon
             const couponText = document.getElementById("couponText");
@@ -113,6 +118,21 @@ export default {
                     });
                 })
         },
-    }
+        animatedFadeIn() { // 元素淡入動畫
+            const fadeInref = this.$refs.fadeInref;
+            let windowHeight = window.innerHeight;
+            let scrollPos = window.scrollY;
+            let thisPos = fadeInref.offsetTop;
+            if((windowHeight + scrollPos) >= thisPos) {
+                this.showFadeIn = true;
+            }
+        }
+    },
+    mounted() {
+        window.addEventListener('scroll', this.animatedFadeIn);
+    },
+    unmounted() {
+        window.removeEventListener('scroll', this.animatedFadeIn);
+    },
 }
 </script>
