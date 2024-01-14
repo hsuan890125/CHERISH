@@ -16,7 +16,7 @@
         </article>
         <!-- 商品名稱 & 價格 -->
         <div class="col">
-          <div class="d-flex justify-content-between mt-lg-5">
+          <div class="d-flex justify-content-between mt-lg-5 text-primary">
             <div class="d-flex">
               <h2 class="ls mb-0">{{ product.title }}</h2>
               <p class="text-danger ms-2" v-if="product.price !== product.origin_price" style="font-size: 10px;">SALE</p>
@@ -28,7 +28,29 @@
             </div>
           </div>
           <hr>
-          <div class="text-primary ls mb-5">{{ product.description }}</div>
+          <!-- 產品說明 -->
+          <div class="text-muted lh-lg ls">{{ product.content }}</div>
+          <hr>
+          <!-- 產品規格 -->
+          <div class="ls">
+            <p class="text-muted">
+              <span class="text-primary">規格｜</span>
+               {{ product.description }}
+            </p>
+            <p class="text-muted">
+              <span class="text-primary">產地｜</span>
+               台灣
+            </p>
+            <p class="text-muted">
+              <span class="text-primary">付款方式｜</span>
+               超商貨到付款、信用卡一次付清、LINE Pay
+            </p>
+            <p class="text-muted">
+              <span class="text-primary">配送方式｜</span>
+               超商取貨、宅配
+            </p>
+          </div>
+          <hr>
           <div class="d-flex justify-content-between">
             <!-- 數量 -->
             <form class="d-flex flex-column text-primary border-bottom border-primary">
