@@ -2,7 +2,7 @@
 <img src="readmeImage/封面.png" alt="封面">
 
 ## 專案介紹
-<!-- > Demo Website : [https://a94s84.github.io/Hermosa/#/](https://a94s84.github.io/Hermosa/#/) -->
+> Demo Website : <!-- [https://a94s84.github.io/Hermosa/#/](https://a94s84.github.io/Hermosa/#/) -->
 
 以飾品電商為主題的 SPA 網站。
 
@@ -19,19 +19,19 @@
 ## 前台（買家端）
 
 ### 首頁
-
+<img src="readmeImage/首頁.png" alt="首頁">
 
 ### 商品頁
-
+<img src="readmeImage/商品頁.png" alt="商品頁">
 
 ### 購物車功能
-
+<img src="readmeImage/購物車頁面.png" alt="購物車頁面">
 
 ### 收藏功能
-
+<img src="readmeImage/珍藏功能.png" alt="珍藏功能">
 
 ### 內嵌地圖
-
+<img src="readmeImage/內嵌地圖.png" alt="內嵌地圖">
 
 
 ## 後台（賣家端）
