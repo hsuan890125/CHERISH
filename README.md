@@ -1,5 +1,5 @@
 # CHERISH 飾品電商
-<img src="@/readmeImage/封面.png" alt="封面">
+<img src="readmeImage/封面.png" alt="封面">
 
 ## 專案介紹
 <!-- > Demo Website : [https://a94s84.github.io/Hermosa/#/](https://a94s84.github.io/Hermosa/#/) -->
