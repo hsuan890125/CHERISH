@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
   {
@@ -7,11 +7,11 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('../views/UserHome.vue')
+        component: () => import('../views/UserHome.vue'),
       },
       {
         path: 'store',
-        component: () => import('../views/UserStore.vue')
+        component: () => import('../views/UserStore.vue'),
       },
       {
         path: 'allProducts',
@@ -33,7 +33,7 @@ const routes = [
         path: 'pay/:orderId',
         component: () => import('../views/UserPay.vue'),
       },
-    ]
+    ],
   },
   {
     path: '/dashboard',
@@ -42,7 +42,7 @@ const routes = [
       {
         path: 'login',
         meta: {
-          showfather: false
+          showfather: false,
         },
         component: () => import('../views/Login.vue'),
       },
@@ -57,17 +57,17 @@ const routes = [
       {
         path: 'coupons',
         component: () => import('../views/Coupons.vue'),
-      }
+      },
     ],
     meta: {
-      showfather: true
-    }
+      showfather: true,
+    },
   },
-]
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

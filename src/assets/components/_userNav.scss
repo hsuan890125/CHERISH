@@ -1,35 +1,35 @@
 .nav-bg {
-    background: transparent;
+  background: transparent;
 }
 .nav-float {
-    box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.3);
-    background: $warning;
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.3);
+  background: $warning;
 }
 
 // cart & favorite
 .nav-cart,
 .nav-favorite
 {
-    position: relative;
-    span {
-        position: absolute;
-        right: -5px;
-        top: 0px;
-        display: block;
-        width: 21px;
-        height: 21px;
-        border-radius: 50%;
-        background: $primary;
-        color: $warning;
-        font-size: 14px;
-        text-align: center;
-    }
+  position: relative;
+  span {
+    position: absolute;
+    right: -5px;
+    top: 0px;
+    display: block;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background: $primary;
+    color: $warning;
+    font-size: 14px;
+    text-align: center;
+  }
 }
 
 .logo {
-    display: block;
-    width: 140px;
-    img {
-        width: 100%;
-    }
+  display: block;
+  width: 140px;
+  img {
+    width: 100%;
+  }
 }

@@ -2,21 +2,21 @@
 #productNum::-webkit-outer-spin-button,
 #productNum::-webkit-inner-spin-button
 {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
 #productNum {
-    appearance: textfield;
-    -moz-appearance: textfield;
+  appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 /* – & + btn */ 
 .productNumBtn,#productNum {
-    background-color: transparent;
-    &:hover,&:focus {
-        color: $primary !important;
-        background-color: transparent !important;
-    }
+  background-color: transparent;
+  &:hover,&:focus {
+    color: $primary !important;
+    background-color: transparent !important;
+  }
 }

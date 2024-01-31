@@ -1,5 +1,5 @@
 const { defineConfig } = require('@vue/cli-service');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -8,5 +8,5 @@ module.exports = defineConfig({
   },
   publicPath: process.env.NODE_ENV === 'production'
     ? '/CHERISH/'
-    : '/'
-})
+    : '/',
+});

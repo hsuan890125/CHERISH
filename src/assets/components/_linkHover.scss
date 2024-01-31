@@ -1,15 +1,15 @@
 .link-hover {
-    position: relative;
-    &:after {
-        content: "";
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 0%;
-        border-bottom: 1px solid $primary;
-        transition: 0.4s;
-    }
-    &:hover:after {
-        width: 100%;
-    }
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    border-bottom: 1px solid $primary;
+    transition: 0.4s;
+  }
+  &:hover:after {
+    width: 100%;
+  }
 }

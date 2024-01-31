@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import emitter from '@/methods/emitter';
 
 export default function (res, title = '更新') {
