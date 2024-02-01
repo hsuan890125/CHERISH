@@ -63,6 +63,10 @@ const routes = [
       showfather: true,
     },
   },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/',
+  },
 ];
 
 const router = createRouter({
