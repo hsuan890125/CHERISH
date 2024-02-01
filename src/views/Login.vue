@@ -37,7 +37,7 @@
 
         <div class="text-end mt-4">
           <button class="btn btn-lg btn-outline-primary btn-block rounded-0"
-            type="submit" @click.prevent="singIn">登 入
+            type="submit">登 入
               <i class="bi bi-arrow-right"></i>
           </button>
         </div>
