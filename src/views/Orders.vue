@@ -45,7 +45,7 @@
             <div class="btn-group">
               <button type="button"
                 class="btn btn-outline-primary btn-sm rounded-0"
-                @click="openModal(false, item)">
+                @click="openModal(item)">
                 檢視 <i class="bi bi-eye"></i>
               </button>
               <button type="button"
@@ -101,7 +101,7 @@ export default {
           console.log(err);
         });
     },
-    openModal(isNew, item) { // 開啟檢視 modal
+    openModal(item) { // 開啟檢視 modal
       this.tempOrder = { ...item };
       this.isNew = false;
       const orderComponent = this.$refs.orderModal;
