@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <template v-for="(item, key) in orders" :key="key">
+      <template v-for="item in orders" :key="item.id">
         <tr v-if="orders.length"
             :class="{'text-secondary': !item.is_paid}">
           <td>{{ $filters.date(item.create_at) }}</td>
@@ -95,7 +95,6 @@ export default {
         .then((res) => {
           this.orders = res.data.orders;
           this.pagination = res.data.pagination;
-          console.log(this.orders);
           this.isLoading = false;
         })
         .catch((err) => {
