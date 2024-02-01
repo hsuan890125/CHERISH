@@ -102,7 +102,7 @@
         <!-- 加入購物車 & 立即購買 -->
         <button type="button" class="btn btn-outline-primary w-100"
           :disabled="this.status.loadingItem === product.id"
-          @click="addToCart(product.id)">
+          @click.prevent="addToCart(product.id)">
           加入購物車
         </button>
         <button type="button" class="btn btn-outline-primary w-100 mt-3"

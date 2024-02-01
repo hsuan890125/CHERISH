@@ -2,7 +2,7 @@
 <template>
   <Loading :active="isLoading"/>
   <div class="text-end">
-    <button class="btn btn-outline-primary" type="button" @click="openModal(true)">
+    <button class="btn btn-outline-primary" type="button" @click.prevent="openModal(true)">
         增加產品
     </button>
   </div>
@@ -37,12 +37,12 @@
             <div class="btn-group">
                 <button type="button"
                   class="btn btn-outline-primary btn-sm rounded-0"
-                  @click="openModal(false, item)">
+                  @click.prevent="openModal(false, item)">
                   編輯 <i class="bi bi-pencil-square"></i>
                 </button>
                 <button type="button"
                   class="btn btn-outline-danger btn-sm rounded-0"
-                  @click="openDelProductModal(item)">
+                  @click.prevent="openDelProductModal(item)">
                   刪除 <i class="bi bi-x-square"></i>
                 </button>
             </div>

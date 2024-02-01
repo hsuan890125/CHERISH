@@ -45,12 +45,12 @@
             <div class="btn-group">
               <button type="button"
                 class="btn btn-outline-primary btn-sm rounded-0"
-                @click="openModal(item)">
+                @click.prevent="openModal(item)">
                 檢視 <i class="bi bi-eye"></i>
               </button>
               <button type="button"
                 class="btn btn-outline-danger btn-sm rounded-0"
-                @click="openDelOrderModal(item)">
+                @click.prevent="openDelOrderModal(item)">
                 刪除 <i class="bi bi-x-square"></i>
               </button>
             </div>

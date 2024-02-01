@@ -7,7 +7,7 @@
   <div class="position-fixed end-0 bottom-0 pe-3 pe-lg-5" v-if="isShow" style="z-index: 100;">
     <button type="button"
       class="btn p-3"
-      @click="scrollToTop"
+      @click.prevent="scrollToTop"
       style="background-color: #B1AF98;">
       <i class="bi bi-arrow-up fs-3 text-light"></i>
     </button>

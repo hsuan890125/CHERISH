@@ -28,7 +28,7 @@
       <div class="col-lg-8">
         <button type="button"
           class="btn btn-outline-danger mb-3"
-          @click="romoveAllCartItem">清空購物車
+          @click.prevent="romoveAllCartItem">清空購物車
            <i class="bi bi-cart-x"></i>
         </button>
         <table class="table border-primary table-hover">
@@ -107,7 +107,7 @@
               class="form-control border border-primary"
               placeholder="請輸入優惠碼"
               v-model="coupon_code" />
-            <button type="button" class="btn btn-outline-primary" @click="addCouponCode">
+            <button type="button" class="btn btn-outline-primary" @click.prevent="addCouponCode">
               套用優惠券
             </button>
           </div>
