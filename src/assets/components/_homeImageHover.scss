@@ -1,4 +1,5 @@
 .home-image-hover {
+  cursor: pointer;
   overflow:hidden;
   .image-content {
     background-size: cover;
@@ -9,48 +10,38 @@
       display: none;
     }
   }
+  p {
+    display: none;
+  }
   &:hover {
     .image-content {
       transform:scale(1.2,1.2);
       .text-block {
         display: block;
       }
+    }
+    p {
+      display: block;
     } 
   }
 }
 
 .home-image-1 {
   height: 300px;
-  background-image: url(https://images.unsplash.com/photo-1636103811402-f10d43b62237?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-image: url(@/assets/img/earrings.jpg);
 }
 .home-image-2 {
   height: 300px;
-  background-image: url(https://images.unsplash.com/photo-1583222879553-b69a52cd65b0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-image: url(@/assets/img/banner03.jpg);
 }
 
 .home-image-3 {
   height: 300px;
-  background-image: url(https://images.unsplash.com/photo-1636103952204-0b738c225264?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-image: url(@/assets/img/bracelet.jpg);
 }
 
 .home-image-4 {
   height: 300px;
-  background-image: url(https://images.unsplash.com/photo-1676291055501-286c48bb186f?q=80&w=1890&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-}
-.home-image-5 {
-  height: 300px;
-  background-image: url(https://images.unsplash.com/photo-1619499210176-b497ffba8875?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-}
-.home-image-6 {
-  height: 300px;
-  background-image: url(https://images.unsplash.com/flagged/photo-1566755395267-86735b23d097?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-}
-.home-image-7 {
-  height: 300px;
-  background-image: url(https://images.unsplash.com/photo-1521694139475-da661702d635?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-}
-.home-image-8 {
-  height: 300px;
-  background-image: url(https://images.unsplash.com/photo-1604955619976-b492c82da57b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-image: url(@/assets/img/necklace.jpg);
 }
 

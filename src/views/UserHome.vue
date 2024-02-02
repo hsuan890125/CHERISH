@@ -1,3 +1,4 @@
+<!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
   <!-- banner 輪播 -->
   <div id="carouselExampleIndicators"
@@ -111,41 +112,29 @@
       </div>
     </div>
   </div>
-  <div class="row row-cols-1 row-cols-md-4 g-0">
+  <div class="row row-cols-1 row-cols-md-2 g-0">
     <div class="col home-image-hover">
-      <div class="home-image-1 image-content d-flex justify-content-center align-items-center">
+      <div class="home-image-1 image-content d-flex justify-content-center align-items-center"
+        @click="updateCategory('耳環')">
+        <p class="text-light fs-1 ls">EARRING <i class="bi bi-arrow-right"></i></p>
       </div>
     </div>
     <div class="col home-image-hover">
-      <div class="home-image-2 image-content d-flex justify-content-center align-items-center">
+      <div class="home-image-2 image-content d-flex justify-content-center align-items-center"
+        @click="updateCategory('戒指')">
+        <p class="text-light fs-1 ls">RING <i class="bi bi-arrow-right"></i></p>
       </div>
     </div>
     <div class="col home-image-hover">
-      <div class="home-image-3 image-content d-flex justify-content-center align-items-center">
+      <div class="home-image-3 image-content d-flex justify-content-center align-items-center"
+        @click="updateCategory('手鍊')">
+        <p class="text-light fs-1 ls">BRACELET <i class="bi bi-arrow-right"></i></p>
       </div>
     </div>
     <div class="col home-image-hover">
-      <div class="home-image-4 image-content d-flex justify-content-center align-items-center">
-      </div>
-    </div>
-  </div>
-  <div class="d-none d-md-block">
-    <div class="row row-cols-4 g-0">
-      <div class="col home-image-hover">
-        <div class="home-image-5 image-content d-flex justify-content-center align-items-center">
-        </div>
-      </div>
-      <div class="col home-image-hover">
-        <div class="home-image-6 image-content d-flex justify-content-center align-items-center">
-        </div>
-      </div>
-      <div class="col home-image-hover">
-        <div class="home-image-7 image-content d-flex justify-content-center align-items-center">
-        </div>
-      </div>
-      <div class="col home-image-hover">
-        <div class="home-image-8 image-content d-flex justify-content-center align-items-center">
-        </div>
+      <div class="home-image-4 image-content d-flex justify-content-center align-items-center"
+        @click="updateCategory('項鍊')">
+        <p class="text-light fs-1 ls">NECKLACE <i class="bi bi-arrow-right"></i></p>
       </div>
     </div>
   </div>
@@ -190,6 +179,14 @@ export default {
       if ((windowHeight + scrollPos) >= thisPos) {
         this.showFadeIn = true;
       }
+    },
+    updateCategory(category) {
+      this.$router.push({
+        name: 'allProducts',
+        params: {
+          categoryItem: category,
+        },
+      });
     },
   },
   mounted() {
