@@ -16,17 +16,18 @@
         </ol>
       </nav>
     </div>
-    <div class="row row-cols-1 row-cols-lg-2 g-3 justify-content-center">
+    <div class="row row-cols-1 row-cols-lg-2 g-4">
       <!-- 商品照片 -->
-      <article class="col">
-        <img :src="product.imageUrl" alt="productImage" class="img-fluid mb-3">
-      </article>
+      <div class="col-lg-5" style="height: 600px; overflow:hidden;">
+        <img :src="product.imageUrl" alt="productImage" class="img-fluid mb-3"
+          style="object-fit: cover;">
+      </div>
       <!-- 商品名稱 & 價格 -->
-      <div class="col">
-        <div class="d-flex justify-content-between mt-lg-5 text-primary">
+      <div class="col-lg-6">
+        <div class="d-flex justify-content-between text-primary">
           <div class="d-flex">
             <h2 class="ls mb-0">{{ product.title }}</h2>
-            <p class="text-danger ms-2"
+            <p class="text-danger ms-2 ls"
               v-if="product.price !== product.origin_price" style="font-size: 10px;">
               SALE
             </p>
@@ -35,10 +36,10 @@
             <div class="h4 mb-0" v-if="product.price === product.origin_price">
               NT$ {{ product.origin_price }}
             </div>
-            <del class="h5 text-muted me-2 mb-0" v-if="product.price !== product.origin_price">
+            <del class="h5 text-muted me-3 mb-0" v-if="product.price !== product.origin_price">
               NT$ {{ product.origin_price }}
             </del>
-            <div class="h4 mb-0" v-if="product.price !== product.origin_price">
+            <div class="h4 text-danger mb-0" v-if="product.price !== product.origin_price">
               NT$ {{ product.price }}
             </div>
           </div>
@@ -81,8 +82,7 @@
                 class="form-control text-center"
                 aria-label="productNum"
                 min="1"
-                v-model="productQty"
-                readonly>
+                v-model="productQty">
               <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
                 @click.prevent="refreshQty(1)">+
               </button>
