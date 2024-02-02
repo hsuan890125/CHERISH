@@ -102,7 +102,13 @@
     <p class="mb-0">- 全館不限金額，通通免運費 -</p>
   </div>
   <!-- products -->
-  <h2 class="container display-2 text-center text-lg-end mb-4">Products</h2>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-lg-2">
+      <div class="col text-center mb-4 mb-lg-0">
+        <h2 class="display-2 mb-2 mb-lg-5">Products</h2>
+      </div>
+    </div>
+  </div>
   <div class="row row-cols-1 row-cols-md-4 g-0">
     <div class="col home-image-hover">
       <div class="home-image-1 image-content d-flex justify-content-center align-items-center">
