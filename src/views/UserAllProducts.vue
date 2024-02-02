@@ -53,7 +53,7 @@
         </ul>
       </div>
       <div class="col-lg-10">
-        <div class="row row-cols-2 row-cols-lg-5 mt-lg-5">
+        <div class="row row-cols-2 row-cols-lg-5 mt-lg-3">
           <div class="col px-2 mb-3"
             v-for="item in productsFilter"
             :key="item.id">
@@ -74,9 +74,12 @@
                 <div v-if="item.price === item.origin_price">NT$ {{ item.origin_price }}</div>
                 <div v-if="item.price !== item.origin_price">
                   <del class="small text-muted">NT$ {{ item.origin_price }}</del>
-                  <div>
+                  <div class="text-danger">
                     NT$ {{ item.price }}
-                      <span class="text-danger ms-1" style="font-size: 10px;">SALE</span>
+                      <span class="text-danger border border-danger ms-1 px-1 ls"
+                        style="font-size: 10px;">
+                        SALE
+                      </span>
                   </div>
                 </div>
               </div>
