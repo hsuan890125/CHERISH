@@ -4,7 +4,7 @@
     aria-live="assertive"
     aria-atomic="true"
     ref="toast">
-    <div class="toast-header bg-info">
+    <div class="toast-header bg-info p-4">
       <span :class="`bg-${msg.style}`" class="p-2 me-2 d-inline-block"></span>
       <strong class="me-auto ls">{{ msg.title }}</strong>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
