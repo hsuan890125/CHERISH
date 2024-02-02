@@ -14,7 +14,9 @@
       </button>
       <button type="button"
         data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="1" aria-label="Slide 2"></button>
+        data-bs-slide-to="1"
+        aria-label="Slide 2">
+      </button>
       <button type="button"
         data-bs-target="#carouselExampleIndicators"
         data-bs-slide-to="2"
@@ -29,23 +31,23 @@
     <router-link to="/allProducts">
       <div class="carousel-inner">
         <div class="carousel-item active banner-image-1"  data-bs-interval="5000">
-          <div class="carousel-caption d-none d-lg-block text-start pb-7">
-            <h2 class="display-5 text-primary ls">NECKLACE</h2>
+          <div class="carousel-caption d-none d-lg-block text-start pb-5">
+            <h2 class="display-4 text-primary ls">NECKLACE</h2>
           </div>
         </div>
         <div class="carousel-item banner-image-2"  data-bs-interval="5000">
           <div class="carousel-caption d-none d-lg-block text-start pb-5">
-            <h2 class="display-5 text-light ls">BRACELET</h2>
+            <h2 class="display-4 text-light ls">BRACELET</h2>
           </div>
         </div>
         <div class="carousel-item banner-image-3"  data-bs-interval="5000">
-          <div class="carousel-caption d-none d-lg-block text-start pb-7">
-            <h2 class="display-5 text-primary ls">RING</h2>
+          <div class="carousel-caption d-none d-lg-block text-start pb-5">
+            <h2 class="display-4 text-primary ls">RING</h2>
           </div>
         </div>
         <div class="carousel-item banner-image-4"  data-bs-interval="5000">
           <div class="carousel-caption d-none d-lg-block text-start pb-5">
-            <h2 class="display-5 text-light ls">EARRING</h2>
+            <h2 class="display-4 text-light ls">EARRING</h2>
           </div>
         </div>
       </div>
