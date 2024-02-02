@@ -8,7 +8,7 @@
           <li class="list-unstyled my-3 position-relative">
             <a href="#"
               class="link-primary text-decoration-none"
-              @click.prevent="categoryItem = ''">
+              @click.prevent="categoryItem = '', updateCategory('')">
               <span class="list-hover stretched-link"
                 :class="{ active: categoryItem === ''}"
               >— </span>ALL
@@ -17,7 +17,7 @@
           <li class="list-unstyled my-3 position-relative">
             <a href="#"
               class="link-primary text-decoration-none"
-              @click.prevent="categoryItem = '戒指'">
+              @click.prevent="categoryItem = '戒指', updateCategory('戒指')">
               <span class="list-hover stretched-link"
                 :class="{ active: categoryItem === '戒指'}"
               >— </span>RING
@@ -26,7 +26,7 @@
           <li class="list-unstyled my-3 position-relative">
             <a href="#"
               class="link-primary text-decoration-none"
-              @click.prevent="categoryItem = '耳環'">
+              @click.prevent="categoryItem = '耳環', updateCategory('耳環')">
               <span class="list-hover stretched-link"
                 :class="{ active: categoryItem === '耳環'}"
               >— </span>EARRING
@@ -35,7 +35,7 @@
           <li class="list-unstyled my-3 position-relative">
             <a href="#"
               class="link-primary text-decoration-none"
-              @click.prevent="categoryItem = '手鍊'">
+              @click.prevent="categoryItem = '手鍊', updateCategory('手鍊')">
               <span class="list-hover stretched-link"
                 :class="{ active: categoryItem === '手鍊'}"
               >— </span>BRACELET
@@ -44,7 +44,7 @@
           <li class="list-unstyled my-3 position-relative">
             <a href="#"
               class="link-primary text-decoration-none"
-              @click.prevent="categoryItem = '項鍊'">
+              @click.prevent="categoryItem = '項鍊', updateCategory('項鍊')">
               <span class="list-hover stretched-link"
                 :class="{ active: categoryItem === '項鍊'}"
               >— </span>NECKLACE
@@ -55,7 +55,7 @@
       <div class="col-lg-10">
         <div class="row row-cols-2 row-cols-lg-5 mt-lg-5">
           <div class="col px-2 mb-3"
-            v-for="item in productsFilter[pagination.current_page-1]"
+            v-for="item in productsFilter"
             :key="item.id">
             <div class="card border-0 h-100 cardHover" @click="getProduct(item.id)">
               <div class="imageHover">
@@ -85,7 +85,7 @@
         </div>
       </div>
     </div>
-    <Pagination :pages="pagination" @emitPages="getProducts"/>
+    <Pagination :pages="pagination" @emitPages="getAllProducts"/>
   </div>
 </template>
 
@@ -96,80 +96,85 @@ export default {
   data() {
     return {
       products: [],
-      allProducts: [], // 全部商品
       categoryItem: '', // 商品類型
-      pagination: {}, // 分頁資訊
+      pagination: '', // 分頁資訊
       isLoading: false,
-
     };
   },
   components: {
     Pagination,
   },
   methods: {
-    getProducts(page = 1) { // 取得各頁商品列表
-      this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/?page=${page}`;
-      this.$http.get(api)
-        .then((res) => {
-          this.products = res.data.products;
-          this.pagination = res.data.pagination;
-          this.isLoading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    getAllProducts() { // 取得所有商品列表
+    getAllProducts(page = 1) { // 取得商品列表
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
       this.$http.get(api)
         .then((res) => {
-          if (res.data.success) {
-            this.allProducts = res.data.products;
+          if (!res.data.success) {
+            this.isLoading = false;
+            return;
+          }
+          this.products = res.data.products;
+          const { categoryItem } = this.$route.params;
+          if (categoryItem) {
+            this.categoryItem = categoryItem;
+          }
+          if (this.categoryItem !== '') {
+            this.pagination = {};
+          } else {
+            this.setPagination(page);
           }
           this.isLoading = false;
         })
         .catch((err) => {
           console.log(err);
+          this.isLoading = false;
         });
+    },
+    setPagination(page = 1) { // 頁碼
+      const perPage = 10;
+      this.pagination = {
+        total_pages: Math.ceil(this.products.length / perPage),
+        current_page: page,
+        has_pre: page !== 1,
+        has_next: false,
+        category: null,
+      };
+      if (this.pagination.current_page >= this.pagination.total_pages) {
+        this.pagination.current_page = this.pagination.total_pages;
+        this.pagination.has_next = false;
+      } else {
+        this.pagination.has_next = true;
+      }
+      const minPage = (this.pagination.current_page * perPage) - perPage;
+      const maxPage = (this.pagination.current_page * perPage);
+      this.products = this.products.slice(minPage, maxPage);
+    },
+    updateCategory(category) { // 更改路由
+      this.$router.push({
+        name: 'allProducts',
+        params: {
+          categoryItem: category,
+        },
+      });
     },
     getProduct(id) { // 進入商品單一頁面
       this.$router.push(`/product/${id}`);
     },
-    computeFilterResult() { // 商品類型篩選 & 頁數
-      const tempData = this.allProducts.filter((i) => i.category.match(this.categoryItem));
-      const filterResult = [];
-      const totalPages = tempData.length % 10 === 0
-        ? parseInt(tempData.length / 10, 10)
-        : parseInt(tempData.length / 10, 10) + 1;
-
-      let currentPage = this.pagination.current_page;
-      if (currentPage > totalPages) {
-        currentPage = 1;
+  },
+  watch: {
+    categoryItem(newValue, preValue) {
+      if (newValue === '' || preValue === '') {
+        this.getAllProducts();
       }
-
-      tempData.forEach((item, i) => {
-        if (i % 10 === 0) {
-          filterResult.push([]);
-        }
-        const pageNum = parseInt(i / 10, 10);
-        if (!filterResult[pageNum]) {
-          filterResult[pageNum] = [];
-        }
-        filterResult[pageNum].push(item);
-      });
-
-      return filterResult;
     },
   },
   computed: {
     productsFilter() {
-      return this.computeFilterResult();
+      return this.products.filter((product) => product.category.match(this.categoryItem));
     },
   },
   created() {
-    this.getProducts();
     this.getAllProducts();
   },
 };
