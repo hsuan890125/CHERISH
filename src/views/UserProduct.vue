@@ -16,15 +16,15 @@
         </ol>
       </nav>
     </div>
-    <div class="row row-cols-1 row-cols-lg-2 g-4">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
       <!-- 商品照片 -->
       <div class="col-lg-5" style="height: 600px; overflow:hidden;">
         <img :src="product.imageUrl" alt="productImage" class="img-fluid mb-3"
           style="object-fit: cover;">
       </div>
-      <!-- 商品名稱 & 價格 -->
+      <!-- 商品名稱 -->
       <div class="col-lg-6">
-        <div class="d-flex justify-content-between text-primary">
+        <div class="d-flex justify-content-between text-primary mb-3">
           <div class="d-flex">
             <h2 class="ls mb-0">{{ product.title }}</h2>
             <p class="text-danger ms-2 ls"
@@ -32,24 +32,25 @@
               SALE
             </p>
           </div>
-          <div class="d-flex align-items-end">
-            <div class="h4 mb-0" v-if="product.price === product.origin_price">
-              NT$ {{ product.origin_price }}
-            </div>
-            <del class="h5 text-muted me-3 mb-0" v-if="product.price !== product.origin_price">
-              NT$ {{ product.origin_price }}
-            </del>
-            <div class="h4 text-danger mb-0" v-if="product.price !== product.origin_price">
-              NT$ {{ product.price }}
-            </div>
-          </div>
         </div>
-        <hr>
         <!-- 產品說明 -->
         <div class="text-muted lh-lg ls">{{ product.content }}</div>
         <hr>
+        <!-- 價格 -->
+        <div class="d-flex align-items-end">
+          <div class="h4 mb-0" v-if="product.price === product.origin_price">
+            NT$ {{ product.origin_price }}
+          </div>
+          <del class="h5 text-muted me-3 mb-0" v-if="product.price !== product.origin_price">
+            NT$ {{ product.origin_price }}
+          </del>
+          <div class="h4 text-danger mb-0" v-if="product.price !== product.origin_price">
+            NT$ {{ product.price }}
+          </div>
+        </div>
+        <hr>
         <!-- 產品規格 -->
-        <div class="ls">
+        <div class="ls mb-4">
           <p class="text-muted">
             <span class="text-primary">規格｜</span>
               {{ product.description }}
@@ -67,8 +68,7 @@
               超商取貨、宅配
           </p>
         </div>
-        <hr>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mb-4">
           <!-- 數量 -->
           <form class="d-flex flex-column text-primary border-bottom border-primary">
             <label for="productNum" class="form-label fs-4 ls">數量</label>
@@ -98,17 +98,18 @@
             </button>
           </div>
         </div>
-        <hr>
-        <!-- 加入購物車 & 立即購買 -->
-        <button type="button" class="btn btn-outline-primary w-100"
-          :disabled="this.status.loadingItem === product.id"
-          @click.prevent="addToCart(product.id)">
-          加入購物車
-        </button>
-        <button type="button" class="btn btn-outline-primary w-100 mt-3"
-          @click="goToCart(product.id)">
-          立即購買
-        </button>
+        <!-- 立即購買 & 加入購物車 -->
+        <div class="d-flex">
+          <button type="button" class="btn btn-primary w-50 py-2 me-3"
+            @click="goToCart(product.id)">
+            立即購買
+          </button>
+          <button type="button" class="btn btn-outline-primary w-50 py-2"
+            :disabled="this.status.loadingItem === product.id"
+            @click.prevent="addToCart(product.id)">
+            加入購物車
+          </button>
+        </div>
       </div>
     </div>
     <!-- others -->
