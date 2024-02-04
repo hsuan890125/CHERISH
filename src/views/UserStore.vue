@@ -1,14 +1,14 @@
 <!-- eslint-disable vuejs-accessibility/label-has-for -->
 <template>
   <div class="container">
-    <div class="row row-cols-1 row-cols-lg-2 mt-6 mt-lg-7">
+    <div class="row row-cols-1 row-cols-lg-2 mt-6 mt-lg-7 g-5 align-items-center">
       <!-- image -->
       <div class="col">
-        <div class="store-image mt-lg-5"></div>
+        <div class="store-image"></div>
       </div>
       <!-- store imformation -->
       <div class="col">
-        <form class="mt-5">
+        <form>
           <div class="mb-4">
             <label class="form-label">ADDRESS</label>
             <p class="form-control text-secondary ls">404 台中市北區一中街xxx號 / 一中商圈內</p>
@@ -21,7 +21,7 @@
             <label class="form-label">OPENING HOURS</label>
             <p class="form-control text-secondary ls">14:00 - 21:00 / 週一公休</p>
           </div>
-          <div class="mb-4">
+          <div>
             <label class="form-label">TRAFFIC</label>
             <p class="form-control text-secondary ls">公車「國立臺中科技大學站」，步行三分鐘即可到達</p>
           </div>
