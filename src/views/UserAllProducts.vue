@@ -3,7 +3,7 @@
   <Loading :active="isLoading"/>
   <div class="container mb-5 mb-lg-6">
     <div class="row row-cols-1 row-cols-lg-2 mt-6 mt-lg-7">
-      <div class="col-lg-2">
+      <div class="col-lg-3">
         <ul class="mb-5 pd-menu">
           <li class="list-unstyled my-3 position-relative">
             <a href="#"
@@ -52,7 +52,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-lg-10">
+      <div class="col-lg-9">
         <div class="row row-cols-2 row-cols-lg-5 mt-lg-3">
           <div class="col px-2 mb-3"
             v-for="item in productsFilter"
