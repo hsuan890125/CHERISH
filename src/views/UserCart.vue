@@ -49,18 +49,6 @@
                       style="height: 150px;">
                     <div class="mt-3 mt-md-0" style="width: 230px;">
                       <h6 class="ls">{{ item.product.title }}</h6>
-                      <div class="h6 mb-0"
-                        v-if="item.product.price === item.product.origin_price">
-                      NT$ {{ item.product.origin_price }}
-                      </div>
-                      <del class="small text-muted mb-0"
-                        v-if="item.product.price !== item.product.origin_price">
-                      NT$ {{ item.product.origin_price }}
-                    </del>
-                      <div class="h6 mb-0"
-                        v-if="item.product.price !== item.product.origin_price">
-                      NT$ {{ item.product.price }}
-                      </div>
                     </div>
                 </router-link>
                 <form class="d-flex flex-column text-primary border-bottom border-primary my-3"
@@ -84,7 +72,7 @@
                     </div>
                 </form>
                 <p class="mt-3 mt-md-0 ms-md-5">
-                  <span class="text-muted pb-5" style="font-size: 10px;">TOTAL：</span>
+                  <span class="small text-muted pb-5 ls">總計：</span>
                   <br class="d-none d-md-block">NT$ {{ $filters.currency(item.total) }}
                 </p>
               </td>
@@ -101,8 +89,8 @@
       <div class="col-lg-4">
         <div class="border border-primary p-3 text-primary">
           <div class="d-flex align-items-end">
-              <p class="ls">商品總計</p>
-              <p class="fs-4 ms-4">NT$ {{ $filters.currency(carts.total) }}</p>
+            <p class="ls">商品總計</p>
+            <p class="fs-4 ms-4">NT$ {{ $filters.currency(carts.total) }}</p>
           </div>
           <div class="input-group my-3">
             <input type="text"
@@ -114,15 +102,17 @@
             </button>
           </div>
         <hr>
-          <p class="ls">應付金額</p>
-          <!-- 原價 -->
-          <div v-if="carts.final_total == carts.total" class="fs-2">
-            NT$ {{ $filters.currency(carts.total) }}
-          </div>
-          <!-- 折價 -->
-          <div v-else class="fs-2">
-            NT$ {{ $filters.currency(carts.final_total) }}
-            <span class="text-danger ls" style="font-size: 12px;">已套用優惠券</span>
+          <div class="d-flex align-items-end">
+            <p class="ls">應付金額</p>
+            <!-- 原價 -->
+            <p v-if="carts.final_total == carts.total" class="fs-2 ms-4">
+              NT$ {{ $filters.currency(carts.total) }}
+            </p>
+            <!-- 折價 -->
+            <p v-else class="fs-2 ms-4">
+              NT$ {{ $filters.currency(carts.final_total) }}
+              <span class="text-danger ls" style="font-size: 12px;">已打折</span>
+            </p>
           </div>
           <router-link to="/order" type="button" class="btn btn-outline-primary w-100 mt-3">
             填寫資料 <i class="bi bi-arrow-right"></i>
