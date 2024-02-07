@@ -11,7 +11,7 @@
         </router-link>
         <button type="button"
           id="dropdownMenuButton1"
-          class="nav-favorite text-primary nav-bg fs-4 border-0 p-2"
+          class="nav-favorite text-primary nav-bg fs-4 border-0 p-2 me-2"
           data-bs-toggle="offcanvas"
           data-bs-target="#userFavoritesModal"
           aria-controls="offcanvasWithBackdrop">
