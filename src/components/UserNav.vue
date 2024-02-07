@@ -6,19 +6,19 @@
       </router-link>
       <!-- mobile 出現的 icon btn -->
       <div class="d-flex d-lg-none">
-        <router-link to="/cart" class="nav-cart text-primary nav-bg fs-3 border-0 mx-2">
+        <router-link to="/cart" class="nav-cart text-primary nav-bg fs-4 border-0 p-2 me-2">
           <i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span>
         </router-link>
         <button type="button"
           id="dropdownMenuButton1"
-          class="nav-favorite text-primary nav-bg fs-3 border-0 mx-2"
+          class="nav-favorite text-primary nav-bg fs-4 border-0 p-2 me-2"
           data-bs-toggle="offcanvas"
           data-bs-target="#userFavoritesModal"
           aria-controls="offcanvasWithBackdrop">
           <i class="bi bi-suit-heart"></i>
           <span  v-if=" favoriteItems.length" >{{ favoriteItems.length }}</span>
         </button>
-        <button class="text-primary fs-3 border-0 nav-bg"
+        <button class="text-primary fs-4 border-0 nav-bg"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#routerOffcanvas"
@@ -44,11 +44,11 @@
       </div>
       <!-- desktop 出現的 icon btn -->
       <div class="d-none d-lg-block">
-        <router-link to="/cart" class="nav-cart text-primary nav-bg fs-3 border-0 mx-1">
+        <router-link to="/cart" class="nav-cart text-primary nav-bg fs-4 border-0 p-2 me-2">
           <i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span>
         </router-link>
         <button type="button"
-          class="nav-favorite text-primary nav-bg fs-3 border-0 mx-1"
+          class="nav-favorite text-primary nav-bg fs-4 border-0 p-2"
           data-bs-toggle="offcanvas"
           data-bs-target="#userFavoritesModal"
           aria-controls="offcanvasWithBackdrop">
