@@ -117,7 +117,7 @@
             </p>
           </div>
           <div v-if="!order.is_paid" class="text-end">
-            <button type="button" class="btn btn-outline-primary w-100">
+            <button type="submit" class="btn btn-outline-primary w-100 py-2">
               結帳付款 <i class="bi bi-arrow-right"></i>
             </button>
           </div>

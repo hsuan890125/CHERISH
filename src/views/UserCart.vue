@@ -114,7 +114,7 @@
               <span class="text-danger ls" style="font-size: 12px;">已打折</span>
             </p>
           </div>
-          <router-link to="/order" type="button" class="btn btn-outline-primary w-100 mt-3">
+          <router-link to="/order" type="button" class="btn btn-outline-primary w-100 mt-3 py-2">
             填寫資料 <i class="bi bi-arrow-right"></i>
           </router-link>
         </div>

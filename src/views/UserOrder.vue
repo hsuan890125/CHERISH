@@ -66,66 +66,68 @@
           </tbody>
         </table>
         <!-- 回購物車 -->
-        <router-link to="/cart" class="link-primary fs-4 text-decoration-none link-hover ls">
+        <router-link to="/cart" class="link-primary text-decoration-none link-hover ls">
           <i class="bi bi-arrow-left"></i> 回上頁
         </router-link>
       </div>
       <!-- 訂購人表單 -->
       <div class="col-lg-7">
-        <Form class="mt-5 mt-lg-0" v-slot="{ errors }" @submit="createOrder">
-          <div class="mb-4">
-            <label for="buyerName" class="form-label">NAME *</label>
-            <Field id="buyerName" name="姓名" type="text"
-              class="form-control border-bottom border-primary"
-              :class="{ 'is-invalid': errors['姓名'] }"
-              placeholder="請輸入收件人姓名" rules="required"
-              v-model="form.user.name"></Field>
-            <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
-          </div>
+        <Form class="mt-5 mt-lg-0" @submit="createOrder">
+          <template v-slot="{ errors }">
+            <div class="mb-4">
+              <label for="buyerName" class="form-label">NAME *</label>
+              <field id="buyerName" name="姓名" type="text"
+                class="form-control border-bottom border-primary"
+                :class="{ 'is-invalid': errors['姓名'] }"
+                placeholder="請輸入收件人姓名" rules="required"
+                v-model="form.user.name"></field>
+              <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
+            </div>
 
-          <div class="mb-4">
-            <label for="buyerEmail" class="form-label">EMAIL *</label>
-            <Field id="buyerEmail" name="email" type="email"
-              class="form-control border-bottom border-primary"
-              :class="{ 'is-invalid': errors['email'] }"
-              placeholder="請輸入收件人 Email" rules="email|required"
-              v-model="form.user.email"></Field>
-            <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
-          </div>
+            <div class="mb-4">
+              <label for="buyerEmail" class="form-label">EMAIL *</label>
+              <field id="buyerEmail" name="email" type="email"
+                class="form-control border-bottom border-primary"
+                :class="{ 'is-invalid': errors['email'] }"
+                placeholder="請輸入收件人 Email" rules="email|required"
+                v-model="form.user.email"></field>
+              <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
+            </div>
 
-          <div class="mb-4">
-            <label for="buyerTel" class="form-label">TEL *</label>
-            <Field id="buyerTel" name="電話" type="tel"
-               class="form-control border-bottom border-primary"
-              :class="{ 'is-invalid': errors['電話'] }"
-              placeholder="請輸入收件人手機" :rules="isPhoneNumber"
-              v-model="form.user.tel"></Field>
-            <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
-          </div>
+            <div class="mb-4">
+              <label for="buyerTel" class="form-label">TEL *</label>
+              <field id="buyerTel" name="電話" type="tel"
+                class="form-control border-bottom border-primary"
+                :class="{ 'is-invalid': errors['電話'] }"
+                placeholder="請輸入收件人手機" :rules="isPhoneNumber"
+                v-model="form.user.tel"></field>
+              <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
+            </div>
 
-          <div class="mb-4">
-            <label for="buyerAddress" class="form-label">ADDRESS *</label>
-            <Field id="buyerAddress" name="地址" type="text"
-              class="form-control border-bottom border-primary"
-              :class="{ 'is-invalid': errors['地址'] }"
-              placeholder="請輸入收件地址" rules="required"
-              v-model="form.user.address"></Field>
-            <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
-          </div>
+            <div class="mb-4">
+              <label for="buyerAddress" class="form-label">ADDRESS *</label>
+              <field id="buyerAddress" name="地址" type="text"
+                class="form-control border-bottom border-primary"
+                :class="{ 'is-invalid': errors['地址'] }"
+                placeholder="請輸入收件地址" rules="required"
+                v-model="form.user.address"></field>
+              <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
+            </div>
 
-          <div class="mb-4">
-            <label for="buyerMessage" class="form-label">REMARK</label>
-            <textarea name="remark"
-              id="buyerMessage"
-              class="form-control border border-primary"
-              v-model="form.message" style="height: 150px;">
-            </textarea>
-          </div>
-          <div class="text-end">
-            <button type="button" class="btn btn-outline-primary w-100">
-              送出訂單 <i class="bi bi-arrow-right"></i>
-            </button>
-          </div>
+            <div class="mb-4">
+              <label for="buyerMessage" class="form-label">REMARK</label>
+              <textarea name="remark"
+                id="buyerMessage"
+                class="form-control border border-primary"
+                v-model="form.message" style="height: 150px;">
+              </textarea>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-outline-primary w-100 py-2">
+                送出訂單 <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </template>
         </Form>
       </div>
     </div>
