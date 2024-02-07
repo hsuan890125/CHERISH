@@ -12,7 +12,7 @@
           </button>
         </div>
         <div class="modal-body text-primary">
-          是否刪除 <strong class="text-danger">{{ item.title }}</strong> （刪除後將無法恢復）。
+          確定刪除 <strong class="text-danger">{{ item.title }}</strong> ？（刪除後將無法恢復）
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary"
