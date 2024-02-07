@@ -141,8 +141,16 @@
                 NT$ {{ item.price }}
               </div>
             </div>
+            <!-- Cart -->
             <button type="button"
-              class="btn btn-lg ms-3"
+              class="btn py-2"
+              data-bs-dismiss="offcanvas"
+              @click.prevent="addToCart(item.id)">
+              <i class="bi bi-cart-plus fs-4"></i>
+            </button>
+            <!-- X -->
+            <button type="button"
+              class="btn btn-lg"
               data-bs-dismiss="offcanvas"
               @click.stop.prevent="delFavoriteItems(item)">
               <i class="bi bi-x-lg"></i>
@@ -202,11 +210,26 @@ export default {
           console.log(err);
         });
     },
+    addToCart(id, qty = 1) { // 收藏列表商品加入購物車
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      const cart = {
+        product_id: id,
+        qty,
+      };
+      this.$http.post(api, { data: cart })
+        .then((res) => {
+          emitter.emit('updateCart'); // 與 navCart 同步更新
+          this.$httpMessageState(res, '加入購物車'); // toast
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     delFavoriteItems(item) { // 刪除收藏商品
       this.favoriteItems.splice(this.favoriteItems.indexOf(item.id), 1);
       emitter.emit('push-message', { // toast
         style: 'success',
-        title: '已刪除商品',
+        title: '已從收藏清單中移除',
       });
       handleFavorites.saveLocal(this.favoriteItems);
       emitter.emit('updateFavorite'); // 與 toggleFavorite 同步更新
