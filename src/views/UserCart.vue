@@ -26,16 +26,18 @@
     <div class="row" v-if="carts.total !== 0">
       <!-- 購物清單 -->
       <div class="col-lg-8">
-        <button type="button"
-          class="btn btn-outline-danger mb-3"
-          @click.prevent="romoveAllCartItem">清空購物車
-           <i class="bi bi-cart-x"></i>
-        </button>
+        <div class="text-end">
+          <button type="button"
+            class="btn btn-outline-danger mb-3"
+            @click.prevent="openDelCartModal">清空購物車
+            <i class="bi bi-cart-x"></i>
+          </button>
+        </div>
         <table class="table border-primary table-hover">
           <thead>
-              <tr>
-                  <th colspan="2" class="ls">購物車</th>
-              </tr>
+            <tr>
+              <th colspan="2" class="ls">購物車</th>
+            </tr>
           </thead>
           <tbody>
             <tr v-for="item in carts.carts" :key="item.id">
@@ -87,7 +89,7 @@
                 </p>
               </td>
               <td>
-                <button type="button" class="btn" @click.prevent="removeCartItem(item.id)">
+                <button type="button" class="btn" @click.prevent="openDelCartModal(item)">
                     <i class="bi bi-x-lg"></i>
                 </button>
               </td>
@@ -138,10 +140,12 @@
         </router-link>
     </div>
   </div>
+  <DelModal :item="tempCart" ref="delModal" @del-item="removeCartItem"/>
 </template>
 
 <script>
 import emitter from '@/methods/emitter';
+import DelModal from '@/components/DelModal.vue';
 
 export default {
   data() {
@@ -152,7 +156,11 @@ export default {
       },
       coupon_code: '',
       isLoading: false,
+      tempCart: {},
     };
+  },
+  components: {
+    DelModal,
   },
   methods: {
     getCarts() { // 取得購物車資料
@@ -189,13 +197,18 @@ export default {
           console.log(err);
         });
     },
-    removeCartItem(id) { // 移除商品
+    removeCartItem() { // 移除商品
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
+      let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/carts`;
+      if (this.tempCart.id) {
+        api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${this.tempCart.id}`;
+      }
       this.$http.delete(api)
         .then((res) => {
           this.$httpMessageState(res, '移除品項'); // toast
           emitter.emit('updateCart'); // 與 navCart 同步更新
+          const delComponent = this.$refs.delModal;
+          delComponent.hideModal();
           this.status.loadingItem = '';
           this.getCarts();
           this.isLoading = false;
@@ -204,19 +217,10 @@ export default {
           console.log(err);
         });
     },
-    romoveAllCartItem() { // 移除全部商品
-      this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/carts`;
-      this.$http.delete(api)
-        .then((res) => {
-          this.$httpMessageState(res, '移除全部品項'); // toast
-          emitter.emit('updateCart'); // 與 navCart 同步更新
-          this.status.loadingItem = '';
-          this.isLoading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    openDelCartModal(item) { // 開啟刪除商品 Modal
+      this.tempCart = { ...item };
+      const delComponent = this.$refs.delModal;
+      delComponent.showModal();
     },
     addCouponCode() { // 新增優惠券
       this.isLoading = true;
