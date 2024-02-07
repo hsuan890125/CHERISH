@@ -7,9 +7,8 @@
   <div class="position-fixed end-0 bottom-0 pe-3 pe-lg-5" v-if="isShow" style="z-index: 100;">
     <button type="button"
       class="btn p-3"
-      @click.prevent="scrollToTop"
-      style="background-color: #B1AF98;">
-      <i class="bi bi-arrow-up fs-3 text-light"></i>
+      @click.prevent="scrollToTop">
+      <i class="bi bi-caret-up-fill fs-3 text-primary"></i>
     </button>
   </div>
 </template>
