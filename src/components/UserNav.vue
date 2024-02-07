@@ -11,7 +11,7 @@
         </router-link>
         <button type="button"
           id="dropdownMenuButton1"
-          class="nav-favorite text-primary nav-bg fs-4 border-0 p-2 me-2"
+          class="nav-favorite text-primary nav-bg fs-4 border-0 p-2"
           data-bs-toggle="offcanvas"
           data-bs-target="#userFavoritesModal"
           aria-controls="offcanvasWithBackdrop">
@@ -29,15 +29,15 @@
       <!-- desktop btn router -->
       <div class="collapse navbar-collapse" id="navbarText" ref="navbarCollapse">
         <div class="navbar-nav mx-auto ls">
-          <router-link to="/" class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">
+          <router-link to="/" class="nav-link link-primary text-center mx-lg-3 link-hover">
             HOME
           </router-link>
           <router-link to="/allProducts"
-            class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">
+            class="nav-link link-primary text-center mx-lg-3 link-hover">
             PRODUCTS
           </router-link>
           <router-link to="/store"
-            class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">
+            class="nav-link link-primary text-center mx-lg-3 link-hover">
             STORE
           </router-link>
         </div>
