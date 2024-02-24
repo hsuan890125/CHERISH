@@ -29,21 +29,21 @@
           </td>
           <td>
             <!-- 啟用 -->
-            <span class="text-primary" v-if="item.is_enabled"><i class="bi bi-check2"></i></span>
+            <span class="text-primary" v-if="item.is_enabled"><i class="bi bi-check2"/></span>
             <!-- 未啟用 -->
-            <span class="text-muted" v-else><i class="bi bi-x-lg"></i></span>
+            <span class="text-muted" v-else><i class="bi bi-x-lg"/></span>
           </td>
           <td>
             <div class="btn-group">
                 <button type="button"
                   class="btn btn-outline-primary btn-sm rounded-0"
                   @click.prevent="openModal(false, item)">
-                  編輯 <i class="bi bi-pencil-square"></i>
+                  編輯 <i class="bi bi-pencil-square"/>
                 </button>
                 <button type="button"
                   class="btn btn-outline-danger btn-sm rounded-0"
                   @click.prevent="openDelProductModal(item)">
-                  刪除 <i class="bi bi-x-square"></i>
+                  刪除 <i class="bi bi-x-square"/>
                 </button>
             </div>
           </td>

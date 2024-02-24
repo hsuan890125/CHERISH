@@ -7,7 +7,7 @@
       <!-- mobile 出現的 icon btn -->
       <div class="d-flex d-lg-none">
         <router-link to="/cart" class="nav-cart text-primary nav-bg fs-4 border-0 p-2 me-2">
-          <i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span>
+          <i class="bi bi-cart3"/><span v-if="carts.length">{{ cartsNum }}</span>
         </router-link>
         <button type="button"
           id="dropdownMenuButton1"
@@ -15,7 +15,7 @@
           data-bs-toggle="offcanvas"
           data-bs-target="#userFavoritesModal"
           aria-controls="offcanvasWithBackdrop">
-          <i class="bi bi-suit-heart"></i>
+          <i class="bi bi-suit-heart"/>
           <span  v-if=" favoriteItems.length" >{{ favoriteItems.length }}</span>
         </button>
         <button class="text-primary fs-4 border-0 nav-bg"
@@ -23,7 +23,7 @@
           data-bs-toggle="offcanvas"
           data-bs-target="#routerOffcanvas"
           aria-controls="navbarText">
-          <i class="bi bi-list"></i>
+          <i class="bi bi-list"/>
         </button>
       </div>
       <!-- desktop btn router -->
@@ -45,14 +45,14 @@
       <!-- desktop 出現的 icon btn -->
       <div class="d-none d-lg-block">
         <router-link to="/cart" class="nav-cart text-primary nav-bg fs-4 border-0 p-2 me-2">
-          <i class="bi bi-cart3"></i><span v-if="carts.length">{{ cartsNum }}</span>
+          <i class="bi bi-cart3"/><span v-if="carts.length">{{ cartsNum }}</span>
         </router-link>
         <button type="button"
           class="nav-favorite text-primary nav-bg fs-4 border-0 p-2"
           data-bs-toggle="offcanvas"
           data-bs-target="#userFavoritesModal"
           aria-controls="offcanvasWithBackdrop">
-          <i class="bi bi-suit-heart"></i>
+          <i class="bi bi-suit-heart"/>
           <span  v-if=" favoriteItems.length" >{{ favoriteItems.length }}</span>
         </button>
       </div>
@@ -146,14 +146,14 @@
               class="btn py-2"
               data-bs-dismiss="offcanvas"
               @click.prevent="addToCart(item.id)">
-              <i class="bi bi-cart-plus fs-4"></i>
+              <i class="bi bi-cart-plus fs-4"/>
             </button>
             <!-- X -->
             <button type="button"
               class="btn btn-lg"
               data-bs-dismiss="offcanvas"
               @click.stop.prevent="delFavoriteItems(item)">
-              <i class="bi bi-x-lg"></i>
+              <i class="bi bi-x-lg"/>
             </button>
           </router-link>
         </li>

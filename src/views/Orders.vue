@@ -46,12 +46,12 @@
               <button type="button"
                 class="btn btn-outline-primary btn-sm rounded-0"
                 @click.prevent="openModal(item)">
-                檢視 <i class="bi bi-eye"></i>
+                檢視 <i class="bi bi-eye"/>
               </button>
               <button type="button"
                 class="btn btn-outline-danger btn-sm rounded-0"
                 @click.prevent="openDelOrderModal(item)">
-                刪除 <i class="bi bi-x-square"></i>
+                刪除 <i class="bi bi-x-square"/>
               </button>
             </div>
           </td>

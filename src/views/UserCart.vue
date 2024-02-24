@@ -6,17 +6,17 @@
       <div class="col-lg-10">
         <div class="d-flex justify-content-evenly align-items-center my-5">
           <div class="d-flex flex-column align-items-center bg-primary text-warning p-2">
-              <i class="bi bi-cart-check fs-5 pb-2"></i>
+              <i class="bi bi-cart-check fs-5 pb-2"/>
               <span class="border-top border-warning pt-2 ls">確認清單</span>
           </div>
           >>>
           <div class="d-flex flex-column align-items-center border border-primary p-2">
-              <i class="bi bi-card-list fs-5 pb-2"></i>
+              <i class="bi bi-card-list fs-5 pb-2"/>
               <span class="border-top border-primary pt-2 ls">填寫資料</span>
           </div>
           >>>
           <div class="d-flex flex-column align-items-center border border-primary p-2">
-              <i class="bi bi-coin fs-5 pb-2"></i>
+              <i class="bi bi-coin fs-5 pb-2"/>
               <span class="border-top border-primary pt-2 ls">結帳付款</span>
           </div>
         </div>
@@ -30,7 +30,7 @@
           <button type="button"
             class="btn btn-outline-danger mb-3"
             @click.prevent="openDelCartModal">清空購物車
-            <i class="bi bi-cart-x"></i>
+            <i class="bi bi-cart-x"/>
           </button>
         </div>
         <table class="table border-primary table-hover">
@@ -78,7 +78,7 @@
               </td>
               <td>
                 <button type="button" class="btn" @click.prevent="openDelCartModal(item)">
-                    <i class="bi bi-x-lg"></i>
+                    <i class="bi bi-x-lg"/>
                 </button>
               </td>
             </tr>
@@ -115,7 +115,7 @@
             </p>
           </div>
           <router-link to="/order" type="button" class="btn btn-outline-primary w-100 mt-3 py-2">
-            填寫資料 <i class="bi bi-arrow-right"></i>
+            填寫資料 <i class="bi bi-arrow-right"/>
           </router-link>
         </div>
       </div>
@@ -126,7 +126,7 @@
         <router-link to="/allProducts"
           type="button"
           class="btn btn-outline-primary btn-lg rounded-0 mt-3">
-          去逛逛商店 <i class="bi bi-arrow-right"></i>
+          去逛逛商店 <i class="bi bi-arrow-right"/>
         </router-link>
     </div>
   </div>

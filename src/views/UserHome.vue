@@ -72,7 +72,7 @@
       </div>
       <div class="col">
         <div class="ls lh-lg animated" :class="{ 'fadeIn': showFadeIn }" ref="fadeInref">
-          <p class="mb-0">歡迎光臨 CHERISH <i class="bi bi-balloon-heart"></i>！</p>
+          <p class="mb-0">歡迎光臨 CHERISH <i class="bi bi-balloon-heart"/>！</p>
           <p class="mb-0">
           我們的店舖匯聚了獨特而時尚的飾品，
           為您帶來令人驚嘆的風采。
@@ -97,7 +97,7 @@
       - 輸入
       <span id="couponText" class="fw-bold">coupon999</span>
       <button type="button" class="link-primary bg-info border-0" @click.prevent="couponCopy">
-        <i class="bi bi-copy"></i>
+        <i class="bi bi-copy"/>
       </button>
       即享九折優惠 -
     </p>
@@ -116,31 +116,31 @@
     <div class="col home-image-hover">
       <div class="home-image-1 image-content d-flex justify-content-center align-items-center"
         @click="updateCategory('耳環')">
-        <p class="text-light fs-1 ls">EARRING <i class="bi bi-arrow-right"></i></p>
+        <p class="text-light fs-1 ls">EARRING <i class="bi bi-arrow-right"/></p>
       </div>
     </div>
     <div class="col home-image-hover">
       <div class="home-image-2 image-content d-flex justify-content-center align-items-center"
         @click="updateCategory('戒指')">
-        <p class="text-light fs-1 ls">RING <i class="bi bi-arrow-right"></i></p>
+        <p class="text-light fs-1 ls">RING <i class="bi bi-arrow-right"/></p>
       </div>
     </div>
     <div class="col home-image-hover">
       <div class="home-image-3 image-content d-flex justify-content-center align-items-center"
         @click="updateCategory('手鍊')">
-        <p class="text-light fs-1 ls">BRACELET <i class="bi bi-arrow-right"></i></p>
+        <p class="text-light fs-1 ls">BRACELET <i class="bi bi-arrow-right"/></p>
       </div>
     </div>
     <div class="col home-image-hover">
       <div class="home-image-4 image-content d-flex justify-content-center align-items-center"
         @click="updateCategory('項鍊')">
-        <p class="text-light fs-1 ls">NECKLACE <i class="bi bi-arrow-right"></i></p>
+        <p class="text-light fs-1 ls">NECKLACE <i class="bi bi-arrow-right"/></p>
       </div>
     </div>
   </div>
   <div class="container text-end mt-4 mb-5 mb-lg-6">
     <router-link to="/allProducts" class="link-primary fs-2 text-decoration-none link-hover ls">
-      MORE <i class="bi bi-arrow-right"></i>
+      MORE <i class="bi bi-arrow-right"/>
     </router-link>
   </div>
 </template>

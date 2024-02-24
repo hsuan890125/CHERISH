@@ -8,7 +8,7 @@
     <button type="button"
       class="btn p-3"
       @click.prevent="scrollToTop">
-      <i class="bi bi-caret-up-fill fs-3 text-primary"></i>
+      <i class="bi bi-caret-up-fill fs-3 text-primary"/>
     </button>
   </div>
 </template>

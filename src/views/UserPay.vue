@@ -6,27 +6,27 @@
       <div class="col-lg-10">
         <div class="d-flex justify-content-evenly align-items-center my-5">
           <div class="d-flex flex-column align-items-center border border-primary p-2">
-            <i class="bi bi-cart-check fs-5 pb-2"></i>
+            <i class="bi bi-cart-check fs-5 pb-2"/>
             <span class="border-top border-primary pt-2 ls">確認清單</span>
           </div>
           >>>
           <div class="d-flex flex-column align-items-center border border-primary p-2">
-            <i class="bi bi-card-list fs-5 pb-2"></i>
+            <i class="bi bi-card-list fs-5 pb-2"/>
             <span class="border-top border-primary pt-2 ls">填寫資料</span>
           </div>
           >>>
           <div class="d-flex flex-column align-items-center bg-primary text-warning p-2">
-            <i class="bi bi-coin fs-5 pb-2"></i>
+            <i class="bi bi-coin fs-5 pb-2"/>
             <span class="border-top border-warning pt-2 ls">結帳付款</span>
           </div>
         </div>
       </div>
     </div>
-    <div v-else class="text-center text-primary mb-5 mt-6 mt-lg-7">
-      <i class="bi bi-check2-circle display-3"></i>
+    <div v-else class="text-center text-primary mb-12 mt-12">
+      <i class="bi bi-check2-circle display-3"/>
       <p class="fs-4 my-4 ls">感謝您的訂購，現貨商品將於1-2天內為您寄出</p>
       <router-link to="/allProducts" type="button" class="btn btn-outline-primary px-5">
-        繼續購物 <i class="bi bi-arrow-right"></i>
+        繼續購物 <i class="bi bi-arrow-right"/>
       </router-link>
     </div>
     <div class="row">
@@ -118,7 +118,7 @@
           </div>
           <div v-if="!order.is_paid" class="text-end">
             <button type="submit" class="btn btn-outline-primary w-100 py-2">
-              結帳付款 <i class="bi bi-arrow-right"></i>
+              結帳付款 <i class="bi bi-arrow-right"/>
             </button>
           </div>
         </form>

@@ -6,17 +6,17 @@
       <div class="col-lg-10">
         <div class="d-flex justify-content-evenly align-items-center my-5">
           <div class="d-flex flex-column align-items-center border border-primary p-2">
-            <i class="bi bi-cart-check fs-5 pb-2"></i>
+            <i class="bi bi-cart-check fs-5 pb-2"/>
             <span class="border-top border-primary pt-2 ls">確認清單</span>
           </div>
           >>>
           <div class="d-flex flex-column align-items-center bg-primary text-warning p-2">
-            <i class="bi bi-card-list fs-5 pb-2"></i>
+            <i class="bi bi-card-list fs-5 pb-2"/>
             <span class="border-top border-warning pt-2 ls">填寫資料</span>
           </div>
           >>>
           <div class="d-flex flex-column align-items-center border border-primary p-2">
-            <i class="bi bi-coin fs-5 pb-2"></i>
+            <i class="bi bi-coin fs-5 pb-2"/>
             <span class="border-top border-primary pt-2 ls">結帳付款</span>
           </div>
         </div>
@@ -67,7 +67,7 @@
         </table>
         <!-- 回購物車 -->
         <router-link to="/cart" class="link-primary text-decoration-none link-hover ls">
-          <i class="bi bi-arrow-left"></i> 回上頁
+          <i class="bi bi-arrow-left"/> 回上頁
         </router-link>
       </div>
       <!-- 訂購人表單 -->
@@ -81,7 +81,7 @@
                 :class="{ 'is-invalid': errors['姓名'] }"
                 placeholder="請輸入收件人姓名" rules="required"
                 v-model="form.user.name"></field>
-              <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
+              <ErrorMessage name="姓名" class="invalid-feedback"/>
             </div>
 
             <div class="mb-4">
@@ -91,7 +91,7 @@
                 :class="{ 'is-invalid': errors['email'] }"
                 placeholder="請輸入收件人 Email" rules="email|required"
                 v-model="form.user.email"></field>
-              <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
+              <ErrorMessage name="email" class="invalid-feedback"/>
             </div>
 
             <div class="mb-4">
@@ -101,7 +101,7 @@
                 :class="{ 'is-invalid': errors['電話'] }"
                 placeholder="請輸入收件人手機" :rules="isPhoneNumber"
                 v-model="form.user.tel"></field>
-              <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
+              <ErrorMessage name="電話" class="invalid-feedback"/>
             </div>
 
             <div class="mb-4">
@@ -111,7 +111,7 @@
                 :class="{ 'is-invalid': errors['地址'] }"
                 placeholder="請輸入收件地址" rules="required"
                 v-model="form.user.address"></field>
-              <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
+              <ErrorMessage name="地址" class="invalid-feedback"/>
             </div>
 
             <div class="mb-4">
@@ -124,7 +124,7 @@
             </div>
             <div class="text-end">
               <button type="submit" class="btn btn-outline-primary w-100 py-2">
-                送出訂單 <i class="bi bi-arrow-right"></i>
+                送出訂單 <i class="bi bi-arrow-right"/>
               </button>
             </div>
           </template>

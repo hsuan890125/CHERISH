@@ -93,8 +93,8 @@
             <button type="button"
               class="text-primary bg-warning fs-3 border-0 mx-1"
               @click.prevent="toggleFavorite(product)">
-              <i class="bi bi-suit-heart-fill" v-if="favoriteItems.includes(product.id)"></i>
-              <i class="bi bi-suit-heart" v-else></i>
+              <i class="bi bi-suit-heart-fill" v-if="favoriteItems.includes(product.id)"/>
+              <i class="bi bi-suit-heart" v-else/>
             </button>
           </div>
         </div>
