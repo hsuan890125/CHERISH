@@ -196,7 +196,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
         });
     },
     getAllProducts() { // 取得所有資料並篩選出收藏商品
@@ -207,7 +207,7 @@ export default {
             .filter((product) => this.favoriteItems.includes(product.id));
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
         });
     },
     addToCart(id, qty = 1) { // 收藏列表商品加入購物車
@@ -222,7 +222,7 @@ export default {
           this.$httpMessageState(res, '加入購物車'); // toast
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
         });
     },
     delFavoriteItems(item) { // 刪除收藏商品

@@ -98,7 +98,8 @@ export default {
           this.isLoading = false;
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     openModal(item) { // 開啟檢視 modal
@@ -125,7 +126,8 @@ export default {
           this.$httpMessageState(res, '更新付款狀態');
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     delOrder() { // 刪除 order
@@ -139,7 +141,8 @@ export default {
           this.getOrders(this.currentPage);
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
   },

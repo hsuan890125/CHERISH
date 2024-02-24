@@ -74,7 +74,7 @@ export default {
           this.isLoading = false;
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
         });
     },
   },

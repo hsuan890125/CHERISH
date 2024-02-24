@@ -104,7 +104,7 @@ export default {
           this.isLoading = false;
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
         });
     },
     updateCoupon(tempCoupon) { // 更新優惠券
@@ -117,7 +117,7 @@ export default {
             this.$refs.couponModal.hideModal();
           })
           .catch((err) => {
-            console.log(err);
+            this.$httpMessageState(err, '連線錯誤，請再試一次');
           });
       } else {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`;
@@ -128,7 +128,7 @@ export default {
             this.$refs.couponModal.hideModal();
           })
           .catch((err) => {
-            console.log(err);
+            this.$httpMessageState(err, '連線錯誤，請再試一次');
           });
       }
     },
@@ -143,7 +143,7 @@ export default {
           this.getCoupons();
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
         });
     },
   },

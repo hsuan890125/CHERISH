@@ -147,12 +147,12 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.order = res.data.order;
-            console.log(res);
           }
           this.isLoading = false;
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     payOrder() { // 結帳付款
@@ -168,7 +168,8 @@ export default {
           this.isLoading = false;
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
   },

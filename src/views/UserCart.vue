@@ -161,11 +161,11 @@ export default {
           if (res.data.success) {
             this.carts = res.data.data;
             this.isLoading = false;
-            console.log(this.carts);
           }
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     updateCart(item, qty) { // 更新購物車
@@ -184,7 +184,8 @@ export default {
           this.isLoading = false;
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     removeCartItem() { // 移除商品
@@ -204,7 +205,8 @@ export default {
           this.isLoading = false;
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     openDelCartModal(item) { // 開啟刪除商品 Modal

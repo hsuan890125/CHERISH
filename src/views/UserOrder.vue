@@ -165,7 +165,8 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     createOrder() { // 訂單
@@ -183,7 +184,8 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     isPhoneNumber(value) { // 表單電話號碼驗證

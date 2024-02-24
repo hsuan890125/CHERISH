@@ -168,7 +168,8 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     otherProducts() { // others 商品
@@ -185,7 +186,8 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     addToCart(id, qty = this.productQty) { // 加入購物車
@@ -203,7 +205,7 @@ export default {
           this.productQty = 1; // 資料送出，數量回預設
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
         });
     },
     refreshQty(number) { // 數量數字加減

@@ -91,7 +91,8 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
+          this.isLoading = false;
         });
     },
     openModal(isNew, item) { // 打開 modal
@@ -127,7 +128,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
         });
     },
     // 開啟刪除 Modal
@@ -147,7 +148,7 @@ export default {
           this.getProducts();
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessageState(err, '連線錯誤，請再試一次');
         });
     },
   },
