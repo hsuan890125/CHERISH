@@ -1,20 +1,20 @@
 <template>
   <footer class="bg-info text-primary pt-5 pt-lg-6">
     <div class="container ls">
-      <!-- Store -->
+      <!-- 實體門市 -->
       <div class="row row-cols-1 row-cols-lg-2 pb-5 pb-lg-6">
         <div class="col-lg-5">
-          <h5>Store</h5>
+          <p class="ls">實體門市</p>
         </div>
         <div class="col-lg-7 mt-4 mt-lg-0">
           <p>404 台中市北區一中街xxx號 / 一中商圈內</p>
           <a href="tel:0498765432"><i class="bi bi-telephone-fill me-3"/>04-xxxxxxxx</a>
         </div>
       </div>
-      <!-- Follow Us -->
+      <!-- 追蹤我們 -->
       <div class="row row-cols-1 row-cols-lg-2 pb-5 pb-lg-6">
         <div class="col-lg-5">
-          <h5>Follow Us</h5>
+          <p class="ls">追蹤我們</p>
         </div>
         <div class="col-lg-7 mt-4 mt-lg-0">
           <a href="#" class="fs-3 me-4">

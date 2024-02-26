@@ -29,16 +29,16 @@
       <!-- desktop btn router -->
       <div class="collapse navbar-collapse" id="navbarText" ref="navbarCollapse">
         <div class="navbar-nav mx-auto ls">
-          <router-link to="/" class="nav-link link-primary text-center mx-lg-3 link-hover">
-            HOME
+          <router-link to="/" class="nav-link link-primary text-center mx-lg-3 link-hover ls">
+            首頁
           </router-link>
           <router-link to="/allProducts"
-            class="nav-link link-primary text-center mx-lg-3 link-hover">
-            PRODUCTS
+            class="nav-link link-primary text-center mx-lg-3 link-hover ls">
+            所有商品
           </router-link>
           <router-link to="/store"
-            class="nav-link link-primary text-center mx-lg-3 link-hover">
-            STORE
+            class="nav-link link-primary text-center mx-lg-3 link-hover ls">
+            門市資訊
           </router-link>
         </div>
       </div>
@@ -78,19 +78,19 @@
     <div class="offcanvas-body bg-warning">
       <div class="navbar-nav mx-auto ls">
         <router-link to="/"
-          class="nav-link link-primary text-center mx-lg-3 my-3 link-hover"
+          class="nav-link link-primary text-center mx-lg-3 my-3 link-hover ls"
           @click.prevent="closeOffcanvas">
-          HOME
+          首頁
         </router-link>
         <router-link to="/allProducts"
-          class="nav-link link-primary text-center mx-lg-3 my-3 link-hover"
+          class="nav-link link-primary text-center mx-lg-3 my-3 link-hover ls"
           @click.prevent="closeOffcanvas">
-          PRODUCT
+          所有商品
         </router-link>
         <router-link to="/store"
-          class="nav-link link-primary text-center mx-lg-3 my-3 link-hover"
+          class="nav-link link-primary text-center mx-lg-3 my-3 link-hover ls"
           @click.prevent="closeOffcanvas">
-          STORE
+          門市資訊
         </router-link>
       </div>
     </div>

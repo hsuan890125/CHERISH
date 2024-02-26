@@ -8,19 +8,19 @@
       <!-- store imformation -->
       <div class="col">
         <div class="mb-4">
-          <p>ADDRESS</p>
+          <p class="ls">門市地址</p>
           <p class="text-secondary ls">404 台中市北區一中街xxx號 / 一中商圈內</p>
         </div>
         <div class="mb-4">
-          <p>TEL</p>
+          <p class="ls">門市電話</p>
           <a href="tel:0498765432" class="text-secondary ls">04-xxxxxxxx</a>
         </div>
         <div class="mb-4">
-          <p>OPENING HOURS</p>
+          <p class="ls">營業時間</p>
           <p class="text-secondary ls">14:00 - 21:00 / 週一公休</p>
         </div>
         <div>
-          <p>TRAFFIC</p>
+          <p class="ls">交通方式</p>
           <p class="text-secondary ls">公車「國立臺中科技大學站」，步行三分鐘即可到達</p>
         </div>
       </div>

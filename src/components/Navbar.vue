@@ -16,21 +16,21 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
           <router-link to="/dashboard/products"
-            class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">
-            PRODUCT
+            class="nav-link link-primary text-center mx-lg-3 my-3 link-hover ls">
+            商品管理
           </router-link>
           <router-link to="/dashboard/orders"
-            class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">
-            ORDER
+            class="nav-link link-primary text-center mx-lg-3 my-3 link-hover ls">
+            訂單管理
           </router-link>
           <router-link to="/dashboard/coupons"
-            class="nav-link link-primary text-center mx-lg-3 my-3 link-hover">
-            COUPON
+            class="nav-link link-primary text-center mx-lg-3 my-3 link-hover ls">
+            優惠券
           </router-link>
           <a href="#"
-            class="nav-link link-primary text-center mx-lg-3 my-3 link-hover"
+            class="nav-link link-primary text-center mx-lg-3 my-3 link-hover ls"
             @click.prevent="logout">
-            LOGOUT
+            登出
           </a>
         </div>
       </div>
