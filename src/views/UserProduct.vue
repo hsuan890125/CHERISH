@@ -1,5 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
-<!-- eslint-disable vuejs-accessibility/label-has-for -->
 <template>
   <Loading :active="isLoading"/>
   <div class="container">
@@ -71,22 +69,23 @@
         <div class="d-flex justify-content-between mb-4">
           <!-- 數量 -->
           <form class="d-flex flex-column text-primary border-bottom border-primary">
-            <label for="productNum" class="form-label fs-4 ls">數量</label>
-            <div class="input-group">
-              <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
-                @click.prevent="refreshQty(-1)"
-                :disabled="productQty === 1">–
-              </button>
-              <input type="number"
-                id="productNum"
-                class="form-control text-center"
-                aria-label="productNum"
-                min="1"
-                v-model="productQty">
-              <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
-                @click.prevent="refreshQty(1)">+
-              </button>
-            </div>
+            <label for="productNum" class="form-label fs-4 ls">數量
+              <div class="input-group">
+                <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
+                  @click.prevent="refreshQty(-1)"
+                  :disabled="productQty === 1">–
+                </button>
+                <input type="number"
+                  id="productNum"
+                  class="form-control text-center"
+                  aria-label="productNum"
+                  min="1"
+                  v-model="productQty">
+                <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
+                  @click.prevent="refreshQty(1)">+
+                </button>
+              </div>
+            </label>
           </form>
           <!-- 喜愛商品 -->
           <div class="d-flex align-items-end">
@@ -116,7 +115,9 @@
     <h6 class="text-center my-5 my-lg-6">OTHERS</h6>
     <div class="row row-cols-2 row-cols-lg-6 mb-5 mb-lg-6">
       <div class="col px-2 mb-3" v-for="item in others" :key="item.id">
-        <div class="card border-0 h-100 cardHover" @click.prevent="goToProduct(item.id)">
+        <div class="card border-0 h-100 cardHover"
+          @click.prevent="goToProduct(item.id)"
+          @keydown="goToProduct(item.id)">
           <div class="imageHover">
             <img :src="item.imageUrl" class="card-img-top img-fluid" :alt="item.title">
           </div>

@@ -1,4 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/label-has-for -->
 <template>
   <Loading :active="isLoading"/>
   <div class="container mb-5 mb-lg-6">
@@ -71,48 +70,46 @@
       <div class="col-lg-7">
         <form class="mt-5 mt-lg-0" @submit.prevent="payOrder">
           <div class="mb-4">
-            <label for="order_id" class="form-label">ORDER NUMBER</label>
-            <p id="order_id" name="orderId" class="form-control text-secondary">{{ orderId }}</p>
+            <p>ORDER NUMBER</p>
+            <p name="orderId" class="form-control text-secondary">{{ orderId }}</p>
           </div>
           <div class="mb-4">
-            <label for="name" class="form-label">NAME</label>
-            <p id="name" name="姓名" class="form-control text-secondary">{{ order.user.name }}</p>
+            <p>NAME</p>
+            <p name="姓名" class="form-control text-secondary">{{ order.user.name }}</p>
           </div>
           <div class="mb-4">
-            <label for="email" class="form-label">EMAIL</label>
+            <p>EMAIL</p>
             <a :href="`mailto:${ order.user.email }`"
-            id="email"
             class="form-control text-secondary text-decoration-none"
             >
             {{ order.user.email }}
             </a>
           </div>
           <div class="mb-4">
-            <label for="tel" class="form-label">TEL</label>
+            <p>TEL</p>
             <a :href="`tel:${ order.user.tel }`"
-              id="tel"
               class="form-control text-secondary text-decoration-none">
               {{ order.user.tel }}
             </a>
           </div>
           <div class="mb-4">
-            <label for="address" class="form-label">ADDRESS</label>
-            <p id="address" name="地址" class="form-control text-secondary">
+            <p>ADDRESS</p>
+            <p name="地址" class="form-control text-secondary">
               {{ order.user.address }}
             </p>
           </div>
           <div class="mb-4" v-if="order.message">
-            <label for="message" class="form-label">REMARK</label>
-            <p id="message" name="remark" class="form-control text-secondary">
+            <p>REMARK</p>
+            <p name="remark" class="form-control text-secondary">
               {{ order.message }}
             </p>
           </div>
           <div class="mb-4">
-            <label for="ispay" class="form-label">PAYMENT STATUS *</label>
-            <p v-if="!order.is_paid" id="ispay" name="ispay" class="form-control text-danger">
+            <p>PAYMENT STATUS *</p>
+            <p v-if="!order.is_paid" name="ispay" class="form-control text-danger">
               尚未付款
             </p>
-            <p v-else id="ispay" name="ispay" class="form-control text-success">
+            <p v-else name="ispay" class="form-control text-success">
               付款完成
             </p>
           </div>

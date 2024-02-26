@@ -1,4 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/form-control-has-label -->
 <template>
   <Loading :active="isLoading"/>
   <div class="container mb-5 mb-lg-6">
@@ -94,9 +93,10 @@
           </div>
           <div class="input-group my-3">
             <input type="text"
-              class="form-control border border-primary"
               placeholder="請輸入優惠碼"
-              v-model="coupon_code" />
+              class="form-control border border-primary"
+              v-model="coupon_code"
+              aria-label="couponNum" />
             <button type="button" class="btn btn-outline-primary" @click.prevent="addCouponCode">
               套用優惠券
             </button>

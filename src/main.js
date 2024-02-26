@@ -1,5 +1,3 @@
-/* eslint-disable vue/multi-word-component-names */
-/* eslint-disable no-unused-vars */
 import { createApp } from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
@@ -18,7 +16,7 @@ import $httpMessageState from './methods/pushMessageState';
 import 'bootstrap';
 
 // 每次更改 router，畫面都回到最上方
-router.afterEach((to, from, failure) => {
+router.afterEach(() => {
   window.scrollTo(0, 0);
 });
 

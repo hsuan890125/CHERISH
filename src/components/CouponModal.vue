@@ -1,4 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/label-has-for -->
 <template>
   <div class="modal fade" id="couponModal" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
@@ -11,30 +10,37 @@
         </div>
         <div class="modal-body bg-warning text-primary">
           <div class="mb-3">
-            <label for="title" class="form-label">標題 *</label>
-            <input type="text"
-              class="form-control border-bottom border-primary"
-              id="title"
-              v-model="tempCoupon.title"
-              placeholder="請輸入標題">
+            <label for="title" class="form-label w-100">標題 *
+              <input type="text"
+                class="form-control border-bottom border-primary"
+                id="title"
+                v-model="tempCoupon.title"
+                placeholder="請輸入標題">
+            </label>
           </div>
           <div class="mb-3">
-            <label for="coupon_code" class="form-label">優惠碼 *</label>
-            <input type="text"
-              class="form-control border-bottom border-primary"
-              id="coupon_code"
-              v-model="tempCoupon.code"
-              placeholder="請輸入優惠碼">
+            <label for="coupon_code" class="form-label w-100">優惠碼 *
+              <input type="text"
+                class="form-control border-bottom border-primary"
+                id="coupon_code"
+                v-model="tempCoupon.code"
+                placeholder="請輸入優惠碼">
+            </label>
           </div>
           <div class="mb-3">
-            <label for="due_date" class="form-label">到期日 *</label>
-            <input type="date" class="form-control border-bottom border-primary" id="due_date"
-                    v-model="due_date">
+            <label for="due_date" class="form-label w-100">到期日 *
+              <input type="date" class="form-control border-bottom border-primary"
+                id="due_date"
+                v-model="due_date">
+            </label>
           </div>
           <div class="mb-3">
-            <label for="price" class="form-label">折扣百分比 *</label>
-            <input type="number" class="form-control border-bottom border-primary" id="price"
-                    v-model.number="tempCoupon.percent" placeholder="請輸入折扣百分比 %">
+            <label for="price" class="form-label w-100">折扣百分比 *
+              <input type="number" class="form-control border-bottom border-primary"
+                id="price"
+                v-model.number="tempCoupon.percent"
+                placeholder="請輸入折扣百分比 %">
+            </label>
           </div>
           <div class="mb-3">
             <div class="form-check">
@@ -42,9 +48,9 @@
                       :true-value="1"
                       :false-value="0"
                       v-model="tempCoupon.is_enabled" id="is_enabled">
-              <label class="form-check-label" for="is_enabled">
+              <p class="form-check-label" for="is_enabled">
                 是否啟用
-              </label>
+              </p>
             </div>
           </div>
         </div>

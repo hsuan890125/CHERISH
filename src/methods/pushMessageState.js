@@ -1,7 +1,6 @@
-/* eslint-disable func-names */
 import emitter from '@/methods/emitter';
 
-export default function (res, title = '更新') {
+const pushMsgState = ((res, title = '更新') => {
   if (res.data.success) {
     emitter.emit('push-message', {
       style: 'success',
@@ -17,4 +16,6 @@ export default function (res, title = '更新') {
       content: message.join('、'),
     });
   }
-}
+});
+
+export default pushMsgState;

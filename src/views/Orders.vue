@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <Loading :active="isLoading"/>
   <table class="table ls">

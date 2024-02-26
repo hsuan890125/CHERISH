@@ -1,4 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/anchor-has-content -->
 <template>
   <footer class="bg-info text-primary pt-5 pt-lg-6">
     <div class="container ls">
@@ -18,8 +17,14 @@
           <h5>Follow Us</h5>
         </div>
         <div class="col-lg-7 mt-4 mt-lg-0">
-          <a href="#" class="fs-3 me-4"><i class="bi bi-instagram"/></a>
-          <a href="#" class="fs-3"><i class="bi bi-facebook"/></a>
+          <a href="#" class="fs-3 me-4">
+            <i class="bi bi-instagram"/>
+            <span class="d-none">.</span>
+          </a>
+          <a href="#" class="fs-3">
+            <i class="bi bi-facebook"/>
+            <span class="d-none">.</span>
+          </a>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/label-has-for -->
 <template>
   <div class="container">
     <div class="row row-cols-1 row-cols-lg-2 mt-6 mt-lg-7 g-5 align-items-center">
@@ -8,24 +7,22 @@
       </div>
       <!-- store imformation -->
       <div class="col">
-        <form>
-          <div class="mb-4">
-            <label class="form-label">ADDRESS</label>
-            <p class="form-control text-secondary ls">404 台中市北區一中街xxx號 / 一中商圈內</p>
-          </div>
-          <div class="mb-4">
-            <label class="form-label">TEL</label>
-            <a href="tel:0498765432" class="form-control text-secondary ls">04-xxxxxxxx</a>
-          </div>
-          <div class="mb-4">
-            <label class="form-label">OPENING HOURS</label>
-            <p class="form-control text-secondary ls">14:00 - 21:00 / 週一公休</p>
-          </div>
-          <div>
-            <label class="form-label">TRAFFIC</label>
-            <p class="form-control text-secondary ls">公車「國立臺中科技大學站」，步行三分鐘即可到達</p>
-          </div>
-        </form>
+        <div class="mb-4">
+          <p>ADDRESS</p>
+          <p class="text-secondary ls">404 台中市北區一中街xxx號 / 一中商圈內</p>
+        </div>
+        <div class="mb-4">
+          <p>TEL</p>
+          <a href="tel:0498765432" class="text-secondary ls">04-xxxxxxxx</a>
+        </div>
+        <div class="mb-4">
+          <p>OPENING HOURS</p>
+          <p class="text-secondary ls">14:00 - 21:00 / 週一公休</p>
+        </div>
+        <div>
+          <p>TRAFFIC</p>
+          <p class="text-secondary ls">公車「國立臺中科技大學站」，步行三分鐘即可到達</p>
+        </div>
       </div>
     </div>
   </div>

@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end">

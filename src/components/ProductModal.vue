@@ -1,4 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/label-has-for -->
 <template>
   <div class="modal fade"
     id="exampleModal"
@@ -19,94 +18,103 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="mb-3">
-                <label for="image" class="form-label">輸入圖片網址 *</label>
-                <input
-                  type="text"
-                  class="form-control border-bottom border-primary"
-                  id="image"
-                  v-model="tempProduct.imageUrl"
-                  placeholder="請輸入圖片連結"/>
+                <label for="image" class="form-label w-100">輸入圖片網址 *
+                  <input
+                    type="text"
+                    class="form-control border-bottom border-primary"
+                    id="image"
+                    v-model="tempProduct.imageUrl"
+                    placeholder="請輸入圖片連結"/>
+                </label>
               </div>
               <div class="mb-3">
-                <label for="customFile" class="form-label">或 上傳圖片 *</label>
-                <input
-                  type="file"
-                  id="customFile"
-                  class="form-control border-bottom border-primary"
-                  ref="fileInput"
-                  @change="uploadFile"/>
+                <label for="customFile" class="form-label w-100">或 上傳圖片 *
+                  <input
+                    type="file"
+                    id="customFile"
+                    class="form-control border-bottom border-primary"
+                    ref="fileInput"
+                    @change="uploadFile"/>
+                </label>
               </div>
               <img class="img-fluid" :src="tempProduct.imageUrl" alt="" />
             </div>
             <div class="col-sm-8">
               <div class="mb-3">
-                <label for="title" class="form-label">產品名稱 *</label>
-                <input
-                  type="text"
-                  class="form-control border-bottom border-primary"
-                  id="title"
-                  v-model="tempProduct.title"
-                  placeholder="請輸入產品名稱"/>
-              </div>
-              <div class="row gx-2">
-                <div class="mb-3 col-md-6">
-                  <label for="category" class="form-label">分類 *</label>
+                <label for="title" class="form-label w-100">產品名稱 *
                   <input
                     type="text"
                     class="form-control border-bottom border-primary"
-                    id="category"
-                    v-model="tempProduct.category"
-                    placeholder="請輸入分類"/>
+                    id="title"
+                    v-model="tempProduct.title"
+                    placeholder="請輸入產品名稱"/>
+                </label>
+              </div>
+              <div class="row gx-2">
+                <div class="mb-3 col-md-6">
+                  <label for="category" class="form-label w-100">分類 *
+                    <input
+                      type="text"
+                      class="form-control border-bottom border-primary"
+                      id="category"
+                      v-model="tempProduct.category"
+                      placeholder="請輸入分類"/>
+                  </label>
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="price" class="form-label">單位 *</label>
-                  <input
-                    type="text"
-                    class="form-control border-bottom border-primary"
-                    id="unit"
-                    v-model="tempProduct.unit"
-                    placeholder="請輸入單位"/>
+                  <label for="price" class="form-label w-100">單位 *
+                    <input
+                      type="text"
+                      class="form-control border-bottom border-primary"
+                      id="unit"
+                      v-model="tempProduct.unit"
+                      placeholder="請輸入單位"/>
+                  </label>
                 </div>
               </div>
               <div class="row gx-2">
                 <div class="mb-3 col-md-6">
-                  <label for="origin_price" class="form-label">原價 *</label>
-                  <input
-                    type="number"
-                    class="form-control border-bottom border-primary"
-                    id="origin_price"
-                    v-model.number="tempProduct.origin_price"
-                    placeholder="請輸入原價"/>
+                  <label for="origin_price" class="form-label w-100">原價 *
+                    <input
+                      type="number"
+                      class="form-control border-bottom border-primary"
+                      id="origin_price"
+                      v-model.number="tempProduct.origin_price"
+                      placeholder="請輸入原價"/>
+                  </label>
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="price" class="form-label">售價 *</label>
-                  <input
-                    type="number"
-                    class="form-control border-bottom border-primary"
-                    id="price"
-                    v-model.number="tempProduct.price"
-                    placeholder="請輸入售價"/>
+                  <label for="price" class="form-label w-100">售價 *
+                    <input
+                      type="number"
+                      class="form-control border-bottom border-primary"
+                      id="price"
+                      v-model.number="tempProduct.price"
+                      placeholder="請輸入售價"/>
+                  </label>
                 </div>
               </div>
               <div class="mb-3">
-                <label for="description" class="form-label">產品描述 *</label>
-                <textarea
-                  type="text"
-                  class="form-control border border-primary"
-                  id="description"
-                  v-model="tempProduct.description"
-                  placeholder="請輸入產品描述">
-                </textarea>
+                <label for="description" class="form-label w-100">產品描述 *
+                  <textarea
+                    type="text"
+                    class="form-control border border-primary"
+                    id="description"
+                    v-model="tempProduct.description"
+                    placeholder="請輸入產品描述">
+                  </textarea>
+                </label>
               </div>
               <div class="mb-3">
-                <label for="content" class="form-label">說明內容</label>
-                <textarea
-                  type="text"
-                  class="form-control border border-primary"
-                  id="content"
-                  v-model="tempProduct.content"
-                  placeholder="請輸入產品說明內容">
-                </textarea>
+                <label for="content" class="form-label w-100">說明內容
+                  <textarea
+                    type="text"
+                    class="form-control border border-primary"
+                    id="content"
+                    v-model="tempProduct.content"
+                    placeholder="請輸入產品說明內容">
+                  </textarea>
+                </label>
               </div>
               <div class="mb-3">
                 <div class="form-check">
@@ -117,9 +125,9 @@
                     :true-value="1"
                     :false-value="0"
                     id="is_enabled"/>
-                  <label class="form-check-label" for="is_enabled">
+                  <p class="form-check-label" for="is_enabled">
                     是否啟用
-                  </label>
+                  </p>
                 </div>
               </div>
             </div>

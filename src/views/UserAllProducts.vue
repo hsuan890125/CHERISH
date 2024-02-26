@@ -1,4 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
   <Loading :active="isLoading"/>
   <div class="container mb-5 mb-lg-6">
@@ -57,7 +56,9 @@
           <div class="col px-2 mb-3"
             v-for="item in productsFilter"
             :key="item.id">
-            <div class="card border-0 h-100 cardHover" @click="getProduct(item.id)">
+            <div class="card border-0 h-100 cardHover"
+              @click="getProduct(item.id)"
+              @keydown="getProduct(item.id)">
               <div class="imageHover">
                 <img :src="item.imageUrl" class="card-img-top img-fluid" :alt="item.title">
               </div>

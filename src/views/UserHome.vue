@@ -1,4 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
   <!-- banner 輪播 -->
   <div id="carouselExampleIndicators"
@@ -115,25 +114,29 @@
   <div class="row row-cols-1 row-cols-md-2 g-0">
     <div class="col home-image-hover">
       <div class="home-image-1 image-content d-flex justify-content-center align-items-center"
-        @click="updateCategory('耳環')">
+        @click="updateCategory('耳環')"
+        @keydown="updateCategory('耳環')">
         <p class="text-light fs-1 ls">EARRING <i class="bi bi-arrow-right"/></p>
       </div>
     </div>
     <div class="col home-image-hover">
       <div class="home-image-2 image-content d-flex justify-content-center align-items-center"
-        @click="updateCategory('戒指')">
+        @click="updateCategory('戒指')"
+        @keydown="updateCategory('戒指')">
         <p class="text-light fs-1 ls">RING <i class="bi bi-arrow-right"/></p>
       </div>
     </div>
     <div class="col home-image-hover">
       <div class="home-image-3 image-content d-flex justify-content-center align-items-center"
-        @click="updateCategory('手鍊')">
+        @click="updateCategory('手鍊')"
+        @keydown="updateCategory('手鍊')">
         <p class="text-light fs-1 ls">BRACELET <i class="bi bi-arrow-right"/></p>
       </div>
     </div>
     <div class="col home-image-hover">
       <div class="home-image-4 image-content d-flex justify-content-center align-items-center"
-        @click="updateCategory('項鍊')">
+        @click="updateCategory('項鍊')"
+        @keydown="updateCategory('項鍊')">
         <p class="text-light fs-1 ls">NECKLACE <i class="bi bi-arrow-right"/></p>
       </div>
     </div>

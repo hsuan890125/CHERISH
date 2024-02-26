@@ -1,4 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/label-has-for -->
 <template>
   <Loading :active="isLoading"/>
   <div class="container mb-5 mb-lg-6">
@@ -75,52 +74,51 @@
         <Form class="mt-5 mt-lg-0" @submit="createOrder">
           <template v-slot="{ errors }">
             <div class="mb-4">
-              <label for="buyerName" class="form-label">NAME *</label>
-              <field id="buyerName" name="姓名" type="text"
+              <p>NAME *</p>
+              <Field name="姓名" type="text"
                 class="form-control border-bottom border-primary"
                 :class="{ 'is-invalid': errors['姓名'] }"
                 placeholder="請輸入收件人姓名" rules="required"
-                v-model="form.user.name"></field>
+                v-model="form.user.name"/>
               <ErrorMessage name="姓名" class="invalid-feedback"/>
             </div>
 
             <div class="mb-4">
-              <label for="buyerEmail" class="form-label">EMAIL *</label>
-              <field id="buyerEmail" name="email" type="email"
+              <p>EMAIL *</p>
+              <Field name="email" type="email"
                 class="form-control border-bottom border-primary"
                 :class="{ 'is-invalid': errors['email'] }"
                 placeholder="請輸入收件人 Email" rules="email|required"
-                v-model="form.user.email"></field>
+                v-model="form.user.email"/>
               <ErrorMessage name="email" class="invalid-feedback"/>
             </div>
 
             <div class="mb-4">
-              <label for="buyerTel" class="form-label">TEL *</label>
-              <field id="buyerTel" name="電話" type="tel"
+              <p>TEL *</p>
+              <Field name="電話" type="tel"
                 class="form-control border-bottom border-primary"
                 :class="{ 'is-invalid': errors['電話'] }"
                 placeholder="請輸入收件人手機" :rules="isPhoneNumber"
-                v-model="form.user.tel"></field>
+                v-model="form.user.tel"/>
               <ErrorMessage name="電話" class="invalid-feedback"/>
             </div>
 
             <div class="mb-4">
-              <label for="buyerAddress" class="form-label">ADDRESS *</label>
-              <field id="buyerAddress" name="地址" type="text"
+              <p>ADDRESS *</p>
+              <Field name="地址" type="text"
                 class="form-control border-bottom border-primary"
                 :class="{ 'is-invalid': errors['地址'] }"
                 placeholder="請輸入收件地址" rules="required"
-                v-model="form.user.address"></field>
+                v-model="form.user.address"/>
               <ErrorMessage name="地址" class="invalid-feedback"/>
             </div>
 
             <div class="mb-4">
-              <label for="buyerMessage" class="form-label">REMARK</label>
-              <textarea name="remark"
-                id="buyerMessage"
-                class="form-control border border-primary"
-                v-model="form.message" style="height: 150px;">
-              </textarea>
+              <label for="buyerMessage" class="form-label w-100">REMARK
+                <textarea name="remark"
+                  class="form-control border border-primary mt-3"
+                  v-model="form.message" style="height: 150px;"/>
+              </label>
             </div>
             <div class="text-end">
               <button type="submit" class="btn btn-outline-primary w-100 py-2">
