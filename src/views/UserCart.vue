@@ -71,7 +71,7 @@
                     </div>
                 </form>
                 <p class="mt-3 mt-md-0 ms-md-5">
-                  <span class="small text-muted pb-5 ls">總計：</span>
+                  <span class="small text-muted pb-5 ls">小計：</span>
                   <br class="d-none d-md-block">NT$ {{ $filters.currency(item.total) }}
                 </p>
               </td>
@@ -86,10 +86,10 @@
       </div>
       <!-- 總計 & 優惠碼 -->
       <div class="col-lg-4">
-        <div class="border border-primary p-3 text-primary">
-          <div class="d-flex align-items-end">
-            <p class="ls">商品總計</p>
-            <p class="fs-4 ms-4">NT$ {{ $filters.currency(carts.total) }}</p>
+        <div class="border border-primary p-3 text-primary pd-menu">
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="mb-0 ls">商品總計</p>
+            <p class="fs-4 mb-0">NT$ {{ $filters.currency(carts.total) }}</p>
           </div>
           <div class="input-group my-3">
             <input type="text"
@@ -102,16 +102,16 @@
             </button>
           </div>
         <hr>
-          <div class="d-flex align-items-end">
-            <p class="ls">應付金額</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="mb-0 ls">應付金額</p>
             <!-- 原價 -->
-            <p v-if="carts.final_total == carts.total" class="fs-2 ms-4">
+            <p v-if="carts.final_total == carts.total" class="fs-2 mb-0">
               NT$ {{ $filters.currency(carts.total) }}
             </p>
             <!-- 折價 -->
-            <p v-else class="fs-2 ms-4">
+            <p v-else class="fs-2 mb-0">
+              <span class="text-danger ls" style="font-size: 14px;">已打折</span>
               NT$ {{ $filters.currency(carts.final_total) }}
-              <span class="text-danger ls" style="font-size: 12px;">已打折</span>
             </p>
           </div>
           <router-link to="/order" type="button" class="btn btn-outline-primary w-100 mt-3 py-2">
