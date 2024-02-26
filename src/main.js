@@ -15,6 +15,7 @@ import App from './App.vue';
 import router from './router';
 import { currency, date } from './methods/filters';
 import $httpMessageState from './methods/pushMessageState';
+import 'bootstrap';
 
 // 每次更改 router，畫面都回到最上方
 router.afterEach((to, from, failure) => {
