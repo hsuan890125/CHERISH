@@ -71,17 +71,26 @@
                   flex-column
                   justify-content-between"
               >
-                <p class="mb-0 ls">{{ item.title }}</p>
-                <div v-if="item.price === item.origin_price">NT$ {{ item.origin_price }}</div>
-                <div v-if="item.price !== item.origin_price">
-                  <del class="small text-muted">NT$ {{ item.origin_price }}</del>
-                  <div class="text-danger">
-                    NT$ {{ item.price }}
-                      <span class="text-danger border border-danger ms-1 px-1 ls"
-                        style="font-size: 10px;">
-                        SALE
-                      </span>
+                <p class="ls">{{ item.title }}</p>
+                <div class="d-flex">
+                  <p class="text-danger border border-danger px-1 mb-1 ls"
+                    v-if="item.price !== item.origin_price"
+                    style="font-size: 10px;">
+                    SALE
+                  </p>
+                </div>
+                <div class="d-flex align-items-end">
+                  <div v-if="item.price === item.origin_price">
+                    NT$ {{ $filters.currency(item.origin_price) }}
                   </div>
+                  <div class="text-danger"
+                    v-if="item.price !== item.origin_price">
+                    NT$ {{ $filters.currency(item.price) }}
+                  </div>
+                  <del class="small text-muted ms-2"
+                    v-if="item.price !== item.origin_price">
+                    NT$ {{ $filters.currency(item.origin_price) }}
+                  </del>
                 </div>
               </div>
             </div>

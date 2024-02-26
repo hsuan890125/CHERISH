@@ -23,13 +23,7 @@
       <!-- 商品名稱 -->
       <div class="col-lg-6">
         <div class="d-flex justify-content-between text-primary mb-3">
-          <div class="d-flex">
-            <h2 class="ls mb-0">{{ product.title }}</h2>
-            <p class="text-danger ms-2 ls"
-              v-if="product.price !== product.origin_price" style="font-size: 10px;">
-              SALE
-            </p>
-          </div>
+          <h2 class="ls mb-0">{{ product.title }}</h2>
         </div>
         <!-- 產品說明 -->
         <div class="text-muted lh-lg ls">{{ product.content }}</div>
@@ -37,14 +31,19 @@
         <!-- 價格 -->
         <div class="d-flex align-items-end">
           <div class="h4 mb-0" v-if="product.price === product.origin_price">
-            NT$ {{ product.origin_price }}
+            NT$ {{ $filters.currency(product.origin_price) }}
           </div>
-          <del class="h5 text-muted me-3 mb-0" v-if="product.price !== product.origin_price">
-            NT$ {{ product.origin_price }}
+          <div class="h4 text-danger me-3 mb-0" v-if="product.price !== product.origin_price">
+            NT$ {{ $filters.currency(product.price) }}
+          </div>
+          <del class="h6 text-muted me-3 mb-0" v-if="product.price !== product.origin_price">
+            NT$ {{ $filters.currency(product.origin_price) }}
           </del>
-          <div class="h4 text-danger mb-0" v-if="product.price !== product.origin_price">
-            NT$ {{ product.price }}
-          </div>
+          <p class="text-danger border border-danger px-1 mb-0 ls"
+            v-if="product.price !== product.origin_price"
+            style="font-size: 10px;">
+            SALE
+          </p>
         </div>
         <hr>
         <!-- 產品規格 -->
@@ -112,7 +111,7 @@
       </div>
     </div>
     <!-- others -->
-    <h6 class="text-center my-5 my-lg-6">OTHERS</h6>
+    <p class="text-primary mt-5 mt-lg-6 ls">看看其他商品 ...</p>
     <div class="row row-cols-2 row-cols-lg-6 mb-5 mb-lg-6">
       <div class="col px-2 mb-3" v-for="item in others" :key="item.id">
         <div class="card border-0 h-100 cardHover"
@@ -123,14 +122,26 @@
           </div>
           <div class="card-body text-primary bg-warning px-0
             d-flex flex-column justify-content-between">
-            <p class="mb-0 ls">{{ item.title }}</p>
-            <div v-if="item.price === item.origin_price">NT$ {{ item.origin_price }}</div>
-            <div v-if="item.price !== item.origin_price">
-              <del class="small text-muted">NT$ {{ item.origin_price }}</del>
-              <div>
-                NT$ {{ item.price }}
-                 <span class="text-danger ms-1" style="font-size: 10px;">SALE</span>
+            <p class="ls">{{ item.title }}</p>
+            <div class="d-flex">
+              <p class="text-danger border border-danger px-1 mb-1 ls"
+                v-if="item.price !== item.origin_price"
+                style="font-size: 10px;">
+                SALE
+              </p>
+            </div>
+            <div class="d-flex align-items-end">
+              <div v-if="item.price === item.origin_price">
+                NT$ {{ $filters.currency(item.origin_price) }}
               </div>
+              <div class="text-danger"
+                v-if="item.price !== item.origin_price">
+                NT$ {{ $filters.currency(item.price) }}
+              </div>
+              <del class="small text-muted ms-2"
+                v-if="item.price !== item.origin_price">
+                NT$ {{ $filters.currency(item.origin_price) }}
+              </del>
             </div>
           </div>
         </div>
