@@ -125,21 +125,21 @@
         <!-- 有收藏商品 -->
         <li v-for="item in products" :key="item.id" class="mb-3">
           <router-link :to="{ path: `/product/${item.id}` }"
-            class="dropdown-item d-flex align-items-center"
+            class="dropdown-item text-primary d-flex align-items-center"
             @click.prevent="closeOffcanvas">
             <img :src="item.imageUrl" :alt="item.title" style="width: 100px;">
             <div class="d-flex flex-column ps-3 w-100">
               <div class="fs-5 ls">{{ item.title }}</div>
               <!-- Price -->
               <div class="fs-6 mb-0" v-if="item.price === item.origin_price">
-                NT$ {{ item.origin_price }}
+                NT$ {{ $filters.currency(item.origin_price) }}
+              </div>
+              <div class="fs-6 text-danger mb-0" v-if="item.price !== item.origin_price">
+                NT$ {{ $filters.currency(item.price) }}
               </div>
               <del class="small text-muted mb-0" v-if="item.price !== item.origin_price">
-                NT$ {{ item.origin_price }}
+                NT$ {{ $filters.currency(item.origin_price) }}
               </del>
-              <div class="fs-6 mb-0" v-if="item.price !== item.origin_price">
-                NT$ {{ item.price }}
-              </div>
             </div>
             <!-- Cart -->
             <button type="button"
