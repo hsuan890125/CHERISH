@@ -145,14 +145,14 @@
             <button type="button"
               class="btn py-2"
               data-bs-dismiss="offcanvas"
-              @click.prevent="addToCart(item.id)">
+              @click="addToCart(item.id)">
               <i class="bi bi-cart-plus fs-4"/>
             </button>
             <!-- X -->
             <button type="button"
               class="btn btn-lg"
               data-bs-dismiss="offcanvas"
-              @click.stop.prevent="delFavoriteItems(item)">
+              @click.stop="delFavoriteItems(item)">
               <i class="bi bi-x-lg"/>
             </button>
           </router-link>

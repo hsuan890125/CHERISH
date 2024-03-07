@@ -28,7 +28,7 @@
         <div class="text-end">
           <button type="button"
             class="btn btn-outline-danger mb-3"
-            @click.prevent="openDelCartModal">清空購物車
+            @click="openDelCartModal">清空購物車
             <i class="bi bi-cart-x"/>
           </button>
         </div>
@@ -55,7 +55,7 @@
                     <div class="input-group">
                       <button class="btn btn-outline-primary fs-5 border-0 productNumBtn"
                         type="button"
-                        @click.prevent="updateCart(item, item.qty - 1)"
+                        @click="updateCart(item, item.qty - 1)"
                         :disabled="item.qty == 1">–
                       </button>
                       <input type="number"
@@ -66,7 +66,7 @@
                         readonly>
                       <button class="btn btn-outline-primary fs-5 border-0 productNumBtn"
                         type="button"
-                        @click.prevent="updateCart(item, item.qty + 1)">+
+                        @click="updateCart(item, item.qty + 1)">+
                       </button>
                     </div>
                 </form>
@@ -76,7 +76,7 @@
                 </p>
               </td>
               <td>
-                <button type="button" class="btn" @click.prevent="openDelCartModal(item)">
+                <button type="button" class="btn" @click="openDelCartModal(item)">
                     <i class="bi bi-x-lg"/>
                 </button>
               </td>
@@ -97,7 +97,7 @@
               class="form-control border border-primary"
               v-model="coupon_code"
               aria-label="couponNum" />
-            <button type="button" class="btn btn-outline-primary" @click.prevent="addCouponCode">
+            <button type="button" class="btn btn-outline-primary" @click="addCouponCode">
               套用優惠券
             </button>
           </div>

@@ -59,7 +59,7 @@
             取消
           </button>
           <button type="button" class="btn btn-outline-primary"
-            @click.prevent="$emit('update-coupon', tempCoupon)">
+            @click="$emit('update-coupon', tempCoupon)">
             更新優惠券
           </button>
         </div>

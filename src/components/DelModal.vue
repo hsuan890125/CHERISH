@@ -19,7 +19,7 @@
             data-bs-dismiss="modal">取消
           </button>
           <button type="button" class="btn btn-outline-danger"
-            @click.prevent="$emit('del-item')">確認刪除
+            @click="$emit('del-item')">確認刪除
           </button>
         </div>
       </div>

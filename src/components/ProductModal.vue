@@ -140,7 +140,7 @@
           <button
             type="button"
             class="btn btn-outline-primary"
-            @click.prevent="$emit('update-product', tempProduct)">
+            @click="$emit('update-product', tempProduct)">
             確認
           </button>
         </div>

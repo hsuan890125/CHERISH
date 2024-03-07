@@ -95,7 +95,7 @@
     <p>
       - 輸入
       <span id="couponText" class="fw-bold">coupon999</span>
-      <button type="button" class="link-primary bg-info border-0" @click.prevent="couponCopy">
+      <button type="button" class="link-primary bg-info border-0" @click="couponCopy">
         <i class="bi bi-copy"/>
       </button>
       即享九折優惠 -

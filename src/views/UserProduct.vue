@@ -71,7 +71,7 @@
             <label for="productNum" class="form-label fs-4 ls">數量
               <div class="input-group">
                 <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
-                  @click.prevent="refreshQty(-1)"
+                  @click="refreshQty(-1)"
                   :disabled="productQty === 1">–
                 </button>
                 <input type="number"
@@ -81,7 +81,7 @@
                   min="1"
                   v-model="productQty">
                 <button class="btn btn-outline-primary fs-5 border-0 productNumBtn" type="button"
-                  @click.prevent="refreshQty(1)">+
+                  @click="refreshQty(1)">+
                 </button>
               </div>
             </label>
@@ -90,7 +90,7 @@
           <div class="d-flex align-items-end">
             <button type="button"
               class="text-primary bg-warning fs-3 border-0 mx-1"
-              @click.prevent="toggleFavorite(product)">
+              @click="toggleFavorite(product)">
               <i class="bi bi-suit-heart-fill" v-if="favoriteItems.includes(product.id)"/>
               <i class="bi bi-suit-heart" v-else/>
             </button>
@@ -104,7 +104,7 @@
           </button>
           <button type="button" class="btn btn-outline-primary w-50 py-2"
             :disabled="this.status.loadingItem === product.id"
-            @click.prevent="addToCart(product.id)">
+            @click="addToCart(product.id)">
             加入購物車
           </button>
         </div>
