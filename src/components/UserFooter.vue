@@ -8,7 +8,7 @@
         </div>
         <div class="col-lg-7 mt-4 mt-lg-0">
           <p>404 台中市北區一中街xxx號 / 一中商圈內</p>
-          <a href="tel:0498765432"><i class="bi bi-telephone-fill me-3"/>04-xxxxxxxx</a>
+          <a href="tel:0498765432"><i class="bi bi-telephone-fill me-3"/>04-98765432</a>
         </div>
       </div>
       <!-- 追蹤我們 -->

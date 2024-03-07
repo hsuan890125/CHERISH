@@ -13,7 +13,7 @@
         </div>
         <div class="mb-4">
           <p class="ls">門市電話</p>
-          <a href="tel:0498765432" class="text-secondary ls">04-xxxxxxxx</a>
+          <a href="tel:0498765432" class="text-secondary ls">04-98765432</a>
         </div>
         <div class="mb-4">
           <p class="ls">營業時間</p>
