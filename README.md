@@ -4,15 +4,17 @@
 ## 專案介紹
 [Demo Website](https://bbyoulike5487.github.io/CHERISH/)
 
-以飾品電商為主題的 SPA 網站，包含 RWD 設計，而網頁整體風格以簡約為主。
+以飾品電商為主題的 SPA 網站，包含 RWD 設計，而網頁整體以簡約風格為主。
 
-### 使用套件
+### 使用技術
+- `SCSS`
 - `Vue 3`
 - `Vue Cli`
 - `Vue Router`
 - `Vue Axios`
 - `vue-loading-overlay`
 - `Vee Validation`
+- `RWD`
 - `Bootstrap 5`
 
 ---
@@ -29,7 +31,7 @@
 
 ### 收藏功能
 
-使用 localStorage 來處理收藏商品的資料
+使用 localStorage 來儲存收藏商品的資料
 
 <img src="readmeImage/珍藏功能.png" alt="珍藏功能">
 
