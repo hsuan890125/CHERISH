@@ -46,12 +46,12 @@
                     <img :src="item.product.imageUrl"
                       :alt="item.product.title"
                       style="height: 150px;">
-                    <div class="mt-3 mt-md-0" style="width: 230px;">
+                    <div class="mt-3 mt-md-0" style="width: 150px;">
                       <h6 class="ls">{{ item.product.title }}</h6>
                     </div>
                 </router-link>
                 <form class="d-flex flex-column text-primary border-bottom border-primary my-3"
-                  style="width: 200px;">
+                  style="width: 150px;">
                     <div class="input-group">
                       <button class="btn btn-outline-primary fs-5 border-0 productNumBtn"
                         type="button"
