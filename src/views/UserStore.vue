@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <div class="row row-cols-1 row-cols-lg-2 mt-6 mt-lg-7 g-5 align-items-center">
+    <div class="row row-cols-1 row-cols-lg-2 mt-6 mt-lg-7 g-lg-5 align-items-center">
       <!-- image -->
       <div class="col">
-        <div class="store-image"></div>
+        <div class="store-image mt-5 mt-lg-0"></div>
       </div>
       <!-- store imformation -->
       <div class="col">
-        <div class="mb-4">
+        <div class="mb-4 mt-5 mt-lg-0">
           <p class="ls">門市地址</p>
           <p class="text-secondary ls">404 台中市北區一中街xxx號 / 一中商圈內</p>
         </div>
