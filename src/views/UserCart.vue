@@ -105,12 +105,12 @@
           <div class="d-flex justify-content-between align-items-center">
             <p class="mb-0 ls">應付金額</p>
             <!-- 原價 -->
-            <p v-if="carts.final_total == carts.total" class="fs-2 mb-0">
+            <p v-if="carts.final_total == carts.total" class="fs-3 mb-0">
               NT$ {{ $filters.currency(carts.total) }}
             </p>
             <!-- 折價 -->
-            <p v-else class="fs-2 mb-0">
-              <span class="text-danger ls" style="font-size: 14px;">已打折</span>
+            <p v-else class="fs-3 mb-0">
+              <span class="text-danger ls" style="font-size: 12px;">已打折</span>
               NT$ {{ $filters.currency(carts.final_total) }}
             </p>
           </div>
