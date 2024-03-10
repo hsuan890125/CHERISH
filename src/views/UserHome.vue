@@ -30,22 +30,22 @@
     </div>
     <router-link to="/allProducts">
       <div class="carousel-inner">
-        <div class="carousel-item active banner-image-1"  data-bs-interval="5000">
+        <div class="carousel-item active banner-image-1 vh-100"  data-bs-interval="5000">
           <div class="carousel-caption d-none d-lg-block text-start pb-5">
             <h2 class="display-4 text-primary ls">NECKLACE</h2>
           </div>
         </div>
-        <div class="carousel-item banner-image-2"  data-bs-interval="5000">
+        <div class="carousel-item banner-image-2 vh-100"  data-bs-interval="5000">
           <div class="carousel-caption d-none d-lg-block text-start pb-5">
             <h2 class="display-4 text-light ls">BRACELET</h2>
           </div>
         </div>
-        <div class="carousel-item banner-image-3"  data-bs-interval="5000">
+        <div class="carousel-item banner-image-3 vh-100"  data-bs-interval="5000">
           <div class="carousel-caption d-none d-lg-block text-start pb-5">
             <h2 class="display-4 text-primary ls">RING</h2>
           </div>
         </div>
-        <div class="carousel-item banner-image-4"  data-bs-interval="5000">
+        <div class="carousel-item banner-image-4 vh-100"  data-bs-interval="5000">
           <div class="carousel-caption d-none d-lg-block text-start pb-5">
             <h2 class="display-4 text-light ls">EARRING</h2>
           </div>
