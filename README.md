@@ -2,7 +2,7 @@
 <img src="readmeImage/封面.png" alt="封面">
 
 ## 專案介紹
-[Demo Website](https://bbyoulike5487.github.io/CHERISH/)
+[Demo Website](https://hsuan890125.github.io/CHERISH/#/)
 
 以飾品電商為主題的 SPA 網站，包含 RWD 設計，而網頁整體以簡約風格為主。
 
